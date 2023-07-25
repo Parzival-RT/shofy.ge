@@ -1,0 +1,98 @@
+[
+    {
+        "id": "1",
+        "image": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty793/product/media/images/20230322/8/309507739/561092420/2/2_org_zoom.jpg",
+        "images": [
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty792/product/media/images/20230322/8/309507739/561092420/3/3_org_zoom.jpg"},
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty792/product/media/images/20230322/8/309507739/561092420/4/4_org_zoom.jpg"},
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty793/product/media/images/20230322/8/309507739/561092420/6/6_org_zoom.jpg"}
+        ],
+        "title": "Galaxy Tab S6 Lite 10.4-inch Android Tablet 128GB.",
+        "old_price": "300₾",
+        "price": "200₾",
+        "type": "ტაბლეტი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0
+    },
+    {
+        "id": "2",
+        "image": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty658/product/media/images/20221222/23/244488682/173375929/3/3_org_zoom.jpg",
+        "images": [
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty657/product/media/images/20221222/23/244488682/173375929/8/8_org_zoom.jpg"},
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty657/product/media/images/20221222/23/244488682/173375929/9/9_org_zoom.jpg"},
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty657/product/media/images/20221222/23/244488682/173375929/25/25_org_zoom.jpg"}
+        ],
+        "title": "Tracker with IP67 Waterproof Pedometer Smart watch.",
+        "old_price": "1500₾",
+        "price": "1000₾",
+        "type": "სმარტ საათი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0
+    },
+    {
+        "id": "3",
+        "image": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty709/product/media/images/20230130/18/270220074/76611036/2/2_org_zoom.jpg",
+        "images": [
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-1.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-3.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-4.jpg"}
+        ],
+        "title": "Galaxy Tab S6 Lite 10.4-inch Android Tablet 128GB.",
+        "old_price": "3000₾",
+        "price": "2000₾",
+        "type": "ტაბლეტი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0
+    },
+    {
+        "id": "4",
+        "image": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/related/product-related-3.jpg",
+        "images": [
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-1.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-3.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-4.jpg"}
+        ],
+        "title": "Tracker with IP67 Waterproof Pedometer Smart watch.",
+        "old_price": "1500₾",
+        "price": "1000₾",
+        "type": "სმარტ საათი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0
+    },
+    {
+        "id": "5",
+        "image": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/related/product-related-1.jpg",
+        "images": [
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-1.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-3.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-4.jpg"}
+        ],
+        "title": "Galaxy Tab S6 Lite 10.4-inch Android Tablet 128GB.",
+        "old_price": "3000₾",
+        "price": "2000₾",
+        "type": "ტაბლეტი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0
+    },
+    {
+        "id": "6",
+        "image": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/related/product-related-4.jpg",
+        "images": [
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-1.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-3.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-4.jpg"}
+        ],
+        "title": "Tracker with IP67 Waterproof Pedometer Smart watch.",
+        "old_price": "1500₾",
+        "price": "1000₾",
+        "type": "სმარტ საათი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0
+    }
+]
