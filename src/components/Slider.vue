@@ -7,6 +7,10 @@
                :pagination="{
                   type: 'progressbar',
                }"
+               :autoplay="{
+                  delay: 3000,
+                  disableOnInteraction: false,
+               }"
                :navigation="{
                   nextEl: '.tp-slider-button-next',
                   prevEl: '.tp-slider-button-prev',
@@ -130,7 +134,7 @@
 
 // Import Swiper Vue.js components and required modules : js parts
 import { Swiper, SwiperSlide } from 'swiper/vue';
-import { Pagination, Navigation } from 'swiper/modules'
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -144,7 +148,7 @@ export default {
    },
    setup() {
       return {
-         modules: [Pagination, Navigation],
+         modules: [Pagination, Navigation, Autoplay],
       };
    }
 }
