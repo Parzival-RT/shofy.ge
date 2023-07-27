@@ -1,3 +1,14 @@
+/***** Fonts *****/
+@font-face {
+  font-family: 'FiraGO-Bold';
+  src: url('../fonts/FiraGO-Bold.ttf');
+}
+@font-face {
+  font-family: 'FiraGO-Regular';
+  src: url('../fonts/FiraGO-Regular.ttf');
+}
+
+
 /*-----------------------------------------------------------------------------------
 
     Template Name: Shofy - Multipurpose eCommerce HTML Template
@@ -229,6 +240,7 @@ li,
   --tp-ff-roboto: 'Roboto', sans-serif;
   --tp-ff-oregano: 'Oregano', cursive;
   --tp-ff-charm: 'Charm', cursive;
+  
   /**
   @color declaration
   */
