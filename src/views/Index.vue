@@ -88,6 +88,6 @@ export default {
       this.$store.state.loading = false;
    }, 1000)
 
-  },
+  }
 }
 </script>
