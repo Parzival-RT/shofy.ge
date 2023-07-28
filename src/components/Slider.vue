@@ -1,5 +1,4 @@
 <template>
-
    <section class="tp-slider-area p-relative z-index-1">
       <div class="tp-slider-active tp-slider-variation swiper-container">
          <div class="swiper-wrapper">
@@ -108,7 +107,6 @@
                <!-- End Slider Content -->
 
             </swiper>
-
          </div>
 
          <!-- Swiper Buttons -->
@@ -124,10 +122,9 @@
                </svg>                        
             </button>
          </div>
-         
+         <!-- End Swiper Buttons -->
       </div>
    </section>
-
 </template>
 
 <script>
@@ -147,6 +144,7 @@ export default {
       SwiperSlide
    },
    setup() {
+      // Swiper Modules
       return {
          modules: [Pagination, Navigation, Autoplay],
       };

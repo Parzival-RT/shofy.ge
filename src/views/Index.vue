@@ -2,7 +2,7 @@
    <div>
 
       <!-- Pre Loader -->
-      <div id="loading" style="display: none;">
+      <div id="loading" v-if="this.$store.state.loading">
          <div id="loading-center">
             <div id="loading-center-absolute">
                <!-- loading content here -->
@@ -16,8 +16,8 @@
                      </div>
                      <img src="../assets/img/logo/preloader/preloader-icon.svg" alt="">
                   </div>
-                  <h3 class="tp-preloader-title">Shofy</h3>
-                  <p class="tp-preloader-subtitle">Loading</p>
+                  <h3 class="tp-preloader-title">Shofy.ge</h3>
+                  <p class="tp-preloader-subtitle mt-3">იტვირთება</p>
                </div>
             </div>
          </div>  
@@ -25,12 +25,11 @@
       <!-- End Pre Loader -->
          
       <!-- Header -->
-      <Header />
+      <Header v-if="!this.$store.state.loading" />
       <!-- End Header -->
       
       <!-- Main -->
-      <main>
-         
+      <main v-if="!this.$store.state.loading">
          <!-- Slider --> 
          <Slider />
          <!-- End Slider --> 
@@ -42,12 +41,11 @@
          <!-- Rules -->
          <Rules />
          <!-- End Rules -->
-
       </main>
       <!-- End Main -->
       
       <!-- Footer -->
-      <Footer />
+      <Footer v-if="!this.$store.state.loading" />
       <!-- End Footer -->
 
    </div>
@@ -82,6 +80,14 @@ export default {
    Products,
    Rules,
    Footer
-  }
+  },
+  mounted() {
+
+   // For Loading
+   setTimeout(() => {
+      this.$store.state.loading = false;
+   }, 1000)
+
+  },
 }
 </script>
