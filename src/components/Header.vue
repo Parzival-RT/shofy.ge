@@ -299,7 +299,7 @@
             </div>
             <div class="cartmini__checkout-btn">
                 <a href="/Cart" class="tp-btn mb-10 w-100"> ნახე კალათა</a>
-                <a href="/Checkout" class="tp-btn tp-btn-border w-100"> ყიდვა</a>
+                <router-link  @click="this.$store.state.cart = false" to="/Checkout" class="tp-btn tp-btn-border w-100"> ყიდვა</router-link>
             </div>
         </div>
     </div>

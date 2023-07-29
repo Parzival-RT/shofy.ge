@@ -19,7 +19,7 @@ export default createStore({
     getProducts: (state) => {
       return state.cart_product;
     }
-
+    
   },
   mutations: {
 
