@@ -25,68 +25,115 @@
     <Form v-slot="{ handleSubmit }" as="div">
         <form @submit="handleSubmit($event, submitForm)" class="row">
             <div class="col-lg-7">
-                <div class="tp-checkout-bill-area">
-                   <h3 class="tp-checkout-bill-title">გადახდის დეტალები</h3>
-    
-                   <div class="tp-checkout-bill-form">
-                      <form action="#">
-                         <div class="tp-checkout-bill-inner">
-                            <div class="row">
-                               <div class="col-md-6">
-                                  <div class="tp-checkout-input">
-                                     <label>სახელი <span>*</span></label>
-                                     <Field type="text" :rules="isRequired" name="name" v-model="form.name" placeholder="სახელი" />
-                                     <ErrorMessage class="text-danger font-size-14px" name="name" />
-                                  </div>
-                               </div>
-                               <div class="col-md-6">
-                                  <div class="tp-checkout-input">
-                                     <label>გვარი <span>*</span></label>
-                                     <Field type="text" :rules="isRequired" name="lastname" v-model="form.lastname" placeholder="გვარი" />
-                                     <ErrorMessage class="text-danger font-size-14px" name="lastname" />
-                                  </div>
-                               </div>
-                               <div class="col-md-12">
-                                  <div class="tp-checkout-input">
-                                     <label>ქალაქი <span>*</span></label>
-                                     <Field type="text" :rules="isRequired" name="city" v-model="form.city" placeholder="ქალაქი" />
-                                     <ErrorMessage class="text-danger font-size-14px" name="city" />
-                                  </div>
-                               </div>
-                               <div class="col-md-12">
-                                  <div class="tp-checkout-input">
-                                     <label>ქუჩის მისამართი</label>
-                                     <input v-model="form.street" type="text" placeholder="ქუჩის მისამართი">
-                               </div>
-                               <div class="col-md-12">
-                                  <div class="tp-checkout-input">
-                                     <label>ტელეფონის ნომერი <span>*</span></label>
-                                     <Field type="text" :rules="isRequired" name="mobile" v-model="form.mobile" placeholder="ტელეფონის ნომერი" />
-                                     <ErrorMessage class="text-danger font-size-14px" name="mobile" />
-                                  </div> 
-                               </div>
-                               <div class="col-md-12">
-                                  <div class="tp-checkout-input">
-                                     <label>ელ.ფოსტა</label>
-                                     <input v-model="form.email" type="email" placeholder="ელ.ფოსტა">
-                                  </div>
-                               </div>
-                               <div class="col-md-12">
-                                  <div class="tp-checkout-input">
-                                     <label>შეკვეთის დეტალები (სურვილისამებრ)</label>
-                                     <textarea v-model="form.description" placeholder="აღწერეთ თქვენი შეკვეთა, მაგ: სპეციალური შენიშვნები მიწოდებისათვის."></textarea>
-                                  </div>
-                               </div>
+                <div class="tp-checkout-bill-area position-relative">
+
+                    <!-- Pre Loader -->
+                    <div class="position-absolute top-50 left-50 tr-xy-50" id="loading" v-if="loading" style="z-index: 10;background-color: #ffffffbf">
+                        <div class="d-flex align-items-center justify-content-center" id="loading-center">
+                            <div>
+                                <!-- loading content here -->
+                                <div class="tp-preloader-content">
+                                    <div class="tp-preloader-logo">
+                                        <div class="tp-preloader-circle">
+                                        <svg width="190" height="190" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle stroke="#D9D9D9" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
+                                            <circle stroke="red" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
+                                        </svg>
+                                        </div>
+                                        <img src="../../assets/img/logo/preloader/preloader-icon.svg" alt="">
+                                    </div>
+                                    <h3 class="tp-preloader-title">Shofy.ge</h3>
+                                    <p class="tp-preloader-subtitle mt-3">იტვირთება</p>
+                                </div>
                             </div>
-                         </div>
-                         </div>
-                      </form>
-                   </div>
+                        </div>  
+                    </div>
+                    <!-- End Pre Loader -->
+
+                    <h3 class="tp-checkout-bill-title">გადახდის დეტალები</h3>
+    
+                    <div class="tp-checkout-bill-form">
+                        <form action="#">
+                            <div class="tp-checkout-bill-inner">
+                                <div class="row">
+                                <div class="col-md-6">
+                                    <div class="tp-checkout-input">
+                                        <label>სახელი <span>*</span></label>
+                                        <Field type="text" :rules="isRequired" name="name" v-model="form.name" placeholder="სახელი" />
+                                        <ErrorMessage class="text-danger font-size-14px" name="name" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="tp-checkout-input">
+                                        <label>გვარი <span>*</span></label>
+                                        <Field type="text" :rules="isRequired" name="lastname" v-model="form.lastname" placeholder="გვარი" />
+                                        <ErrorMessage class="text-danger font-size-14px" name="lastname" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="tp-checkout-input">
+                                        <label>ქალაქი <span>*</span></label>
+                                        <Field type="text" :rules="isRequired" name="city" v-model="form.city" placeholder="ქალაქი" />
+                                        <ErrorMessage class="text-danger font-size-14px" name="city" />
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="tp-checkout-input">
+                                        <label>ქუჩის მისამართი</label>
+                                        <input v-model="form.street" type="text" placeholder="ქუჩის მისამართი">
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="tp-checkout-input">
+                                        <label>ტელეფონის ნომერი <span>*</span></label>
+                                        <Field type="text" :rules="isRequired" name="mobile" v-model="form.mobile" placeholder="ტელეფონის ნომერი" />
+                                        <ErrorMessage class="text-danger font-size-14px" name="mobile" />
+                                    </div> 
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="tp-checkout-input">
+                                        <label>ელ.ფოსტა</label>
+                                        <input v-model="form.email" type="email" placeholder="ელ.ფოსტა">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="tp-checkout-input">
+                                        <label>შეკვეთის დეტალები (სურვილისამებრ)</label>
+                                        <textarea v-model="form.description" placeholder="აღწერეთ თქვენი შეკვეთა, მაგ: სპეციალური შენიშვნები მიწოდებისათვის."></textarea>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col-lg-5">
             <!-- checkout place order -->
-            <div class="tp-checkout-place white-bg">
+            <div class="tp-checkout-place white-bg position-relative">
+                <!-- Pre Loader -->
+                    <div class="position-absolute top-50 left-50 tr-xy-50" id="loading" v-if="loading" style="z-index: 10;background-color: #ffffffbf">
+                        <div class="d-flex align-items-center justify-content-center" id="loading-center">
+                            <div>
+                                <!-- loading content here -->
+                                <div class="tp-preloader-content">
+                                    <div class="tp-preloader-logo">
+                                        <div class="tp-preloader-circle">
+                                        <svg width="190" height="190" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle stroke="#D9D9D9" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
+                                            <circle stroke="red" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
+                                        </svg>
+                                        </div>
+                                        <img src="../../assets/img/logo/preloader/preloader-icon.svg" alt="">
+                                    </div>
+                                    <!-- <h3 class="tp-preloader-title">Shofy.ge</h3>
+                                    <p class="tp-preloader-subtitle mt-3">იტვირთება</p> -->
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                    <!-- End Pre Loader -->
+
                 <h3 class="tp-checkout-place-title">თქვენი შეკვეთა</h3>
     
                 <div class="tp-order-info-list mt-35">
@@ -99,25 +146,29 @@
     
                         <!-- item list -->
                         <li class="d-flex flex-column overflow-auto" style="max-height: 500px">
-                        <div v-for="(item, index) in getCartData" :key="index" class="cartmini__widget-item py-2">
-                            <div class="cartmini__thumb">
-                                <a href="/Product-details">
-                                    <img :src="item.image" alt="">
-                                </a>
-                            </div>
-                            <div class="cartmini__content">
-                                <h5 class="cartmini__title">
-                                    <a href="product-details.html">{{ item.title }}</a>
-                                </h5>
-                                <div class="cartmini__price-wrapper">
-                                    <span class="cartmini__price me-1">₾{{ Number.parseInt(item.price) * item.product_amount }}</span>
-                                    <span class="cartmini__quantity">x{{ item.product_amount }}</span>
+                            <div v-for="(item, index) in getCartData" :key="index" class="cartmini__widget-item py-2">
+                                <div class="cartmini__thumb">
+                                    <a href="/Product-details">
+                                        <img :src="item.image" alt="">
+                                    </a>
                                 </div>
+                                <div class="cartmini__content">
+                                    <h5 class="cartmini__title">
+                                        <a href="product-details.html">{{ item.title }}</a>
+                                    </h5>
+                                    <div class="cartmini__price-wrapper">
+                                        <span class="cartmini__price me-1">₾{{ Number.parseInt(item.price) * item.product_amount }}</span>
+                                        <span class="cartmini__quantity">x{{ item.product_amount }}</span>
+                                    </div>
+                                </div>
+                                <button type="button" @click="deleteItem(index)" class="cartmini__del">
+                                    <i class="tio-clear"></i>
+                                </button>
                             </div>
-                            <button type="button" @click="deleteItem(index)" class="cartmini__del">
-                                <i class="tio-clear"></i>
-                            </button>
-                        </div>
+                            <div v-if="getCartData.length == 0" class="cartmini__empty mt-0 text-center">
+                                <p>შენი კალათა ცარიელია</p>
+                                <a href="shop.html" class="tp-btn">პროდუქტებში გადასვლა</a>
+                            </div>
                         </li>
     
                         <!-- subtotal -->
@@ -140,6 +191,10 @@
                             </span>
                         </div>
                         </li>
+
+                        <li>
+                            <div class="alert alert-secondary w-100 my-1" role="alert">კურიერთან ქეშით გადახდა</div>
+                        </li>
     
                         <!-- total -->
                         <li class="tp-order-info-list-total">
@@ -149,6 +204,9 @@
                     </ul>
                 </div>
                 <div class="tp-checkout-agree">
+                    <p>თქვენი პერსონალური მონაცემები გამოყენებული იქნება თქვენი შეკვეთის დასამუშავებლად, რომლებიც აღწერილია ჩვენს საიტზე [წესებში].
+
+</p>
                     <div class="tp-checkout-option">
                         <Field type="checkbox" id="rules" :rules="isRequired" :value="true" name="rules" v-model="form.rules" />
                         <label class="d-block" for="rules">წავიკითხე და ვეთანხმები საიტის <a href="#"><b>წესებს</b></a></label>
@@ -192,6 +250,7 @@ export default {
                 sum_total: 0,
                 rules: false
             },
+            loading: false
         }
     },
     components: {
@@ -209,6 +268,30 @@ export default {
         submitForm() {
             this.for_form_total_blanaces
             console.log(this.form);
+            this.form = {
+                name: '',
+                lastname: '',
+                city: '',
+                street: '',
+                mobile: '',
+                email: '',
+                description: '',
+                shipping: 10,
+                total: 0,
+                sum_total: 0,
+                rules: false
+            }
+
+            this.loading = true;
+            setTimeout(() => {
+                this.loading = false;
+            }, 5000)
+
+            if (localStorage.getItem("cart_items")) {
+                // localStorage.removeItem('cart_items')
+                this.$store.commit("replace_items", '')
+                localStorage.removeItem('cart_items')
+            }
         },
         // Validation For Fields
         isRequired(value) {

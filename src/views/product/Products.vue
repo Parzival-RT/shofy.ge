@@ -59,11 +59,11 @@
                                 <!-- Row -->
                                 <div class="row infinite-container">
                                     <!-- Col -->
-                                    <div class="col-lg-4 col-md-6 col-sm-6 infinite-item" v-for="(item, index) in product" :key="index">
+                                    <div class="col-lg-3 col-md-6 col-sm-6 infinite-item" v-for="(item, index) in product" :key="index">
 
                                         <!-- Product View -->
                                         <div class="tp-product-item-2 mb-40">
-                                            <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img" style="height: 500px;">
+                                            <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img" style="max-height: 300px;">
                                                 <a href="product-details.html">
                                                     <img :src="item.image" alt="">
                                                 </a>

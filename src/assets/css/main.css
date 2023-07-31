@@ -129,6 +129,11 @@
 		8.25 Side Banner CSS
 		8.26 Coupon CSS
 
+    ---------------------------------
+    09. ECOMMERCE Custom Styles
+    ---------------------------------
+    9.1 Custom Styles
+
 
 **********************************************/
 /*----------------------------------------*/
@@ -256,6 +261,7 @@ li,
   --tp-pink-4: #FF3494;
   --tp-green-dark: #115061;
   --main-slider-bg: #ff1c46;
+  --disabled-btn: #61b2ff;
   --tp-green-1: #31B757;
   --tp-khaki-1: #AB9774;
   --tp-blue-1: #0989FF;
@@ -20778,3 +20784,17 @@ product all slider
 }
 
 /*# sourceMappingURL=main.css.map */
+
+/*----------------------------------------*/
+/*  9.1 Custom Styles
+/*----------------------------------------*/
+
+.left-50 {
+  left: 50%;
+}
+.tr-xy-50 {
+  transform: translate(-50%, -50%);
+}
+button.tp-checkout-btn:disabled {
+  background-color: var(--disabled-btn)!important;
+}
