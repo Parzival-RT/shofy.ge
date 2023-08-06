@@ -176,8 +176,8 @@
                                     
                                                             <!-- price -->
                                                             <div class="tp-product-details-price-wrapper mb-20">
-                                                                <span class="tp-product-details-price old-price me-1">{{  Number.parseInt(item.old_price) + old_price }}₾</span>
-                                                                <span class="tp-product-details-price new-price">{{ Number.parseInt(item.price) + price }}₾</span>
+                                                                <span class="tp-product-details-price old-price me-1">{{  item.old_price + old_price }}₾</span>
+                                                                <span class="tp-product-details-price new-price">{{ item.price +  price }}₾</span>
                                                             </div>
                             
                                     
@@ -478,6 +478,13 @@ export default {
             const productData = this.$store.state.cart_product; // Data From store State
             if (productData.length != [] && productData.find(el => el.id == id)) {
                 productData.filter(item => item.id === id).forEach(el => {
+                    if (!el.initial_price) {
+                        // If initial_price is not already set, store the initial price
+                        el.initial_price = el.price;
+                    }
+                    // Increase the price by its initial value
+                    el.price = el.price + el.initial_price;
+
                     if (el.id === id) {
                         const data = {
                             product_amount: el.product_amount += 1,
@@ -502,7 +509,9 @@ export default {
                 type, type,
                 old_price,
                 price: price,
-                product_amount: product_amount 
+                product_amount: product_amount,
+                initial_price: price,
+                initial_old_price: old_price
             };
             this.$store.commit('cart_items', this.addItems);
             this.$store.commit('cart_menu');
@@ -518,11 +527,16 @@ export default {
             const productData = this.$store.state.cart_product; // Data From store State
             if (productData.length != [] && productData.find(el => el.id == id)) {
                 productData.filter(item => item.id === id).forEach(el => {
+                    
+                    el.price = el.price + price * product_amount;
+        
                     if (el.id === id) {
                         const data = {
                             product_amount: Number(el.product_amount) + Number(product_amount),
                             id: id
                         }
+
+                       
                         this.$store.commit('raplace_item_data', data);
                         this.$store.commit('cart_menu');
                         localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
@@ -533,7 +547,9 @@ export default {
                 this.old_price = 0;
                 return
             }
-          
+
+
+
             // this code below does a new product add/push in cart. e.g if product doesn't exist by this code new product add/push in cart
             this.addItems = {
                 id: id,
@@ -541,8 +557,10 @@ export default {
                 title: title,
                 type, type,
                 old_price,
-                price: price,
-                product_amount: product_amount 
+                price: price * product_amount,
+                product_amount: product_amount,
+                initial_price: price,
+                initial_old_price: old_price
             };
             this.$store.commit('cart_items', this.addItems);
             this.$store.commit('cart_menu');
@@ -555,10 +573,22 @@ export default {
         // Plus Function adds quantity of the product in the cart
         plus(id) {
             this.product_amount++;
-            this.product.filter(item => item.id == id).forEach(item => {
-                this.price = this.price + Number.parseInt(item.price);
-                this.old_price = this.old_price + Number.parseInt(item.old_price);
-            })
+            const data = this.product;
+
+            data.filter(item => item.id === id).forEach(item => {
+                const price = item.price;
+                const old_price = item.old_price;
+
+                if (!item.initial_price) {
+                    // If initial_price is not already set, store the initial price
+                    item.initial_price = price;
+                    item.initial_old_price = old_price;
+                }
+
+                this.price += item.initial_price;
+                this.old_price += item.initial_old_price;
+
+            });
         },
         // Minus Function reduces quantity of the product in the cart
         minus(id) {
@@ -566,11 +596,22 @@ export default {
                 return
             }
             this.product_amount--;
+            const data = this.product;
 
-            this.product.filter(item => item.id == id).forEach(item => {
-                this.price = this.price - Number.parseInt(item.price);
-                this.old_price = this.old_price - Number.parseInt(item.old_price);
-            })
+            data.filter(item => item.id === id).forEach(item => {
+                const price = item.price;
+                const old_price = item.old_price;
+
+                if (!item.initial_price) {
+                    // If initial_price is not already set, store the initial price
+                    item.initial_price = price;
+                    item.initial_old_price = old_price;
+                }
+
+                this.price -= item.initial_price;
+                this.old_price -= item.initial_old_price;
+
+            });
         }
 
     },

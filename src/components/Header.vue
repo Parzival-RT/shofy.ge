@@ -1,6 +1,6 @@
 <template>
   <header>
-    <div class="tp-header-area p-relative z-index-11">
+    <div class="tp-header-area tp-header-style-primary p-relative z-index-11">
 
       <!-- Slogan -->
       <div class="tp-header-top black-bg p-relative z-index-1 d-none d-md-block">
@@ -276,7 +276,7 @@
                     <div class="cartmini__content">
                       <h5 class="cartmini__title"><a href="product-details.html">{{ item.title }}</a></h5>
                       <div class="cartmini__price-wrapper">
-                        <span class="cartmini__price me-1">{{ Number.parseInt(item.price) * item.product_amount }}₾</span>
+                        <span class="cartmini__price me-1">{{ item.price }}₾</span>
                         <span class="cartmini__quantity">x{{ item.product_amount }}</span>
                       </div>
                     </div>
@@ -345,7 +345,7 @@ export default {
       let totalBalance = 0; // Initialize the total balance variable outside the loop
 
       for (let item of this.getCartData) {
-        let balance = Number.parseInt(item.price) * item.product_amount;
+        let balance = item.price;
         totalBalance += balance; // Update the total balance with each item's balance
       }
       return totalBalance; // Return the total balance after the loop

@@ -6,6 +6,8 @@ import HomeView from '../views/Index.vue'
 import Wishlist from '../views/wishlist/Wishlist.vue'
 // Checkout Page
 import Checkout from '../views/checkout/Index.vue'
+// Cart Page
+import Cart from '../views/Cart/Index.vue'
 
 const routes = [
   // Lannding Page
@@ -25,6 +27,12 @@ const routes = [
     path: '/Checkout',
     name: 'Checkout',
     component: Checkout
+  },
+  // Cart Page
+  {
+    path: '/Cart',
+    name: 'Cart',
+    component: Cart
   }
   
 ]
