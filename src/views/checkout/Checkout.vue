@@ -264,6 +264,9 @@ export default {
             this.$store.commit("deleteProduct", id)
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
 
+            // if(localStorage.removeItem('coupon')) {
+            //     localStorage.removeItem('coupon');
+            // }
             this.balance = this.getFullBalance * 20 / 100;
             localStorage.setItem('coupon', JSON.stringify(this.balance));
             
@@ -277,33 +280,35 @@ export default {
         submitForm() {
             console.log(this.form);
           
-            this.form = {
-                name: '',
-                lastname: '',
-                city: '',
-                street: '',
-                mobile: '',
-                email: '',
-                description: '',
-                shipping: 10,
-                total: 0,
-                sum_total: 0,
-                rules: false
-            }
+            // this.form = {
+            //     name: '',
+            //     lastname: '',
+            //     city: '',
+            //     street: '',
+            //     mobile: '',
+            //     email: '',
+            //     description: '',
+            //     shipping: 10,
+            //     total: 0,
+            //     sum_total: 0,
+            //     rules: false
+            // }
 
-            this.loading = true;
-            setTimeout(() => {
-                this.loading = false;
-            }, 5000)
+            // this.loading = true;
+            // setTimeout(() => {
+            //     this.loading = false;
+            // }, 5000)
 
-            if(localStorage.getItem('coupon')) {
-                localStorage.removeItem('coupon')
-            }
 
-            if (localStorage.getItem("cart_items")) {
-                this.$store.commit("replace_items", '')
-                localStorage.removeItem('cart_items')
-            }
+            // if(localStorage.getItem('coupon')) {
+            //     localStorage.removeItem('coupon')
+            // }
+
+
+            // if (localStorage.getItem("cart_items")) {
+            //     this.$store.commit("replace_items", '')
+            //     localStorage.removeItem('cart_items')
+            // }
         },
         // Validation For Fields
         isRequired(value) {
@@ -324,14 +329,25 @@ export default {
             }
         },
 
+        // 'coupon_quantity': {
+        //     handler() {
+        //         if (JSON.parse(localStorage.getItem('coupon'))) {
+        //             this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
+        //         } 
+        //     }
+        // },
+
         // when price amount changes
         getFullBalance() {
             if(JSON.parse(localStorage.getItem('coupon'))) {
                 this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
-            } else { 
-                this.coupon_quantity = 0;
-            }
+            } 
         }
+    },
+    mounted() {
+        // this.coupon_quantity = 1;
+        this.form.total = this.getFullBalance;
+        console.log(this.form.total)
     },
     computed: {
         // this function return all products what exists in the local storage
@@ -356,9 +372,11 @@ export default {
                 this.form.total = this.getFullBalance - this.coupon_quantity;
                 this.form.sum_total = this.getFullBalance + Number.parseInt(this.form.shipping) - this.coupon_quantity;
             } else {
+                alert()
                 this.form.total = this.getFullBalance;
                 this.form.sum_total = this.getFullBalance + Number.parseInt(this.form.shipping);
             }
+
         },
 
         // if vaucher exists

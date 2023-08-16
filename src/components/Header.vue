@@ -298,7 +298,7 @@
                 <span>{{ getFullBalance }}₾</span>
             </div>
             <div class="cartmini__checkout-btn">
-                <a href="/Cart" class="tp-btn mb-10 w-100"> ნახე კალათა</a>
+                <router-link to="/Cart" class="tp-btn mb-10 w-100"> ნახე კალათა</router-link>
                 <router-link  @click="this.$store.state.cart = false" to="/Checkout" class="tp-btn tp-btn-border w-100"> ყიდვა</router-link>
             </div>
         </div>
