@@ -363,20 +363,12 @@ export default {
                 let balance = item.price;
                 totalBalance += balance; // Update the total balance with each item's balance
             }
+
+            // these two from variable i feel with product total balance: this.form.total and  this.form.sum_total
+            this.form.total = totalBalance - this.coupon_quantity;
+            this.form.sum_total = totalBalance + Number.parseInt(this.form.shipping) - this.coupon_quantity;
+
             return totalBalance // Return the total balance after the loop
-        },
-
-        // when user click the buy button of the form variables total and sub_total fill with data
-        for_form_total_balances() {
-            if(localStorage.getItem('coupon')) {
-                this.form.total = this.getFullBalance - this.coupon_quantity;
-                this.form.sum_total = this.getFullBalance + Number.parseInt(this.form.shipping) - this.coupon_quantity;
-            } else {
-                alert()
-                this.form.total = this.getFullBalance;
-                this.form.sum_total = this.getFullBalance + Number.parseInt(this.form.shipping);
-            }
-
         },
 
         // if vaucher exists
