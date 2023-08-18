@@ -167,7 +167,7 @@
                                     </div>
                                     <div v-if="getCartData.length == 0" class="cartmini__empty mt-0 text-center">
                                         <p>შენი კალათა ცარიელია</p>
-                                        <a href="shop.html" class="tp-btn">პროდუქტებში გადასვლა</a>
+                                        <router-link to="/Products" class="tp-btn">პროდუქტებში გადასვლა</router-link>
                                     </div>
                                 </li>
             
@@ -337,6 +337,9 @@ export default {
             } 
         }
     },
+    mounted() {
+        this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
+    },
     computed: {
         // this function return all products what exists in the local storage
         getCartData() {
@@ -355,6 +358,7 @@ export default {
             // these two from variable i feel with product total balance: this.form.total and  this.form.sum_total
             this.form.total = totalBalance - this.coupon_quantity;
             this.form.sum_total = totalBalance + Number.parseInt(this.form.shipping) - this.coupon_quantity;
+            
 
             return totalBalance // Return the total balance after the loop
         },

@@ -64,9 +64,9 @@
                                         <!-- Product View -->
                                         <div class="tp-product-item-2 mb-40">
                                             <div class="tp-product-thumb-2 p-relative z-index-1 fix w-img" style="max-height: 300px;">
-                                                <a href="product-details.html">
+                                                <router-link :to="'/inner/'+item.id">
                                                     <img :src="item.image" alt="">
-                                                </a>
+                                                </router-link>
                                                 <!-- product action -->
                                                 <div class="tp-product-action-2 tp-product-action-blackStyle">
                                                     <div class="tp-product-action-item-2 d-flex flex-column">

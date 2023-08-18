@@ -269,9 +269,9 @@
             <div v-if="getCartData.length != []" class="cartmini__widget">
                 <div class="cartmini__widget-item" v-for="(item, index) in getCartData" :key="index">
                     <div class="cartmini__thumb">
-                      <a href="product-details.html">
-                        <img :src="item.image" alt="">
-                      </a>
+                      <router-link :to="'/Inner/'+item.id">
+                        <img @click="this.$store.state.cart = false" :src="item.image" alt="">
+                      </router-link>
                     </div>
                     <div class="cartmini__content">
                       <h5 class="cartmini__title"><a href="product-details.html">{{ item.title }}</a></h5>
@@ -289,7 +289,7 @@
             <div v-if="getCartData.length == []" class="cartmini__empty text-center">
                 <img src="../assets/img/product/cartmini/empty-cart.png" alt="">
                 <p>შენი კალათა ცარიელია</p>
-                <a href="shop.html" class="tp-btn">პროდუქტებში გადასვლა</a>
+                <router-link to="/Products" class="tp-btn" @click="this.$store.state.cart = false">პროდუქტებში გადასვლა</router-link>
             </div>
         </div>
         <div class="cartmini__checkout">

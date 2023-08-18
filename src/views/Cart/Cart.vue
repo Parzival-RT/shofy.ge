@@ -88,7 +88,7 @@
                                 <span>₾ {{ getFullBalance - coupon_quantity }}</span>
                             </div>
                             <div class="tp-cart-checkout-proceed">
-                                <a href="/Checkout" class="tp-cart-checkout-btn w-100">ყიდვა</a>
+                                <router-link to="/Checkout" class="tp-cart-checkout-btn w-100">ყიდვა</router-link>
                             </div>
                         </div>
                     </div>
