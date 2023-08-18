@@ -85,7 +85,7 @@
                             </div>
                             <div class="tp-cart-checkout-total d-flex align-items-center justify-content-between">
                                 <span>მთლიანი ჯამი</span>
-                                <span>₾ {{ getFullBalance - balance }}</span>
+                                <span>₾ {{ getFullBalance - coupon_quantity }}</span>
                             </div>
                             <div class="tp-cart-checkout-proceed">
                                 <a href="/Checkout" class="tp-cart-checkout-btn w-100">ყიდვა</a>
@@ -107,7 +107,8 @@ export default {
         return {
             check_coupon: '',
             coupon_name: 'rati',
-            balance: 0
+            coupon_quantity: 0,
+            discount: 20
         }
     },
     methods: {
@@ -122,14 +123,15 @@ export default {
                 alert('გთხოვთ შეიყვანოთ კუპონის სწორი კოდი');
                 return
             } else {
-                this.balance = this.getFullBalance * 20 / 100;
-                localStorage.setItem('coupon', JSON.stringify(this.balance));
+                this.coupon_quantity = this.getFullBalance * this.discount / 100;
+                localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
             }
             this.check_coupon = '';
         },
 
         // Plus Function adds quantity of the product in the cart
-      plus(id) {
+        plus(id) {
+
             const data = this.getCartData;
             data.filter(item => item.id === id).forEach(item => {
                 // if (!item.initial_price) {
@@ -140,6 +142,12 @@ export default {
                 // Increase the price by its initial value
                 item.price = item.price + item.initial_price;
             });
+
+            if (localStorage.getItem('coupon')) {
+                this.coupon_quantity = this.getFullBalance * this.discount / 100;
+                localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
+            }
+            
             this.$store.commit('raplace_item_data', data);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
         },
@@ -148,9 +156,10 @@ export default {
 
         // Minus Function reduces quantity of the product in the cart
         minus(id) {
+
             const data = this.getCartData;
             data.filter(item => item.id === id).forEach(item => {
-                if(item.product_amount <= 1) {
+                if (item.product_amount <= 1) {
                     return
                 }
                 if (!item.initial_price) {
@@ -161,6 +170,12 @@ export default {
                 // Increase the price by its initial value
                 item.price = item.price - item.initial_price;
             });
+
+            if (localStorage.getItem('coupon')) {
+                this.coupon_quantity = this.getFullBalance * this.discount / 100;
+                localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
+            }
+
             this.$store.commit('raplace_item_data', data);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
         }
@@ -169,6 +184,8 @@ export default {
         if(localStorage.getItem('coupon')) {
             localStorage.removeItem('coupon');
         }
+
+        window.scroll(0, 0);
     },
     computed: {
         // this function return all products what exists in the local storage

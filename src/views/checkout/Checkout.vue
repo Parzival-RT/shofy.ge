@@ -249,7 +249,8 @@ export default {
                 rules: false
             },
             loading: false,
-            coupon_quantity: 0
+            coupon_quantity: 0,
+            discount: 20
         }
     },
     components: {
@@ -264,15 +265,15 @@ export default {
             this.$store.commit("deleteProduct", id)
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
 
-            // if(localStorage.removeItem('coupon')) {
-            //     localStorage.removeItem('coupon');
-            // }
-            this.balance = this.getFullBalance * 20 / 100;
-            localStorage.setItem('coupon', JSON.stringify(this.balance));
-            
+            if (localStorage.getItem('coupon')) {
+                this.coupon_quantity = this.getFullBalance * this.discount / 100;
+                localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
+            }
+
             const cart_product_length = this.$store.state.cart_product.length;
             if(cart_product_length == 0) {
                 localStorage.removeItem('coupon');
+                // this.coupon_quantity = 0;
             }
             
         },
@@ -320,7 +321,7 @@ export default {
     },
     watch: {
 
-        // Validation For Fields
+        // Validation For Fields (rules check input)
         'form.rules': {
             handler(value) {
                 if(value == undefined) {
@@ -329,25 +330,12 @@ export default {
             }
         },
 
-        // 'coupon_quantity': {
-        //     handler() {
-        //         if (JSON.parse(localStorage.getItem('coupon'))) {
-        //             this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
-        //         } 
-        //     }
-        // },
-
         // when price amount changes
         getFullBalance() {
             if(JSON.parse(localStorage.getItem('coupon'))) {
                 this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
             } 
         }
-    },
-    mounted() {
-        // this.coupon_quantity = 1;
-        this.form.total = this.getFullBalance;
-        console.log(this.form.total)
     },
     computed: {
         // this function return all products what exists in the local storage
