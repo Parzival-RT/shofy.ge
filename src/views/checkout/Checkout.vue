@@ -53,58 +53,58 @@
                             <h3 class="tp-checkout-bill-title">გადახდის დეტალები</h3>
             
                             <div class="tp-checkout-bill-form">
-                                <form action="#">
+                                <div>
                                     <div class="tp-checkout-bill-inner">
                                         <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="tp-checkout-input">
-                                                <label>სახელი <span>*</span></label>
-                                                <Field type="text" :rules="isRequired" name="name" v-model="form.name" placeholder="სახელი" />
-                                                <ErrorMessage class="text-danger font-size-14px" name="name" />
+                                            <div class="col-md-6">
+                                                <div class="tp-checkout-input">
+                                                    <label>სახელი <span>*</span></label>
+                                                    <Field type="text" :rules="isRequired" name="name" v-model="form.name" placeholder="სახელი" />
+                                                    <ErrorMessage class="text-danger font-size-14px" name="name" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="tp-checkout-input">
-                                                <label>გვარი <span>*</span></label>
-                                                <Field type="text" :rules="isRequired" name="lastname" v-model="form.lastname" placeholder="გვარი" />
-                                                <ErrorMessage class="text-danger font-size-14px" name="lastname" />
+                                            <div class="col-md-6">
+                                                <div class="tp-checkout-input">
+                                                    <label>გვარი <span>*</span></label>
+                                                    <Field type="text" :rules="isRequired" name="lastname" v-model="form.lastname" placeholder="გვარი" />
+                                                    <ErrorMessage class="text-danger font-size-14px" name="lastname" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="tp-checkout-input">
-                                                <label>ქალაქი <span>*</span></label>
-                                                <Field type="text" :rules="isRequired" name="city" v-model="form.city" placeholder="ქალაქი" />
-                                                <ErrorMessage class="text-danger font-size-14px" name="city" />
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>ქალაქი <span>*</span></label>
+                                                    <Field type="text" :rules="isRequired" name="city" v-model="form.city" placeholder="ქალაქი" />
+                                                    <ErrorMessage class="text-danger font-size-14px" name="city" />
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="tp-checkout-input">
-                                                <label>ქუჩის მისამართი</label>
-                                                <input v-model="form.street" type="text" placeholder="ქუჩის მისამართი">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="tp-checkout-input">
-                                                <label>ტელეფონის ნომერი <span>*</span></label>
-                                                <Field type="text" :rules="isRequired" name="mobile" v-model="form.mobile" placeholder="ტელეფონის ნომერი" />
-                                                <ErrorMessage class="text-danger font-size-14px" name="mobile" />
-                                            </div> 
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="tp-checkout-input">
-                                                <label>ელ.ფოსტა</label>
-                                                <input v-model="form.email" type="email" placeholder="ელ.ფოსტა">
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>ქუჩის მისამართი</label>
+                                                    <input v-model="form.street" type="text" placeholder="ქუჩის მისამართი">
                                             </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="tp-checkout-input">
-                                                <label>შეკვეთის დეტალები (სურვილისამებრ)</label>
-                                                <textarea v-model="form.description" placeholder="აღწერეთ თქვენი შეკვეთა, მაგ: სპეციალური შენიშვნები მიწოდებისათვის."></textarea>
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>ტელეფონის ნომერი <span>*</span></label>
+                                                    <Field type="text" :rules="isRequired" name="mobile" v-model="form.mobile" placeholder="ტელეფონის ნომერი" />
+                                                    <ErrorMessage class="text-danger font-size-14px" name="mobile" />
+                                                </div> 
                                             </div>
-                                        </div>
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>ელ.ფოსტა</label>
+                                                    <input v-model="form.email" type="email" placeholder="ელ.ფოსტა">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="tp-checkout-input">
+                                                    <label>შეკვეთის დეტალები (სურვილისამებრ)</label>
+                                                    <textarea v-model="form.description" placeholder="აღწერეთ თქვენი შეკვეთა, მაგ: სპეციალური შენიშვნები მიწოდებისათვის."></textarea>
+                                                </div>
+                                            </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    </div>
-                                </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -141,20 +141,20 @@
             
                                 <!-- header -->
                                 <li class="tp-order-info-list-header">
-                                <h4>პროდუქტი: {{ getCartData ? getCartData.length : 0 }}</h4>
+                                <h4>პროდუქტი: {{ getProductsLength }}</h4>
                                 </li>
             
                                 <!-- item list -->
                                 <li class="d-flex flex-column overflow-auto" style="max-height: 500px">
                                     <div v-for="(item, index) in getCartData" :key="index" class="cartmini__widget-item py-2">
                                         <div class="cartmini__thumb">
-                                            <a href="/Product-details">
+                                            <router-link :to="'/inner/'+item.id">
                                                 <img :src="item.image" alt="">
-                                            </a>
+                                            </router-link>
                                         </div>
                                         <div class="cartmini__content">
                                             <h5 class="cartmini__title">
-                                                <a href="product-details.html">{{ item.title }}</a>
+                                                <router-link :to="'/inner/'+item.id">{{ item.title }}</router-link>
                                             </h5>
                                             <div class="cartmini__price-wrapper">
                                                 <span class="cartmini__price me-1">₾{{ item.price }}</span>
@@ -193,7 +193,7 @@
                                 </li>
 
                                 <li>
-                                    <div class="alert alert-secondary w-100 my-1" role="alert">კურიერთან ქეშით გადახდა</div>
+                                    <div class="alert alert-secondary w-100 my-1" role="alert"><i class="tio-credit-card-outlined"></i> კურიერთან ქეშით გადახდა</div>
                                 </li>
             
                                 <!-- total -->
@@ -229,6 +229,7 @@
 
 <script>
 // Validation For Fields
+import router from '@/router';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
 export default {
@@ -254,11 +255,12 @@ export default {
         }
     },
     components: {
-        // Validation For Fields
-        Form,
-        Field,
-        ErrorMessage
-    },
+    // Validation For Fields
+    Form,
+    Field,
+    ErrorMessage,
+    router
+},
     methods: {
         // this Funtion delete product from cart
         deleteItem(id) {
@@ -339,8 +341,20 @@ export default {
     },
     mounted() {
         this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
+
+        window.scroll(0, 0);
     },
     computed: {
+        // this function return total product quantity
+        getProductsLength() {
+            let total_cart_quantity = 0;
+            for (let item of this.getCartData) {
+                let each_product_quantity = item.product_amount;
+                total_cart_quantity += each_product_quantity;
+            }
+            return total_cart_quantity
+        },
+
         // this function return all products what exists in the local storage
         getCartData() {
             return this.$store.getters.getProducts;

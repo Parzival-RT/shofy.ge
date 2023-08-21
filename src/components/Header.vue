@@ -25,9 +25,9 @@
             <!-- Col -->
             <div class="col-6">
                 <div class="logo">
-                    <a href="/">
+                    <router-link to="/" @click="reload_main_page()">
                       <img src="../assets/img/logo/logo.svg" alt="logo">
-                    </a>
+                    </router-link>
                 </div>
               </div>
             <!-- End Col -->
@@ -95,9 +95,9 @@
               <!-- Col -->
               <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                 <div class="logo">
-                    <a href="/">
+                    <router-link to="/" @click="reload_main_page()">
                       <img src="../assets/img/logo/logo.svg" alt="logo">
-                    </a>
+                    </router-link>
                 </div>
               </div>
               <!-- End Col -->
@@ -274,7 +274,7 @@
                       </router-link>
                     </div>
                     <div class="cartmini__content">
-                      <h5 class="cartmini__title"><a href="product-details.html">{{ item.title }}</a></h5>
+                      <h5 class="cartmini__title"><router-link :to="'/Inner/'+item.id">{{ item.title }}</router-link></h5>
                       <div class="cartmini__price-wrapper">
                         <span class="cartmini__price me-1">{{ item.price }}₾</span>
                         <span class="cartmini__quantity">x{{ item.product_amount }}</span>
@@ -287,7 +287,7 @@
 
             <!-- if no item in cart -->
             <div v-if="getCartData.length == []" class="cartmini__empty text-center">
-                <img src="../assets/img/product/cartmini/empty-cart.png" alt="">
+                <!-- <img src="../assets/img/product/cartmini/empty-cart.png" alt=""> -->
                 <p>შენი კალათა ცარიელია</p>
                 <router-link to="/Products" class="tp-btn" @click="this.$store.state.cart = false">პროდუქტებში გადასვლა</router-link>
             </div>
@@ -332,7 +332,12 @@ export default {
   computed: {
     // this function return total product quantity
     getProductsLength() {
-      return this.$store.getters.getProducts.length
+      let total_cart_quantity = 0;
+      for (let item of this.getCartData) {
+        let each_product_quantity = item.product_amount;
+        total_cart_quantity += each_product_quantity;
+      }
+      return total_cart_quantity
     },
 
     // this function return all products what exists in the local storage
@@ -352,6 +357,16 @@ export default {
     },
   },
   methods: {
+    // Reaload Main Page
+    reload_main_page() {
+      if (this.$route.path == '/') {
+        this.$store.state.loading = true;
+        setTimeout(() => {
+          this.$store.state.loading = false;
+        }, 100)
+      }
+    },
+
     // Tracks the scroll position
     handleScroll() {
       this.isScrolled = window.pageYOffset;
