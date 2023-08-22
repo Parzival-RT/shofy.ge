@@ -260,7 +260,7 @@
          <!-- product details area end -->
 
          <!-- Reviews -->
-         <section class="tp-product-details-bottom pb-140">
+         <section class="tp-product-details-bottom pb-100">
             <div class="container">
                <!-- Row -->
                <div class="row">
@@ -291,7 +291,7 @@
                                        </div>
                                     </div>
                                     <!-- Display the rating breakdown -->
-                                    <div class="tp-product-details-review-rating-list">
+                                    <div class="tp-product-details-review-rating-list d-flex flex-column-reverse">
                                        <div v-for="star in 5" :key="star" class="tp-product-details-review-rating-item d-flex align-items-center">
                                           <span>{{ star }} star</span>
                                           <div class="tp-product-details-review-rating-bar">
@@ -308,7 +308,7 @@
                                  </div>
 
                                  <!-- Reviews list -->
-                                 <div class="tp-product-details-review-list pr-110">
+                                 <div class="tp-product-details-review-list">
                                     <h3 class="tp-product-details-review-title">რეიტინგი &amp; მიმოხილვა</h3>
                                     <div v-for="(item, index) in customers_review" :key="index" class="tp-product-details-review-avater d-flex align-items-start">
                                        <div class="tp-product-details-review-avater-thumb">
@@ -346,8 +346,8 @@
                                        <div class="tp-product-details-review-form-rating d-flex flex-wrap align-items-center">
                                           <p>შენი რეიტინგი:</p>
                                           <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
-                                             <span v-for="star in 5">
-                                                <i class="fs-5" :class="star <= form.star_rating ? 'tio-star' : 'tio-star-outlined'" @click="form.star_rating = star"></i>
+                                             <span class="cursor-pointer" v-for="star in 5">
+                                                <i class="fs-5" :class="star <= form.star_rating || star <= star_hover ? 'tio-star' : 'tio-star-outlined'" @mouseenter="star_hover_enter(star)" @mouseleave="star_hover_leave()" @click="form.star_rating = star"></i>                      
                                              </span>
                                           </div>
                                           <Field class="d-none" type="tnumberext" :rules="isRequired" name="stars" v-model="form.star_rating"/>
@@ -481,17 +481,22 @@ export default {
          //  Foreach product current old_price/quantity
          old_price: 0,
 
+         // get product by id
          product_data_by_id: [],
 
          isScrolled: 0,
 
+         // customers review data - for submitForm
          form: {
             name: '',
             email: '',
             customer_review: '',
             star_rating: 0
          },
-         customers_review: []
+         // customers comments, reviews and ratings
+         customers_review: [],
+         // for stars hover effect
+         star_hover: 0
       }
    },
    components: {
@@ -660,6 +665,14 @@ export default {
          const count = this.customers_review.filter(review => review.star_rating === star).length;
          return (count / this.customers_review.length) * 100;
       },
+      // hover effects for stars
+      star_hover_enter(star) {
+         this.star_hover = star;
+      },
+      // unhover effects for stars
+      star_hover_leave() {
+         this.star_hover = 0;
+      },
 
       // Tracks the scroll position for footer fixed product 
       handleScroll() {
@@ -722,4 +735,9 @@ export default {
    width: 60px;
    object-fit: cover;
 }
+/* Add hover effect for stars */
+.cursor-pointer:has(.tio-star):hover ~ .cursor-pointer:has(.tio-star) .tio-star::before {
+   content: "\e966";
+}
+
 </style>

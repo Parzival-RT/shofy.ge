@@ -20827,3 +20827,7 @@ button.tp-checkout-btn:disabled {
     width: 250px!important;
   }
 }
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
