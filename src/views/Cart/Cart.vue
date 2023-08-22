@@ -28,9 +28,9 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                <th colspan="2" class="tp-cart-header-product">Product</th>
-                                <th class="tp-cart-header-price">Price</th>
-                                <th class="tp-cart-header-quantity">Quantity</th>
+                                <th colspan="2" class="tp-cart-header-product">პროდუქტი</th>
+                                <th class="tp-cart-header-price">ფასი</th>
+                                <th class="tp-cart-header-quantity">რაოდენობა</th>
                                 <th></th>
                                 </tr>
                             </thead>
