@@ -37,11 +37,11 @@
                             <tbody>
                                 <tr v-for="(item, index) in getCartData" :key="index">
                                     <!-- img -->
-                                    <td class="tp-cart-img"><a href="product-details.html"> <img :src="item.image" alt=""></a></td>
+                                    <td class="tp-cart-img"><router-link :to="'/inner/'+item.id"> <img :src="item.image" alt=""></router-link></td>
                                     <!-- title -->
-                                    <td class="tp-cart-title"><a href="product-details.html">{{ item.title }}</a></td>
+                                    <td class="tp-cart-title"><router-link :to="'/inner/'+item.id">{{ item.title }}</router-link></td>
                                     <!-- price -->
-                                    <td class="tp-cart-price"><span>{{ item.price }}</span></td>
+                                    <td class="tp-cart-price"><span>{{ item.price }} ₾</span></td>
                                     <!-- quantity -->
                                     <td class="tp-cart-quantity">
                                     <div class="tp-product-quantity mt-10 mb-10">
@@ -61,7 +61,7 @@
                                     </td>
                                     <!-- action -->
                                     <td class="tp-cart-action">
-                                    <button @click="deleteItem(index)" class="tp-cart-action-btn">
+                                    <button @click="deleteItem(index)" class="tp-cart-action-btn d-flex align-items-center">
                                         <svg class="me-1" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M9.53033 1.53033C9.82322 1.23744 9.82322 0.762563 9.53033 0.46967C9.23744 0.176777 8.76256 0.176777 8.46967 0.46967L5 3.93934L1.53033 0.46967C1.23744 0.176777 0.762563 0.176777 0.46967 0.46967C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L3.93934 5L0.46967 8.46967C0.176777 8.76256 0.176777 9.23744 0.46967 9.53033C0.762563 9.82322 1.23744 9.82322 1.53033 9.53033L5 6.06066L8.46967 9.53033C8.76256 9.82322 9.23744 9.82322 9.53033 9.53033C9.82322 9.23744 9.82322 8.76256 9.53033 8.46967L6.06066 5L9.53033 1.53033Z" fill="currentColor"></path>
                                         </svg>

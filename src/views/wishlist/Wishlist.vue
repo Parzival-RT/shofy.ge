@@ -66,11 +66,11 @@
                         <tbody>
                            <tr v-for="(item, index) in wishlist_products" :key="index">
                               <!-- img -->
-                              <td class="tp-cart-img"><a href="product-details.html"> <img :src="item.image" alt=""></a></td>
+                              <td class="tp-cart-img"><router-link :to="'/inner/'+item.id"> <img :src="item.image" alt=""></router-link></td>
                               <!-- title -->
-                              <td class="tp-cart-title"><a href="product-details.html">{{ item.title }}</a></td>
+                              <td class="tp-cart-title"><router-link :to="'/inner/'+item.id">{{ item.title }}</router-link></td>
                               <!-- price -->
-                              <td class="tp-cart-price"><span>$76.00</span></td>
+                              <td class="tp-cart-price"><span>{{ item.price }} ₾</span></td>
                               <!-- quantity -->
                               <td class="tp-cart-quantity">
                                  <div class="tp-product-quantity mt-10 mb-10">
@@ -90,13 +90,13 @@
                               </td>
 
                               <td class="tp-cart-add-to-cart">
-                                 <button type="button" @click="fill_cart(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)" class="tp-btn tp-btn-2 tp-btn-blue">დაამატე კალათაში</button>
+                                 <button type="button" @click="fill_cart(item.id, item.image, item.title, item.type, item.old_price, item.price, item.product_amount)" class="tp-btn tp-btn-2 tp-btn-blue">დაამატე კალათაში</button>
                               </td>
                               
                               <!-- action -->
                               <td class="tp-cart-action">
                                  <button class="tp-cart-action-btn" @click="detele_wishlist_item(index)">
-                                    <svg width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <svg class="me-1" width="10" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M9.53033 1.53033C9.82322 1.23744 9.82322 0.762563 9.53033 0.46967C9.23744 0.176777 8.76256 0.176777 8.46967 0.46967L5 3.93934L1.53033 0.46967C1.23744 0.176777 0.762563 0.176777 0.46967 0.46967C0.176777 0.762563 0.176777 1.23744 0.46967 1.53033L3.93934 5L0.46967 8.46967C0.176777 8.76256 0.176777 9.23744 0.46967 9.53033C0.762563 9.82322 1.23744 9.82322 1.53033 9.53033L5 6.06066L8.46967 9.53033C8.76256 9.82322 9.23744 9.82322 9.53033 9.53033C9.82322 9.23744 9.82322 8.76256 9.53033 8.46967L6.06066 5L9.53033 1.53033Z" fill="currentColor"></path>
                                     </svg>
                                     <span>წაშლა</span>
@@ -143,7 +143,7 @@ export default {
    data() {
       return {
          // when click add product button - the product add to cart
-         addItems: {},
+         addItems: {}
       }
    },
    components: {
@@ -159,18 +159,16 @@ export default {
          const productData = this.$store.state.cart_product; // Data From store State
          if (productData.length != [] && productData.find(el => el.id == id)) {
             productData.filter(item => item.id === id).forEach(el => {
-               if (!el.initial_price) {
-                  // If initial_price is not already set, store the initial price
-                  el.initial_price = el.price;
-               }
-               // Increase the price by its initial value
-               el.price = el.price + el.initial_price;
+
+                 el.price = el.price + price;
 
                if (el.id === id) {
                   const data = {
-                     product_amount: el.product_amount += 1,
+                     product_amount: Number(el.product_amount) + Number(product_amount),
                      id: id
                   }
+
+
                   this.$store.commit('raplace_item_data', data);
                   this.$store.commit('cart_menu');
                   localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
@@ -182,6 +180,8 @@ export default {
             return
          }
 
+         
+
          // this code below does a new product add/push in cart. e.g if product doesn't exist by this code new product add/push in cart
          this.addItems = {
             id: id,
@@ -191,19 +191,20 @@ export default {
             old_price,
             price: price,
             product_amount: product_amount,
-            initial_price: price,
+            initial_price: price / product_amount,
             initial_old_price: old_price
          };
+
+         console.log(this.addItems);
+
          this.$store.commit('cart_items', this.addItems);
          this.$store.commit('cart_menu');
          localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-         this.product_amount = 1;
-         this.price = 0;
-         this.old_price = 0;
+
       },
 
       go_to_cart() {
-         const data = JSON.parse(localStorage.getItem('wish_list'));
+         const data = this.wishlist_products
          this.$store.commit('replace_items', data);
          localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
          this.$router.push({
@@ -211,53 +212,36 @@ export default {
          })
       },
 
-       // Plus Function adds quantity of the product in the cart
-        plus(id) {
+      // Plus Function adds quantity of the product in the cart
+      plus(id) {
 
-            const data = this.wishlist_products;
-            data.filter(item => item.id === id).forEach(item => {
-                // if (!item.initial_price) {
-                //     // If initial_price is not already set, store the initial price
-                //     item.initial_price = item.price;
-                // }
-                item.product_amount++;
-                // Increase the price by its initial value
-                item.price = item.price + item.initial_price;
-            });
+         const data = this.wishlist_products;
+  
+         data.filter(item => item.id === id).forEach(item => {
+            item.product_amount++;
+            // Increase the price by its initial value
+            item.price = item.price + item.initial_price;
+         });
 
-            if (localStorage.getItem('coupon')) {
-                this.coupon_quantity = this.getFullBalance * this.discount / 100;
-                localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
+         this.$store.commit('raplace_wishlist_item_data', data);
+         localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
+      },
+      // Minus Function reduces quantity of the product in the cart
+      minus(id) {
+
+         const data = this.wishlist_products;
+         data.filter(item => item.id === id).forEach(item => {
+            if (item.product_amount <= 1) {
+               return
             }
-            
-            this.$store.commit('raplace_item_data', data);
-            localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-        },
-        // Minus Function reduces quantity of the product in the cart
-        minus(id) {
+            item.product_amount--;
+            // Increase the price by its initial value
+            item.price = item.price - item.initial_price;
+         });
 
-            const data = this.wishlist_products;
-            data.filter(item => item.id === id).forEach(item => {
-                if (item.product_amount <= 1) {
-                    return
-                }
-                if (!item.initial_price) {
-                    // If initial_price is not already set, store the initial price
-                    item.initial_price = item.price;
-                }
-                item.product_amount--;
-                // Increase the price by its initial value
-                item.price = item.price - item.initial_price;
-            });
-
-            if (localStorage.getItem('coupon')) {
-                this.coupon_quantity = this.getFullBalance * this.discount / 100;
-                localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
-            }
-
-            this.$store.commit('raplace_item_data', data);
-            localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-        },
+         this.$store.commit('raplace_wishlist_item_data', data);
+         localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
+      },
 
       // this Funtion delete product from cart
       detele_wishlist_item(id) {

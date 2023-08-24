@@ -61,6 +61,12 @@ export default createStore({
     deleteProduct_from_wishlist(state, id) {
       state.wishlist.splice(id, 1);
     },
+    // this mutation replace product in localstorage if there matched - //* and this Mutation exists and i use it in the Product vue component
+    raplace_wishlist_item_data(state, data) {
+      state.wishlist.filter(item => item.id === data.id).forEach(el => {
+        el.product_amount = data.product_amount;
+      })
+    },
 
    // For Product Cart OffCanvas - //* and this Mutation exists and i use it in the Header vue component
     cart_menu(state) {
