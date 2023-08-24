@@ -28,7 +28,11 @@
         <!-- End Header -->
     
         <!-- Product Content -->
-       
+        <main>
+
+            <Products />
+
+        </main>
         <!-- End Product Content -->
 
     <!-- Footer -->
@@ -44,11 +48,15 @@ import Header from '@/components/Header.vue'
 // Footer Component
 import Footer from '@/components/Footer.vue'
 
+// Products
+import Products from './Products.vue'
+
 export default {
     name: "All-products",
     components: {
         Header,
-        Footer
+        Footer,
+        Products
     },
     mounted() {
 

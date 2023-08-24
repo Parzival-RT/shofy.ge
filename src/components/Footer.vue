@@ -18,9 +18,9 @@
                                     <p class="tp-footer-desc">ჩვენ ვართ გუნდი რომელიც გთავაზობთ მაღალი ხარისხის პროდუქტს</p>
                                     <div class="tp-footer-social d-flex gap-1 align-items-center">
                                         <a href="#"><i class="tio-facebook"></i></a>
+                                        <a href="#"><i class="tio-tik-tok"></i></a>
                                         <a href="#"><i class="tio-instagram"></i></a>
                                         <a href="#"><i class="tio-linkedin"></i></a>
-                                        <a href="#"><i class="tio-tik-tok"></i></a>
                                     </div>
                                 </div>
                             </div>

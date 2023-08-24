@@ -5,6 +5,9 @@ export default createStore({
     // Products - //* This Variable Exists and i use it in the Product vue component
     cart_product: [],
 
+    // wishlist - //* This Variable Exists and i use it in the Product vue component
+    wishlist: [],
+
     // For Product Cart OffCanvas - //* This Variable Exists and i use it in the Header vue component
     cart: false,
     // For Mobile Menu OffCanvas - //* This Variable Exists and i use it in the Header vue component
@@ -18,6 +21,11 @@ export default createStore({
     // This function Return Product Data For Cart - //* and this function exists and i use it in the Header vue component
     getProducts: (state) => {
       return state.cart_product;
+    },
+
+    // This function Return Product Data For Cart - //* and this function exists and i use it in the Header vue component
+    wishlist_products: (state) => {
+      return state.wishlist;
     }
     
   },
@@ -40,6 +48,18 @@ export default createStore({
       state.cart_product.filter(item => item.id === data.id).forEach(el => {
         el.product_amount = data.product_amount;
       })
+    },
+
+    // for wish list  //* and this Mutation fill from the Product vue component
+    wish_list(state, value) { 
+      state.wishlist.push(value);
+    },
+    fill_wish_list_from_localstorage(state, data) {
+      state.wishlist = data;
+    },
+    // this mutation delete product from wishlist - //* and this Mutation exists and i use it in the Header vue component
+    deleteProduct_from_wishlist(state, id) {
+      state.wishlist.splice(id, 1);
     },
 
    // For Product Cart OffCanvas - //* and this Mutation exists and i use it in the Header vue component

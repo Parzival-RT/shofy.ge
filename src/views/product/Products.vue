@@ -4,37 +4,49 @@
         <div class="container">
             <!-- Row -->
             <div class="row align-items-end mb-40">
-                <!-- col -->
-                <div class="col-7">
+                <!-- Breadcrumb for main page -->
+                <!-- <div class="col-7">
                     <div class="tp-section-title-wrapper">
-                    <h3 class="tp-section-title">პროდუქტები</h3>
-                </div>
-            </div>
+                        <h3 class="tp-section-title">პროდუქტები</h3>
+                    </div>
+                </div> -->
                 <!-- End col -->
 
+                <!-- breadcrumb area -->
+                <div class="col-md-9">
+                    <div class="breadcrumb__content p-relative z-index-1">
+                        <h3 class="breadcrumb__title">პროდუქტები</h3>
+                        <div class="breadcrumb__list" v-if="this.$route.path == '/Products'">
+                            <span><router-link to="/">მთავარი</router-link></span>
+                            <span>პროდუქტები</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End breadcrumb area -->
+
                 <!-- col -->
-                <div class="col-5">
-                    <div class="tp-shop-top-left d-flex align-items-center justify-content-end">
+                <div class="col-md-3">
+                    <div class="tp-shop-top-left d-flex align-items-center justify-content-md-end">
                         <div class="tp-shop-top-tab tp-tab me-0">
                             <ul class="nav nav-tabs" id="productTab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="grid-tab" data-bs-toggle="tab" data-bs-target="#grid-tab-pane" type="button" role="tab" aria-controls="grid-tab-pane" aria-selected="true">
-                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M16.3327 6.01341V2.98675C16.3327 2.04675 15.906 1.66675 14.846 1.66675H12.1527C11.0927 1.66675 10.666 2.04675 10.666 2.98675V6.00675C10.666 6.95341 11.0927 7.32675 12.1527 7.32675H14.846C15.906 7.33341 16.3327 6.95341 16.3327 6.01341Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M16.3327 15.18V12.4867C16.3327 11.4267 15.906 11 14.846 11H12.1527C11.0927 11 10.666 11.4267 10.666 12.4867V15.18C10.666 16.24 11.0927 16.6667 12.1527 16.6667H14.846C15.906 16.6667 16.3327 16.24 16.3327 15.18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M7.33268 6.01341V2.98675C7.33268 2.04675 6.90602 1.66675 5.84602 1.66675H3.15268C2.09268 1.66675 1.66602 2.04675 1.66602 2.98675V6.00675C1.66602 6.95341 2.09268 7.32675 3.15268 7.32675H5.84602C6.90602 7.33341 7.33268 6.95341 7.33268 6.01341Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M7.33268 15.18V12.4867C7.33268 11.4267 6.90602 11 5.84602 11H3.15268C2.09268 11 1.66602 11.4267 1.66602 12.4867V15.18C1.66602 16.24 2.09268 16.6667 3.15268 16.6667H5.84602C6.90602 16.6667 7.33268 16.24 7.33268 15.18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </button>
+                                    <button class="nav-link active" id="grid-tab" data-bs-toggle="tab" data-bs-target="#grid-tab-pane" type="button" role="tab" aria-controls="grid-tab-pane" aria-selected="true">
+                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M16.3327 6.01341V2.98675C16.3327 2.04675 15.906 1.66675 14.846 1.66675H12.1527C11.0927 1.66675 10.666 2.04675 10.666 2.98675V6.00675C10.666 6.95341 11.0927 7.32675 12.1527 7.32675H14.846C15.906 7.33341 16.3327 6.95341 16.3327 6.01341Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M16.3327 15.18V12.4867C16.3327 11.4267 15.906 11 14.846 11H12.1527C11.0927 11 10.666 11.4267 10.666 12.4867V15.18C10.666 16.24 11.0927 16.6667 12.1527 16.6667H14.846C15.906 16.6667 16.3327 16.24 16.3327 15.18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M7.33268 6.01341V2.98675C7.33268 2.04675 6.90602 1.66675 5.84602 1.66675H3.15268C2.09268 1.66675 1.66602 2.04675 1.66602 2.98675V6.00675C1.66602 6.95341 2.09268 7.32675 3.15268 7.32675H5.84602C6.90602 7.33341 7.33268 6.95341 7.33268 6.01341Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M7.33268 15.18V12.4867C7.33268 11.4267 6.90602 11 5.84602 11H3.15268C2.09268 11 1.66602 11.4267 1.66602 12.4867V15.18C1.66602 16.24 2.09268 16.6667 3.15268 16.6667H5.84602C6.90602 16.6667 7.33268 16.24 7.33268 15.18Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
                                 </li>
                                 <li class="nav-item" role="presentation">
-                                <button class="nav-link me-0" id="list-tab" data-bs-toggle="tab" data-bs-target="#list-tab-pane" type="button" role="tab" aria-controls="list-tab-pane" aria-selected="false">
-                                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M15 7.11108H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M15 1H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        <path d="M15 13.2222H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    </svg>
-                                </button>
+                                    <button class="nav-link me-0" id="list-tab" data-bs-toggle="tab" data-bs-target="#list-tab-pane" type="button" role="tab" aria-controls="list-tab-pane" aria-selected="false">
+                                        <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M15 7.11108H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M15 1H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            <path d="M15 13.2222H1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        </svg>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
@@ -91,12 +103,13 @@
                                                             </svg>                                                                       
                                                             <span class="tp-product-tooltip tp-product-tooltip-right">ნახე სწრაფად</span>
                                                         </button>
-                                                        <button type="button" class="tp-product-action-btn-2 tp-product-add-to-wishlist-btn">
+                                                        <button type="button" :class="item.wish_list_status ? 'bg-danger text-white' : ''" class="tp-product-action-btn-2 tp-product-add-to-wishlist-btn" @click="wish_list(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
                                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.60355 7.98635C2.83622 11.8048 7.7062 14.8923 9.0004 15.6565C10.299 14.8844 15.2042 11.7628 16.3973 7.98985C17.1806 5.55102 16.4535 2.46177 13.5644 1.53473C12.1647 1.08741 10.532 1.35966 9.40484 2.22804C9.16921 2.40837 8.84214 2.41187 8.60476 2.23329C7.41078 1.33952 5.85105 1.07778 4.42936 1.53473C1.54465 2.4609 0.820172 5.55014 1.60355 7.98635ZM9.00138 17.0711C8.89236 17.0711 8.78421 17.0448 8.68574 16.9914C8.41055 16.8417 1.92808 13.2841 0.348132 8.3872C0.347252 8.3872 0.347252 8.38633 0.347252 8.38633C-0.644504 5.30321 0.459792 1.42874 4.02502 0.284605C5.69904 -0.254635 7.52342 -0.0174044 8.99874 0.909632C10.4283 0.00973263 12.3275 -0.238878 13.9681 0.284605C17.5368 1.43049 18.6446 5.30408 17.6538 8.38633C16.1248 13.2272 9.59485 16.8382 9.3179 16.9896C9.21943 17.0439 9.1104 17.0711 9.00138 17.0711Z" fill="currentColor"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.203 6.67473C13.8627 6.67473 13.5743 6.41474 13.5462 6.07159C13.4882 5.35202 13.0046 4.7445 12.3162 4.52302C11.9689 4.41097 11.779 4.04068 11.8906 3.69666C12.0041 3.35175 12.3724 3.16442 12.7206 3.27297C13.919 3.65901 14.7586 4.71561 14.8615 5.96479C14.8905 6.32632 14.6206 6.64322 14.2575 6.6721C14.239 6.67385 14.2214 6.67473 14.203 6.67473Z" fill="currentColor"></path>
                                                             </svg>                                                                               
-                                                            <span class="tp-product-tooltip tp-product-tooltip-right">დაამატე სურვილების სიაში</span>
+                                                            <span v-if="item.wish_list_status" class="tp-product-tooltip tp-product-tooltip-right">ამოშალე სურვილების სიიდან</span>
+                                                            <span v-else class="tp-product-tooltip tp-product-tooltip-right">დაამატე სურვილების სიაში</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -108,6 +121,13 @@
                                                 <h3 class="tp-product-title-2">
                                                     <a href="product-details.html">{{ item.title }}</a>
                                                 </h3>
+                                                <!-- Display stars for average rating -->
+                                                <div class="tp-product-details-review-form-rating-icon">
+                                                    <span v-for="star in 5" :key="star">
+                                                        <i class="fs-5" :class="star <= item.total_star_rating ? 'tio-star' : 'tio-star-outlined'"></i>
+                                                    </span>
+                                                </div>
+                
                                                 <div class="tp-product-price-wrapper">
                                                     <span class="tp-product-price old-price me-1">{{ item.old_price }} ₾</span>
                                                     <span class="tp-product-price new-price">{{ item.price }} ₾</span>
@@ -271,12 +291,14 @@
                                                             </svg>                                                                       
                                                             <span class="tp-product-tooltip tp-product-tooltip-right">ნახე სწრაფად</span>
                                                         </button>
-                                                        <button type="button" class="tp-product-action-btn-2 tp-product-add-to-wishlist-btn" @click="fill_cart(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
+
+                                                        <button type="button" :class="item.wish_list_status ? 'bg-danger text-white' : ''" class="tp-product-action-btn-2 tp-product-add-to-wishlist-btn" @click="wish_list(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
                                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.60355 7.98635C2.83622 11.8048 7.7062 14.8923 9.0004 15.6565C10.299 14.8844 15.2042 11.7628 16.3973 7.98985C17.1806 5.55102 16.4535 2.46177 13.5644 1.53473C12.1647 1.08741 10.532 1.35966 9.40484 2.22804C9.16921 2.40837 8.84214 2.41187 8.60476 2.23329C7.41078 1.33952 5.85105 1.07778 4.42936 1.53473C1.54465 2.4609 0.820172 5.55014 1.60355 7.98635ZM9.00138 17.0711C8.89236 17.0711 8.78421 17.0448 8.68574 16.9914C8.41055 16.8417 1.92808 13.2841 0.348132 8.3872C0.347252 8.3872 0.347252 8.38633 0.347252 8.38633C-0.644504 5.30321 0.459792 1.42874 4.02502 0.284605C5.69904 -0.254635 7.52342 -0.0174044 8.99874 0.909632C10.4283 0.00973263 12.3275 -0.238878 13.9681 0.284605C17.5368 1.43049 18.6446 5.30408 17.6538 8.38633C16.1248 13.2272 9.59485 16.8382 9.3179 16.9896C9.21943 17.0439 9.1104 17.0711 9.00138 17.0711Z" fill="currentColor"></path>
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M14.203 6.67473C13.8627 6.67473 13.5743 6.41474 13.5462 6.07159C13.4882 5.35202 13.0046 4.7445 12.3162 4.52302C11.9689 4.41097 11.779 4.04068 11.8906 3.69666C12.0041 3.35175 12.3724 3.16442 12.7206 3.27297C13.919 3.65901 14.7586 4.71561 14.8615 5.96479C14.8905 6.32632 14.6206 6.64322 14.2575 6.6721C14.239 6.67385 14.2214 6.67473 14.203 6.67473Z" fill="currentColor"></path>
                                                             </svg>                                                                               
-                                                            <span class="tp-product-tooltip tp-product-tooltip-right">დაამატე სურვილების სიაში</span>
+                                                            <span v-if="item.wish_list_status" class="tp-product-tooltip tp-product-tooltip-right">ამოშალე სურვილების სიიდან</span>
+                                                            <span v-else class="tp-product-tooltip tp-product-tooltip-right">დაამატე სურვილების სიაში</span>
                                                         </button>
                                                     </div>
                                                 </div>
@@ -447,6 +469,43 @@
                 </div>
             </div>
             <!-- End col -->
+
+            <!-- Col For Pagination ////// - (this col this will appear in All_products Component) -->
+            <div class="tp-shop-pagination mt-20" v-if="this.$route.path == '/Products'">
+                <div class="tp-pagination">
+                    <nav>
+                        <ul>
+                        <li>
+                            <a href="shop.html" class="tp-pagination-prev prev page-numbers">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1.00017 6.77879L14 6.77879" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M6.24316 11.9999L0.999899 6.77922L6.24316 1.55762" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop.html">1</a>
+                        </li>
+                        <li>
+                            <span class="current">2</span>
+                        </li>
+                        <li>
+                            <a href="shop.html">3</a>
+                        </li>
+                        <li>
+                            <a href="shop.html" class="next page-numbers">
+                                <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M13.9998 6.77883L1 6.77883" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M8.75684 1.55767L14.0001 6.7784L8.75684 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>                                     
+                            </a>
+                        </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- End Col For Pagination-->
+
         </div>
         <!-- End Product Container -->
     </section>
@@ -462,9 +521,12 @@ export default {
     data() {
         return {
             // Products
-            product: Products,
-            // when click add product button - the product information push addItems object
+            product: [],
+            // when click add product button - the product add to cart
             addItems: {},
+
+            // when click heart button - the product add to wish list
+            wishlist: {},
 
             // Minimum product quantity
             product_amount: 1,
@@ -475,6 +537,12 @@ export default {
         }
     },
     methods: {
+
+        // Get products
+        get_products() {
+            this.product = Products;
+            // here will be axio request //
+        },
 
         // Fill Cart from product View
         fill_cart(id, image, title, type, old_price, price, product_amount) {
@@ -604,7 +672,6 @@ export default {
                 path: '/Checkout'
             })
         },
-
         // Plus Function adds quantity of the product in the cart
         plus(id) {
             this.product_amount++;
@@ -627,7 +694,7 @@ export default {
         },
         // Minus Function reduces quantity of the product in the cart
         minus(id) {
-            if(this.product_amount <= 1) {
+            if (this.product_amount <= 1) {
                 return
             }
             this.product_amount--;
@@ -647,6 +714,76 @@ export default {
                 this.old_price -= item.initial_old_price;
 
             });
+        },
+
+        // this function fills the wishlist with product
+        wish_list(id, image, title, type, old_price, price, product_amount) {
+
+            // this code unpush element from wish list 
+            const check_exist_wishlist_product = this.$store.state.wishlist;
+            if (check_exist_wishlist_product.find(item => item.id == id)) {
+                this.product.filter(el => el.id == id).forEach(item => {
+                    item.wish_list_status = false;
+                })
+
+                const index = check_exist_wishlist_product.findIndex(item => item.id === id);
+                this.$store.commit("deleteProduct_from_wishlist", index);
+                localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
+                return
+            }
+
+
+            // this code push in wishlist new item
+            const wishlist_status = this.product.filter(item => item.id == id);
+            wishlist_status.forEach(item => {
+                item.wish_list_status = true;
+            })
+            this.wishlist = {
+                id: id,
+                image: image,
+                title: title,
+                type, type,
+                old_price,
+                price: price,
+                product_amount: product_amount,
+                initial_price: price,
+                initial_old_price: old_price
+            };
+            this.$store.commit('wish_list', this.wishlist);
+            localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
+        },
+        // this function get data from localstorage and fills the wishlist with product
+        get_wishlist_for_wishlisst_status() {
+
+            // This code changes the filtered wish_list_status of the product from false to true
+            const wishlist_status = this.$store.state.wishlist;
+            wishlist_status.forEach(item => {
+                this.product.filter(el => el.id == item.id).forEach(el => {
+                    el.wish_list_status = true;
+                })
+            })
+
+            // change wish_list_status
+            const wishlist_localstorage_status = JSON.parse(localStorage.getItem('wish_list'));
+            if (wishlist_localstorage_status) {
+
+                // this code change all product wish_list_status. if in localstorage doesn't exist 'wish_list'
+                if (wishlist_localstorage_status.length == 0) {
+                    this.product.forEach(item => {
+                        item.wish_list_status = false;
+                    })
+                }
+
+                // Check if the item's ID is not present in the wishlist_status array
+                this.product.forEach(item => {
+                    if (!wishlist_status.some(wishlistItem => wishlistItem.id === item.id)) {
+                        item.wish_list_status = false;
+                    }
+                });
+
+            }
+
+            
         }
 
     },
@@ -670,6 +807,12 @@ export default {
             }
         }
 
+    },
+    mounted(){
+        this.get_products();
+        setTimeout(() => {
+            this.get_wishlist_for_wishlisst_status();
+        }, 1010)
     }
 }
 </script>

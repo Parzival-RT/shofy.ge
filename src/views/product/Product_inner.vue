@@ -202,55 +202,6 @@
                            </div>
                            <!-- End Share-->
 
-                           <!-- Rule Details-->
-                           <div class="accordion accordion-flush mt-50" id="accordionFlushExample">
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    როგორ შევიძინო პროდუქტი?
-                                    </button>
-                                 </h2>
-                                 <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">
-                                       - შეარჩიე სასურველი პროდუქტი და დაამატე კალათაში
-
-
-                                       - მიუთითე მისამართი, რომელზეც შეკვეთის მიღება გსურს
-
-
-                                       - აირჩიე რა დროს გინდა შეკვეთის მიღება
-
-
-                                       - აირჩიე გადახდის მეთოდი
-
-                                    
-                                       *ვებგვერდზე ანგარიშსწორება მხოლოდ ბარათითაა შესაძლებელი: Visa, Mastercard, American Express, რე|ბანკის ტოპ |ქარდით და უცხოური ბარათით. ველიზე შეგიძლია, როგორც სრული თანხის გადახდა, ისე თანხის თვეებზე განაწილება სასურველი ბანკის თქვენზე მორგებული პირობებით.
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    როგორ ხდება პროდუქტის მიწოდება?
-                                    </button>
-                                 </h2>
-                                 <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
-                                 </div>
-                              </div>
-                              <div class="accordion-item">
-                                 <h2 class="accordion-header">
-                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                    რა შემთხვევაში შემიძლია პროდუქტის დაბრუნება?
-                                    </button>
-                                 </h2>
-                                 <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
-                                    <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
-                                 </div>
-                              </div>
-                           </div>
-                           <!-- End Rule Details-->
-
                         </div>
                      </div>
                   </div>
@@ -259,153 +210,282 @@
          </section>
          <!-- product details area end -->
 
-         <!-- Reviews -->
-         <section class="tp-product-details-bottom pb-100">
+
+         <!-- Tab Review & FAQ -->
+         <div class="tp-product-details-bottom pb-140">
             <div class="container">
                <!-- Row -->
                <div class="row">
-                  <!-- Col -->
-                  <div class="col-12">
-                     <div class="col-12">
-                        <h3 class="tp-product-details-title">მიმოხილვა</h3>
-                     </div>
-                     <div class="tp-product-details-review-wrapper pt-30">
-                        <div class="row">
-                           <div class="col-lg-6">
-
-                              <div class="tp-product-details-review-statics">
-                                 <!-- Review number and summary -->
-                                 <div class="tp-product-details-review-number d-inline-block mb-50 w-100">
-                                 <h3 class="tp-product-details-review-number-title">მომხმარებლის შეფასება</h3>
-                                    <div class="tp-product-details-review-summery d-flex align-items-center">
-                                       <!-- Display the average rating -->
-                                       <div class="tp-product-details-review-summery-value">
-                                          <span>{{ averageRating.toFixed(1) }}</span>
-                                       </div>
-                                       <div class="tp-product-details-review-summery-rating d-flex align-items-center">
-                                          <!-- Display stars for average rating -->
-                                          <span v-for="star in 5" :key="star">
-                                          <i class="fs-5" :class="star <= averageRating ? 'tio-star' : 'tio-star-outlined'"></i>
-                                          </span>
-                                          <p>({{ customers_review.length }} მიმოხილვა)</p>
-                                       </div>
-                                    </div>
-                                    <!-- Display the rating breakdown -->
-                                    <div class="tp-product-details-review-rating-list d-flex flex-column-reverse">
-                                       <div v-for="star in 5" :key="star" class="tp-product-details-review-rating-item d-flex align-items-center">
-                                          <span>{{ star }} star</span>
-                                          <div class="tp-product-details-review-rating-bar">
-                                          <span
-                                             class="tp-product-details-review-rating-bar-inner"
-                                             :style="{ width: starPercentage(star) + '%' }"
-                                          ></span>
-                                          </div>
-                                          <div class="tp-product-details-review-rating-percent">
-                                          <span>{{ starPercentage(star).toFixed(1) }}%</span>
-                                          </div>
-                                       </div>
-                                    </div>
-                                 </div>
-
-                                 <!-- Reviews list -->
-                                 <div class="tp-product-details-review-list">
-                                    <h3 class="tp-product-details-review-title">რეიტინგი &amp; მიმოხილვა</h3>
-                                    <div v-for="(item, index) in customers_review" :key="index" class="tp-product-details-review-avater d-flex align-items-start">
-                                       <div class="tp-product-details-review-avater-thumb">
-                                          <a href="#">
-                                             <img class="rounded" src="../../assets/img/icon/avatar.png" alt="">
-                                          </a>
-                                       </div>
-                                       <div class="tp-product-details-review-avater-content">
-                                          <div class="tp-product-details-review-avater-rating d-flex align-items-center">
-                                             <span v-for="star in 5" :key="star">
-                                                <i class="fs-5" :class="star <= item.star_rating ? 'tio-star' : 'tio-star-outlined'"></i>
-                                             </span>
-                                          </div>
-                                          <h3 class="tp-product-details-review-avater-title">{{ item.name }}</h3>
-                                          <span class="tp-product-details-review-avater-meta">08 მარტი, 2023 </span>
-   
-                                          <div class="tp-product-details-review-avater-comment">
-                                             <p>{{ item.customer_review }}.</p>
-                                          </div>
-                                       </div>
-                                    </div>
-                                    <p v-if="customers_review.length == 0">მიმოხილვები ჯერ არ დაწერილა</p>
-                                 </div>
-
-                              </div>
-
-                           </div> 
-                           <!-- end col -->
-                           <div class="col-lg-6">
-                              <div class="tp-product-details-review-form">
-                                 <h3 class="tp-product-details-review-form-title">დააფიქსირე შენი აზრი</h3>
-                                 <p>თქვენი ელ.ფოსტა გამოქვეყნებული არ იქნება. აუცილებელი ველები მონიშნულია <span class="text-danger">*</span></p>
-                                 <Form v-slot="{ handleSubmit }" as="div">
-                                    <form @submit="handleSubmit($event, submitForm)">
-                                       <div class="tp-product-details-review-form-rating d-flex flex-wrap align-items-center">
-                                          <p>შენი რეიტინგი:</p>
-                                          <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
-                                             <span class="cursor-pointer" v-for="star in 5">
-                                                <i class="fs-5" :class="star <= form.star_rating || star <= star_hover ? 'tio-star' : 'tio-star-outlined'" @mouseenter="star_hover_enter(star)" @mouseleave="star_hover_leave()" @click="form.star_rating = star"></i>                      
-                                             </span>
-                                          </div>
-                                          <Field class="d-none" type="tnumberext" :rules="isRequired" name="stars" v-model="form.star_rating"/>
-                                          <ErrorMessage name="stars"><span class="text-danger font-size-14px ms-md-2">მონიშნე შენი რეიტინგი</span></ErrorMessage>
-                                       </div>
-                                       <div class="tp-product-details-review-input-wrapper">
-                                          <div class="tp-product-details-review-input-box">
-                                             <div class="tp-product-details-review-input">
-                                                <Field :rules="isRequired" name="customer_review" v-model="form.customer_review">
-                                                   <textarea id="msg" name="customer_review" v-model="form.customer_review" placeholder="დაწერეთ თქვენი აზრი აქ..."></textarea>
-                                                   <ErrorMessage class="text-danger font-size-14px" name="customer_review" />
-                                                </Field>
-                                             </div>
-                                             <div class="tp-product-details-review-input-title">
-                                                <label for="msg">თქვენი შეფასება <span class="text-danger">*</span></label>
-                                             </div>
-                                          </div>
-                                          <div class="tp-product-details-review-input-box">
-                                             <div class="tp-product-details-review-input">
-                                                <Field type="text" id="name" :rules="isRequired" name="name" v-model="form.name" placeholder="სახელი" />
-                                                <ErrorMessage class="text-danger font-size-14px" name="name" />
-                                             </div>
-                                             <div class="tp-product-details-review-input-title">
-                                                <label for="name">სახელი <span class="text-danger">*</span></label>
-                                             </div>
-                                          </div>
-                                          <div class="tp-product-details-review-input-box">
-                                             <div class="tp-product-details-review-input">
-                                                <Field type="email" id="email" :rules="isRequired" name="email" v-model="form.email" placeholder="ელ.ფოსტა" />
-                                                <ErrorMessage class="text-danger font-size-14px" name="email" />
-                                             </div>
-                                             <div class="tp-product-details-review-input-title">
-                                                <label for="email">ელ.ფოსტა <span class="text-danger">*</span></label>
-                                             </div>
-                                          </div>
-                                       </div>
-                                       <div class="tp-product-details-review-suggetions mb-20">
-                                          <div class="tp-product-details-review-remeber">
-                                             <input id="remeber" type="checkbox">
-                                             <label for="remeber">ჩემი სახელის და ელ.ფოსტის შენახვა საიტზე შემდეგი გამოყენება/შეფასებისთვის.</label>
-                                          </div>
-                                       </div>
-                                       <div class="tp-product-details-review-btn-wrapper">
-                                          <button class="tp-product-details-review-btn">დამატება</button>
-                                       </div>
-                                    </form>
-                                 </Form>
-                              </div>
+                  <div class="col-xl-12">
+                     <div class="tp-product-details-tab-nav tp-tab">
+                        <!-- Tab Nav -->
+                        <nav>
+                           <div class="nav nav-tabs justify-content-center p-relative tp-product-tab pb-0" id="navPresentationTab" role="tablist">
+                              <button class="nav-link py-3 active" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description" aria-selected="false">მიმოხილვა</button>
+                              <button class="nav-link py-3" id="nav-addInfo-tab" data-bs-toggle="tab" data-bs-target="#nav-addInfo" type="button" role="tab" aria-controls="nav-addInfo" aria-selected="false">ხდკ</button>
                            </div>
-                        </div>
+                        </nav>  
+                        <!-- End Tab Nav -->
+                        
+                        <!-- Tab Content -->
+                        <div class="tab-content pt-60" id="navPresentationTabContent">
+
+                           <!-- Tab Review Content -->
+                           <div class="tab-pane fade active show" id="nav-description" role="tabpanel" aria-labelledby="nav-description-tab" tabindex="0">
+                              <!-- Reviews -->
+                              <section class="tp-product-details-bottom pb-100">
+                                 <div class="container">
+                                    <!-- Row -->
+                                    <div class="row">
+                                       <!-- Col -->
+                                       <div class="col-12">
+                                          <div class="col-12">
+                                             <h3 class="tp-product-details-title">მიმოხილვა</h3>
+                                          </div>
+                                          <div class="tp-product-details-review-wrapper pt-30">
+                                             <div class="row">
+                                                <div class="col-lg-6">
+
+                                                   <div class="tp-product-details-review-statics">
+                                                      <!-- Review number and summary -->
+                                                      <div class="tp-product-details-review-number d-inline-block mb-50 w-100">
+                                                      <h3 class="tp-product-details-review-number-title">მომხმარებლის შეფასება</h3>
+                                                         <div class="tp-product-details-review-summery d-flex align-items-center">
+                                                            <!-- Display the average rating -->
+                                                            <div class="tp-product-details-review-summery-value">
+                                                               <span>{{ averageRating.toFixed(1) }}</span>
+                                                            </div>
+                                                            <div class="tp-product-details-review-summery-rating d-flex align-items-center">
+                                                               <!-- Display stars for average rating -->
+                                                               <span v-for="star in 5" :key="star">
+                                                                  <i class="fs-5" :class="star <= averageRating ? 'tio-star' : 'tio-star-outlined'"></i>
+                                                               </span>
+                                                               <div class="tp-product-details-variation-list ms-1">
+                                                                  ({{ customers_review.length }}
+                                                                  <button class="w-auto h-auto shadow-none border-0" type="button">
+                                                                     <i class="tio-comment-text-outlined"></i>
+                                                                     <span class="tp-color-variation-tootltip">მიმოხილვები</span>
+                                                                  </button>
+                                                                  )
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <!-- Display the rating breakdown -->
+                                                         <div class="tp-product-details-review-rating-list d-flex flex-column-reverse">
+                                                            <div v-for="star in 5" :key="star" class="tp-product-details-review-rating-item d-flex align-items-center">
+                                                               <span>{{ star }} star</span>
+                                                               <div class="tp-product-details-review-rating-bar">
+                                                               <span
+                                                                  class="tp-product-details-review-rating-bar-inner"
+                                                                  :style="{ width: starPercentage(star) + '%' }"
+                                                               ></span>
+                                                               </div>
+                                                               <div class="tp-product-details-review-rating-percent">
+                                                               <span>{{ starPercentage(star).toFixed(1) }}%</span>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                      </div>
+
+                                                      <!-- Reviews list -->
+                                                      <div class="tp-product-details-review-list">
+                                                         <h3 class="tp-product-details-review-title">რეიტინგი &amp; მიმოხილვა ({{ customers_review.length }})</h3>
+
+                                                         <!-- Review -->
+                                                         <div v-for="(item, index) in customers_review" :key="index" class="tp-product-details-review-avater d-flex align-items-start">
+                                                            <div class="tp-product-details-review-avater-thumb">
+                                                               <a href="#">
+                                                                  <img class="rounded border border-dark" src="../../assets/img/icon/avatar.png" alt="">
+                                                               </a>
+                                                            </div>
+                                                            <div class="tp-product-details-review-avater-content">
+                                                               <div class="tp-product-details-review-avater-rating d-flex align-items-center">
+                                                                  <span v-for="star in 5" :key="star">
+                                                                     <i class="fs-5" :class="star <= item.customer_star_rating ? 'tio-star' : 'tio-star-outlined'"></i>
+                                                                  </span>
+                                                               </div>
+                                                               <h3 class="tp-product-details-review-avater-title">{{ item.name }}</h3>
+                                                               <span class="tp-product-details-review-avater-meta">08 მარტი, 2023 </span>
+                        
+                                                               <div class="tp-product-details-review-avater-comment">
+                                                                  <p>{{ item.customer_review }}.</p>
+                                                               </div>
+                                                            </div>
+                                                         </div>
+                                                         <!-- End Review -->
+
+                                                         <!-- Before Review Add -->
+                                                         <div v-if="customers_review.length == 0" class="tp-product-details-review-avater d-flex align-items-start placeholder-glow">
+                                                            <div class="placeholder me-2 rounded bg-secondary w-100" style="max-width: 60px;height: 60px;">
+                                                            </div>
+                                                            <div class="tp-product-details-review-avater-content w-100">
+                                                               <div class="tp-product-details-review-avater-rating d-flex align-items-center m-0">
+                                                                  <span class="placeholder"><i class="fs-5 tio-star"></i></span>
+                                                                  <span class="placeholder"><i class="fs-5 tio-star"></i></span>
+                                                                  <span class="placeholder"><i class="fs-5 tio-star"></i></span>
+                                                                  <span class="placeholder"><i class="fs-5 tio-star"></i></span>
+                                                                  <span class="placeholder"><i class="fs-5 tio-star"></i></span>
+                                                               </div>
+                                                               <h3 class="tp-product-details-review-avater-title placeholder mb-1 d-inline-block" style="height: 10px;">*************</h3>
+                                                               <p class="placeholder m-0 d-block w-75" style="height: 5px;">*******</p>
+                                                            </div>
+                                                         </div>
+                                                         <!-- End Before Review Add -->
+
+                                                      </div>
+
+                                                   </div>
+
+                                                </div> 
+                                                <!-- end col -->
+                                                <div class="col-lg-6">
+                                                   <div class="tp-product-details-review-form">
+                                                      <h3 class="tp-product-details-review-form-title">დააფიქსირე შენი აზრი</h3>
+                                                      <p>თქვენი ელ.ფოსტა გამოქვეყნებული არ იქნება. აუცილებელი ველები მონიშნულია <span class="text-danger">*</span></p>
+                                                      <Form v-slot="{ handleSubmit }" as="div">
+                                                         <form @submit="handleSubmit($event, submitForm)">
+                                                            <div class="tp-product-details-review-form-rating d-flex flex-wrap align-items-center">
+                                                               <p>შენი რეიტინგი:</p>
+                                                               <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
+                                                                  <span class="cursor-pointer" v-for="star in 5">
+                                                                     <i class="fs-5" :class="star <= form.customer_star_rating || star <= star_hover ? 'tio-star' : 'tio-star-outlined'" @mouseenter="star_hover_enter(star)" @mouseleave="star_hover_leave()" @click="form.customer_star_rating = star"></i>                      
+                                                                  </span>
+                                                               </div>
+                                                               <Field class="d-none" type="number" :rules="isRequired" name="stars" v-model="form.customer_star_rating"/>
+                                                               <ErrorMessage name="stars"><span class="text-danger font-size-14px ms-md-2">მონიშნე შენი რეიტინგი</span></ErrorMessage>
+                                                            </div>
+                                                            <div class="tp-product-details-review-input-wrapper">
+                                                               <div class="tp-product-details-review-input-box">
+                                                                  <div class="tp-product-details-review-input">
+                                                                     <Field v-slot="{field}" :rules="isRequired" name="customer_review">
+                                                                        <textarea v-bind="field" id="msg" name="customer_review" v-model="form.customer_review" placeholder="დაწერეთ თქვენი აზრი აქ..."></textarea>
+                                                                        <ErrorMessage class="text-danger font-size-14px" name="customer_review" />
+                                                                     </Field>
+                                                                  </div>
+                                                                  <div class="tp-product-details-review-input-title">
+                                                                     <label for="msg">თქვენი შეფასება <span class="text-danger">*</span></label>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="tp-product-details-review-input-box">
+                                                                  <div class="tp-product-details-review-input">
+                                                                     <Field type="text" id="name" :rules="isRequired" name="name" v-model="form.name" placeholder="სახელი" />
+                                                                     <ErrorMessage class="text-danger font-size-14px" name="name" />
+                                                                  </div>
+                                                                  <div class="tp-product-details-review-input-title">
+                                                                     <label for="name">სახელი <span class="text-danger">*</span></label>
+                                                                  </div>
+                                                               </div>
+                                                               <div class="tp-product-details-review-input-box">
+                                                                  <div class="tp-product-details-review-input">
+                                                                     <Field type="email" id="email" :rules="isRequired" name="email" v-model="form.email" placeholder="ელ.ფოსტა" />
+                                                                     <ErrorMessage class="text-danger font-size-14px" name="email" />
+                                                                  </div>
+                                                                  <div class="tp-product-details-review-input-title">
+                                                                     <label for="email">ელ.ფოსტა <span class="text-danger">*</span></label>
+                                                                  </div>
+                                                               </div>
+                                                            </div>
+                                                            <div class="tp-product-details-review-suggetions mb-20">
+                                                               <div class="tp-product-details-review-remeber">
+                                                                  <input id="remeber" type="checkbox">
+                                                                  <label for="remeber">ჩემი სახელის და ელ.ფოსტის შენახვა საიტზე შემდეგი გამოყენება/შეფასებისთვის.</label>
+                                                               </div>
+                                                            </div>
+                                                            <div class="tp-product-details-review-btn-wrapper">
+                                                               <button class="tp-product-details-review-btn">დამატება</button>
+                                                            </div>
+                                                         </form>
+                                                      </Form>
+                                                   </div>
+                                                </div>
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <!-- End Col -->
+                                    </div>
+                                    <!-- End Row -->
+                                 </div>
+                              </section>
+                              <!-- End Reviews -->
+                           </div>
+                           <!-- End Tab Review Content -->
+
+                           <!-- Tab FAQ Content -->
+                           <div class="tab-pane fade" id="nav-addInfo" role="tabpanel" aria-labelledby="nav-addInfo-tab" tabindex="0">
+                              <!-- Row -->
+                              <div class="row">
+                                 <!-- Col -->
+                                 <div class="col-12">
+                                    <h3 class="tp-product-details-title">ხშირად დასმული კითხვები</h3>
+                                 </div>
+                                 <!-- End Col -->
+
+                                 <!-- Col -->
+                                 <div class="col-12">
+                                    <!-- Rule Details-->
+                                    <div class="accordion accordion-flush" id="accordionFlushExample">
+                                       <div class="accordion-item">
+                                          <h2 class="accordion-header">
+                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                             როგორ შევიძინო პროდუქტი?
+                                             </button>
+                                          </h2>
+                                          <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                             <div class="accordion-body">
+                                                - შეარჩიე სასურველი პროდუქტი და დაამატე კალათაში
+
+
+                                                - მიუთითე მისამართი, რომელზეც შეკვეთის მიღება გსურს
+
+
+                                                - აირჩიე რა დროს გინდა შეკვეთის მიღება
+
+
+                                                - აირჩიე გადახდის მეთოდი
+
+                                             
+                                                *ვებგვერდზე ანგარიშსწორება მხოლოდ ბარათითაა შესაძლებელი: Visa, Mastercard, American Express, რე|ბანკის ტოპ |ქარდით და უცხოური ბარათით. ველიზე შეგიძლია, როგორც სრული თანხის გადახდა, ისე თანხის თვეებზე განაწილება სასურველი ბანკის თქვენზე მორგებული პირობებით.
+                                             </div>
+                                          </div>
+                                       </div>
+                                       <div class="accordion-item">
+                                          <h2 class="accordion-header">
+                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                             როგორ ხდება პროდუქტის მიწოდება?
+                                             </button>
+                                          </h2>
+                                          <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                             <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the second item's accordion body. Let's imagine this being filled with some actual content.</div>
+                                          </div>
+                                       </div>
+                                       <div class="accordion-item">
+                                          <h2 class="accordion-header">
+                                             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                             რა შემთხვევაში შემიძლია პროდუქტის დაბრუნება?
+                                             </button>
+                                          </h2>
+                                          <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
+                                             <div class="accordion-body">Placeholder content for this accordion, which is intended to demonstrate the <code>.accordion-flush</code> class. This is the third item's accordion body. Nothing more exciting happening here in terms of content, but just filling up the space to make it look, at least at first glance, a bit more representative of how this would look in a real-world application.</div>
+                                          </div>
+                                       </div>
+                                    </div>
+                                    <!-- End Rule Details-->
+                                 </div>
+                                 <!-- End Col -->
+                              </div>
+                              <!-- End Row -->
+                           </div>
+                           <!-- End Tab FAQ Content -->
+                        
+                        </div>  
+                        <!-- End Tab Content -->                                              
                      </div>
                   </div>
-                  <!-- End Col -->
                </div>
                <!-- End Row -->
             </div>
-         </section>
-         <!-- End Reviews -->
+         </div>
+         <!-- End Tab Review & FAQ -->
 
       </main>
       
@@ -491,7 +571,8 @@ export default {
             name: '',
             email: '',
             customer_review: '',
-            star_rating: 0
+            customer_star_rating: 0,
+            total_star_rating: 0
          },
          // customers comments, reviews and ratings
          customers_review: [],
@@ -514,13 +595,23 @@ export default {
          const newReview = { ...this.form };
          this.customers_review.unshift(newReview);
 
+         // this code fill this.form.total_star_rating variable with total customer average rating
+         const totalRating = this.customers_review.reduce((sum, review) => sum + review.customer_star_rating, 0);
+         this.form.total_star_rating = totalRating / this.customers_review.length;
+
+
+         // here will be axios request
+         console.log(this.form);
+
          // Reset the form fields for the next review
          this.form = {
             name: '',
             email: '',
             customer_review: '',
-            star_rating: 0
+            total_star_rating: 0,
+            customer_star_rating: 0
          };
+
       },
 
       // filter product by id
@@ -662,7 +753,7 @@ export default {
          if (this.customers_review.length === 0) {
             return 0;
          }
-         const count = this.customers_review.filter(review => review.star_rating === star).length;
+         const count = this.customers_review.filter(review => review.customer_star_rating === star).length;
          return (count / this.customers_review.length) * 100;
       },
       // hover effects for stars
@@ -694,7 +785,7 @@ export default {
          if (this.customers_review.length === 0) {
             return 0;
          }
-         const totalRating = this.customers_review.reduce((sum, review) => sum + review.star_rating, 0);
+         const totalRating = this.customers_review.reduce((sum, review) => sum + review.customer_star_rating, 0);
          return totalRating / this.customers_review.length;
       }
    },

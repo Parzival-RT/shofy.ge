@@ -15,7 +15,9 @@
         "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
         "product_amount": 0,
         "category": "პროდუქტები",
-        "guarantee": "გარანტია 1 წელი"
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 2,
+        "wish_list_status": false
     },
     {
         "id": "2",
@@ -33,7 +35,9 @@
         "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
         "product_amount": 0,
         "category": "პროდუქტები",
-        "guarantee": ""
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 3,
+        "wish_list_status": false
     },
     {
         "id": "3",
@@ -51,7 +55,9 @@
         "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
         "product_amount": 0,
         "category": "პროდუქტები",
-        "guarantee": "გარანტია 6 თვე"
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 4,
+        "wish_list_status": false
     },
     {
         "id": "4",
@@ -69,7 +75,9 @@
         "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
         "product_amount": 0,
         "category": "პროდუქტები",
-        "guarantee": ""
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 5,
+        "wish_list_status": false
     },
     {
         "id": "5",
@@ -87,7 +95,9 @@
         "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
         "product_amount": 0,
         "category": "პროდუქტები",
-        "guarantee": ""
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 3,
+        "wish_list_status": false
     },
     {
         "id": "6",
@@ -105,6 +115,48 @@
         "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
         "product_amount": 0,
         "category": "პროდუქტები",
-        "guarantee": "გარანტია 3 თვე"
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 5,
+        "wish_list_status": false
+    },
+    {
+        "id": "7",
+        "image": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/related/product-related-1.jpg",
+        "images": [
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-1.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-3.jpg"},
+            {"img": "https://weblearnbd.net/tphtml/shofy-prv/shofy/assets/img/product/details/main/product-details-main-4.jpg"}
+        ],
+        "title": "Galaxy Tab S6 Lite 10.4-inch Android Tablet 128GB.",
+        "old_price": 1500,
+        "price": 1200,
+        "type": "ტაბლეტი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0,
+        "category": "პროდუქტები",
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 4,
+        "wish_list_status": false
+    },
+    {
+        "id": "8",
+        "image": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty793/product/media/images/20230322/8/309507739/561092420/2/2_org_zoom.jpg",
+        "images": [
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty792/product/media/images/20230322/8/309507739/561092420/3/3_org_zoom.jpg"},
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty792/product/media/images/20230322/8/309507739/561092420/4/4_org_zoom.jpg"},
+            {"img": "https://cdn.dsmcdn.com/mnresize/1200/1800/ty793/product/media/images/20230322/8/309507739/561092420/6/6_org_zoom.jpg"}
+        ],
+        "title": "Tracker with IP67 Waterproof Pedometer Smart watch.",
+        "old_price": 1000,
+        "price": 500,
+        "type": "სმარტ საათი",
+        "status": "გაყიდვაში",
+        "description": "ძალიან მაგარი პროდუქტი, რომლესაც შეუძლია გაგაბედნიეროს",
+        "product_amount": 0,
+        "category": "პროდუქტები",
+        "guarantee": "გარანტია 1 წელი",
+        "total_star_rating": 3,
+        "wish_list_status": false
     }
 ]

@@ -16,6 +16,8 @@ import Checkout from '../views/checkout/Index.vue'
 // Cart Page
 import Cart from '../views/Cart/Index.vue'
 
+// Contact
+import Contact from '../components/Contact.vue'
 
 const routes = [
   // Lannding Page
@@ -52,6 +54,12 @@ const routes = [
     path: '/Cart',
     name: 'Cart',
     component: Cart
+  },
+  // Contact
+  {
+    path: '/Contact',
+    name: 'Contact',
+    component: Contact
   }
   
 ]

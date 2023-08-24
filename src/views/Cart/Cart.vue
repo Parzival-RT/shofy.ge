@@ -151,9 +151,6 @@ export default {
             this.$store.commit('raplace_item_data', data);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
         },
-
-
-
         // Minus Function reduces quantity of the product in the cart
         minus(id) {
 

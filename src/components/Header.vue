@@ -43,7 +43,7 @@
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                               <path d="M7.26062 5.05302C6.19531 5.39332 5.43839 6.34973 5.3438 7.47501" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg> 
-                          <span class="tp-header-action-badge">4</span>                          
+                          <span class="tp-header-action-badge">{{ get_wishlist_length }}</span>                          
                         </router-link>
                     </div>
                     <!-- End Wishlist -->
@@ -109,10 +109,10 @@
                     <nav class="tp-main-menu-content d-none d-lg-block">
                         <ul>
                           <li>
-                              <a href="/Home">მთავარი</a>
+                              <router-link to="/">მთავარი</router-link>
                           </li>
-                          <li><a href="/Products">პროდუქტები</a></li>
-                          <li><a href="/Contact">კონტაქტი</a></li>
+                          <li><router-link to="/Products">პროდუქტები</router-link></li>
+                          <li><router-link to="/Contact">კონტაქტი</router-link></li>
                         </ul>
                     </nav>
                 </div>
@@ -123,13 +123,13 @@
               <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                 <div class="tp-header-action d-flex align-items-center justify-content-end ml-50">
                     <div class="tp-header-action-item d-none d-lg-block">
-                      <a href="wishlist.html" class="tp-header-action-btn">
+                      <router-link to="/Wishlist" class="tp-header-action-btn">
                           <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M7.26062 5.05302C6.19531 5.39332 5.43839 6.34973 5.3438 7.47501" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                           </svg> 
-                          <span class="tp-header-action-badge">4</span>                          
-                      </a>
+                          <span class="tp-header-action-badge">{{ get_wishlist_length }}</span>                          
+                      </router-link>
                     </div>
                     <div class="tp-header-action-item" @click="this.$store.commit('cart_menu')">
                       <button type="button" class="tp-header-action-btn cartmini-open-btn">
@@ -174,10 +174,10 @@
                       <nav class="tp-main-menu-content">
                           <ul>
                             <li>
-                                <a href="/Home">მთავარი</a>
+                                <router-link to="/">მთავარი</router-link>
                             </li>
-                            <li><a href="/Products">პროდუქტები</a></li>
-                            <li><a href="/Contact">კონტაქტი</a></li>
+                            <li><router-link to="/Products">პროდუქტები</router-link></li>
+                            <li><router-link to="/Contact">კონტაქტი</router-link></li>
                           </ul>
                       </nav>
                     </div>
@@ -226,21 +226,21 @@
         <div class="offcanvas__content">
             <div class="offcanvas__top mb-70 d-flex justify-content-between align-items-center">
               <div class="offcanvas__logo logo">
-                  <a href="index.html">
+                  <router-link to="/" @click="reload_main_page()">
                     <img src="../assets/img/logo/logo.svg" alt="logo">
-                  </a>
+                  </router-link>
               </div>
             </div>
             <div class="tp-main-menu-mobile fix d-lg-none mb-40"><nav class="tp-main-menu-content">
               <ul>
-                <li><a href="/Home">მთავარი</a></li>
-                <li><a href="/Products">პროდუქტები</a></li>
-                <li><a href="/Contact">კონტაქტი</a></li>
+                <li><router-link to="/">მთავარი</router-link></li>
+                <li><router-link to="/Products">პროდუქტები</router-link></li>
+                <li><router-link to="/Contact">კონტაქტი</router-link></li>
               </ul>
             </nav>
           </div>
           <div class="offcanvas__btn">
-              <a href="contact.html" class="tp-btn-2 tp-btn-border-2">დაგვიკავშირდი</a>
+              <router-link to="/Contact" class="tp-btn-2 tp-btn-border-2">დაგვიკავშირდი</router-link>
           </div>
         </div>
       </div>
@@ -310,75 +310,81 @@
 </template>
 
 <script>
+import router from '@/router';
+
 
 export default {
-  name: 'Header',
-  data() {
-    return {
-      // Tracks the scroll position
-      isScrolled: 0
-    };
-  },
-  mounted() {
-    // Tracks the scroll position
-    window.addEventListener('scroll', this.handleScroll);
-
-    // this function send data of the replace_items which return of the existing data from the localstorage 
-    if(localStorage.getItem("cart_items")) {
-      this.$store.commit("replace_items", JSON.parse(localStorage.getItem("cart_items")))
-    }
-    
-  },
-  computed: {
-    // this function return total product quantity
-    getProductsLength() {
-      let total_cart_quantity = 0;
-      for (let item of this.getCartData) {
-        let each_product_quantity = item.product_amount;
-        total_cart_quantity += each_product_quantity;
-      }
-      return total_cart_quantity
+    name: 'Header',
+    data() {
+        return {
+            // Tracks the scroll position
+            isScrolled: 0
+        };
     },
+    mounted() {
+        // Tracks the scroll position
+        window.addEventListener('scroll', this.handleScroll);
+        
+        // this function send data of the replace_items which return of the existing data from the localstorage 
+        if (localStorage.getItem("cart_items")) {
+            this.$store.commit("replace_items", JSON.parse(localStorage.getItem("cart_items")));
+        }
 
-    // this function return all products what exists in the local storage
-    getCartData() {
-      return this.$store.getters.getProducts;
+        // this function send data of the fill_wish_list_from_localstorage which return of the existing wishlist data from the localstorage 
+        if (localStorage.getItem("wish_list")) {
+            this.$store.commit("fill_wish_list_from_localstorage", JSON.parse(localStorage.getItem("wish_list")));
+        }
     },
+    computed: {
+        // this function return total product quantity
+        getProductsLength() {
+            let total_cart_quantity = 0;
+            for (let item of this.getCartData) {
+                let each_product_quantity = item.product_amount;
+                total_cart_quantity += each_product_quantity;
+            }
+            return total_cart_quantity;
+        },
+        // this function return all products what exists in the local storage
+        getCartData() {
+            return this.$store.getters.getProducts;
+        },
+        // this function return total balance of the existing data in the local storage
+        getFullBalance() {
+            let totalBalance = 0; // Initialize the total balance variable outside the loop
+            for (let item of this.getCartData) {
+                let balance = item.price;
+                totalBalance += balance; // Update the total balance with each item's balance
+            }
+            return totalBalance; // Return the total balance after the loop
+        },
 
-    // this function return total balance of the existing data in the local storage
-    getFullBalance() {
-      let totalBalance = 0; // Initialize the total balance variable outside the loop
-
-      for (let item of this.getCartData) {
-        let balance = item.price;
-        totalBalance += balance; // Update the total balance with each item's balance
-      }
-      return totalBalance; // Return the total balance after the loop
+        // for wishlist 
+        get_wishlist_length() {
+          return this.$store.state.wishlist.length
+        }
     },
-  },
-  methods: {
-    // Reaload Main Page
-    reload_main_page() {
-      if (this.$route.path == '/') {
-        this.$store.state.loading = true;
-        setTimeout(() => {
-          this.$store.state.loading = false;
-        }, 100)
-      }
+    methods: {
+        // Reaload Main Page
+        reload_main_page() {
+            if (this.$route.path == '/') {
+                this.$store.state.loading = true;
+                setTimeout(() => {
+                    this.$store.state.loading = false;
+                }, 100);
+            }
+        },
+        // Tracks the scroll position
+        handleScroll() {
+            this.isScrolled = window.pageYOffset;
+        },
+        // this Funtion delete product from cart
+        deleteItem(id) {
+            this.$store.commit("deleteProduct", id);
+            localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+        }
     },
-
-    // Tracks the scroll position
-    handleScroll() {
-      this.isScrolled = window.pageYOffset;
-    },
-
-    // this Funtion delete product from cart
-    deleteItem(id) {
-      this.$store.commit("deleteProduct", id)
-      localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-    }
-
-  },
+    components: { router }
 }
 </script>
 
