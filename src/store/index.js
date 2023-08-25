@@ -14,7 +14,10 @@ export default createStore({
     menu: false,
 
     // For Loader Variable
-    loading: true
+    loading: true,
+
+
+    footer: 0
   },
   getters: {
 
@@ -75,6 +78,10 @@ export default createStore({
     // For Mobile Cart OffCanvas - //* and this Mutation exists and i use it in the Header vue component
     mobile_menu(state) {
       state.menu = true;
+    },
+
+    footer_element(state, value) {
+      state.footer = value;
     }
   },
   actions: {

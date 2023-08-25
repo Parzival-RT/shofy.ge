@@ -1,6 +1,6 @@
 <template>
     <footer>
-        <div class="tp-footer-area" data-bg-color="footer-bg-grey">
+        <div class="tp-footer-area fooooter" data-bg-color="footer-bg-grey">
             <div class="tp-footer-top pt-95 pb-40">
                 <!-- Container -->
                 <div class="container">
@@ -112,7 +112,16 @@
 
 <script>
 export default {
-    name: "Footer"
+    name: "Footer",
+    mounted() {
+
+        // this code gives the footer clientHeight of the scroll-product
+        if(this.$route.name == "Inner") {
+            const footer = document.querySelector("footer");
+            footer.style.marginBottom = this.$store.state.footer+"px";
+        }
+        
+    }
 }
 </script>
 

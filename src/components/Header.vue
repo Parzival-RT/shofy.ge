@@ -37,7 +37,7 @@
               <div class="tp-header-main-right d-flex align-items-center justify-content-end">
                   <div class="tp-header-action d-flex align-items-center ml-50">
                     <!-- Wishlist -->
-                    <div class="tp-header-action-item d-none d-lg-block">
+                    <div class="tp-header-action-item">
                         <router-link to="/Wishlist" class="tp-header-action-btn">
                           <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -122,7 +122,7 @@
               <!-- Col -->
               <div class="col-xl-3 col-lg-3 col-md-3 col-6">
                 <div class="tp-header-action d-flex align-items-center justify-content-end ml-50">
-                    <div class="tp-header-action-item d-none d-lg-block">
+                    <div class="tp-header-action-item">
                       <router-link to="/Wishlist" class="tp-header-action-btn">
                           <svg width="22" height="20" viewBox="0 0 22 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -233,9 +233,9 @@
             </div>
             <div class="tp-main-menu-mobile fix d-lg-none mb-40"><nav class="tp-main-menu-content">
               <ul>
-                <li><router-link to="/">მთავარი</router-link></li>
-                <li><router-link to="/Products">პროდუქტები</router-link></li>
-                <li><router-link to="/Contact">კონტაქტი</router-link></li>
+                <li><router-link @click="menu()" to="/">მთავარი</router-link></li>
+                <li><router-link @click="menu()" to="/Products">პროდუქტები</router-link></li>
+                <li><router-link @click="menu()" to="/Contact">კონტაქტი</router-link></li>
               </ul>
             </nav>
           </div>
@@ -289,7 +289,7 @@
             <div v-if="getCartData.length == []" class="cartmini__empty text-center">
                 <!-- <img src="../assets/img/product/cartmini/empty-cart.png" alt=""> -->
                 <p>შენი კალათა ცარიელია</p>
-                <router-link to="/Products" class="tp-btn" @click="this.$store.state.cart = false">პროდუქტებში გადასვლა</router-link>
+                <router-link to="/Products" class="tp-btn" @click="cart()">პროდუქტებში გადასვლა</router-link>
             </div>
         </div>
         <div class="cartmini__checkout">
@@ -298,8 +298,8 @@
                 <span>{{ getFullBalance }}₾</span>
             </div>
             <div class="cartmini__checkout-btn">
-                <router-link to="/Cart" class="tp-btn mb-10 w-100" @click="this.$store.state.cart = false"> ნახე კალათა</router-link>
-                <router-link  @click="this.$store.state.cart = false" to="/Checkout" class="tp-btn tp-btn-border w-100"> ყიდვა</router-link>
+                <router-link to="/Cart" class="tp-btn mb-10 w-100" @click="cart()"> ნახე კალათა</router-link>
+                <router-link  @click="cart()" to="/Checkout" class="tp-btn tp-btn-border w-100"> ყიდვა</router-link>
             </div>
         </div>
     </div>
@@ -382,7 +382,18 @@ export default {
         deleteItem(id) {
             this.$store.commit("deleteProduct", id);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-        }
+        },
+
+        // mobile menu animation
+        menu() {
+          setTimeout(() => {this.$store.state.menu = false}, 20)
+        },
+
+        // cart animation
+        cart() {
+          setTimeout(() => {this.$store.state.cart = false}, 20)
+        },
+    
     },
     components: { router }
 }
