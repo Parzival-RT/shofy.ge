@@ -108,11 +108,9 @@
                     <div class="mean-push"></div>
                     <nav class="tp-main-menu-content d-none d-lg-block">
                         <ul>
-                          <li>
-                              <router-link to="/">მთავარი</router-link>
-                          </li>
-                          <li><router-link to="/Products">პროდუქტები</router-link></li>
-                          <li><router-link to="/Contact">კონტაქტი</router-link></li>
+                          <li><router-link to="/" @click="reload_main_page()"><i class="tio-home-outlined"></i> მთავარი</router-link></li>
+                          <li><router-link to="/Products"><i class="tio-shopping-basket-outlined"></i> პროდუქტები</router-link></li>
+                          <li><router-link to="/Contact"><i class="tio-email-outlined"></i> კონტაქტი</router-link></li>
                         </ul>
                     </nav>
                 </div>
@@ -173,11 +171,9 @@
                     <div class="main-menu menu-style-1">
                       <nav class="tp-main-menu-content">
                           <ul>
-                            <li>
-                                <router-link to="/">მთავარი</router-link>
-                            </li>
-                            <li><router-link to="/Products">პროდუქტები</router-link></li>
-                            <li><router-link to="/Contact">კონტაქტი</router-link></li>
+                            <li><router-link to="/" @click="reload_main_page()"><i class="tio-home-outlined"></i> მთავარი</router-link></li>
+                            <li><router-link to="/Products"><i class="tio-shopping-basket-outlined"></i> პროდუქტები</router-link></li>
+                            <li><router-link to="/Contact"><i class="tio-email-outlined"></i> კონტაქტი</router-link></li>
                           </ul>
                       </nav>
                     </div>
@@ -196,6 +192,7 @@
                       <div class="tp-header-contact-content">
                           <h5>დაგვიკავშირდი:</h5>
                           <p><a href="tel:402-763-282-46">+(995) 558 18 70 81</a></p>
+                          <!-- <p><a href="tel:402-763-282-46">+(995) 558 18 70 81</a></p> -->
                       </div>
                     </div>
                 </div>
@@ -226,14 +223,14 @@
         <div class="offcanvas__content">
             <div class="offcanvas__top mb-70 d-flex justify-content-between align-items-center">
               <div class="offcanvas__logo logo">
-                  <router-link to="/" @click="reload_main_page()">
+                  <router-link to="/" @click="menu()">
                     <img src="../assets/img/logo/logo.svg" alt="logo">
                   </router-link>
               </div>
             </div>
             <div class="tp-main-menu-mobile fix d-lg-none mb-40"><nav class="tp-main-menu-content">
               <ul>
-                <li><router-link @click="menu()" to="/">მთავარი</router-link></li>
+                <li><router-link @click="menu()" to="/"> მთავარი</router-link></li>
                 <li><router-link @click="menu()" to="/Products">პროდუქტები</router-link></li>
                 <li><router-link @click="menu()" to="/Contact">კონტაქტი</router-link></li>
               </ul>
@@ -387,6 +384,8 @@ export default {
         // mobile menu animation
         menu() {
           setTimeout(() => {this.$store.state.menu = false}, 20)
+
+          this.reload_main_page();
         },
 
         // cart animation

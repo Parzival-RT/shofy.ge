@@ -195,6 +195,9 @@
                                                                     <span>{{ item.status }}</span>
                                                                 </div>
                                                             </div>
+                                                            <div class="tp-product-badge position-relative top-0" style="right: 0;">
+                                                                <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
+                                                            </div>
                                                             <p>{{ item.description }}</p>
                                     
                                                             <!-- price -->
@@ -391,6 +394,9 @@
                                                                         <div class="tp-product-details-stock mb-10">
                                                                             <span>{{ item.status }}</span>
                                                                         </div>
+                                                                    </div>
+                                                                    <div class="tp-product-badge">
+                                                                        <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
                                                                     </div>
                                                                     <p>{{ item.description }}</p>
                                             

@@ -100,7 +100,7 @@
                                  <span>გაყიდვაში</span>
                               </div>
                            </div>
-                           <p>{{ product_data_by_id.description }}</p>
+                           <p>{{ product_data_by_id.short_description }}</p>
    
                            <!-- price -->
                            <div class="tp-product-details-price-wrapper mb-20">
@@ -129,7 +129,7 @@
                                     </div>
                                  </div>
                                  <div class="tp-product-details-add-to-cart mb-15 w-100">
-                                    <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_modal(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
+                                    <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_inner_product(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
                                        <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                           <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -158,20 +158,16 @@
                            <h4 class="tp-product-details-title">დამატებითი მახასიათებლები</h4>
                            <div class="tp-product-details-query">
                               <div class="tp-product-details-query-item d-flex align-items-center">
-                                 <span>ბრენდი:  </span>
-                                 <p>ზარა</p>
-                              </div>
-                              <div class="tp-product-details-query-item d-flex align-items-center">
-                                 <span>SKU:  </span>
-                                 <p>NTB7SDVX44</p>
-                              </div>
-                              <div class="tp-product-details-query-item d-flex align-items-center">
                                  <span>კატეგორია:  </span>
                                  <p>{{ product_data_by_id.category }}</p>
                               </div>
                               <div class="tp-product-details-query-item d-flex align-items-center">
                                  <span>ტიპი:  </span>
                                  <p>{{ product_data_by_id.type }}</p>
+                              </div>
+                              <div class="tp-product-details-query-item mt-3">
+                                 <span>სრული აღწერა:  </span>
+                                 <p>{{ product_data_by_id.description }}</p>
                               </div>
                            </div>
 
@@ -214,7 +210,7 @@
                         <nav>
                            <div class="nav nav-tabs justify-content-center p-relative tp-product-tab pb-0" id="navPresentationTab" role="tablist">
                               <button class="nav-link py-3 active" id="nav-description-tab" data-bs-toggle="tab" data-bs-target="#nav-description" type="button" role="tab" aria-controls="nav-description" aria-selected="false">მიმოხილვა</button>
-                              <button class="nav-link py-3" id="nav-addInfo-tab" data-bs-toggle="tab" data-bs-target="#nav-addInfo" type="button" role="tab" aria-controls="nav-addInfo" aria-selected="false">ხდკ</button>
+                              <button class="nav-link py-3" id="nav-addInfo-tab" data-bs-toggle="tab" data-bs-target="#nav-addInfo" type="button" role="tab" aria-controls="nav-addInfo" aria-selected="false"><span class="d-block d-sm-none">ხდკ</span> <span class="d-none d-sm-block">ხშირად დასმული კითხვები</span></button>
                            </div>
                         </nav>  
                         <!-- End Tab Nav -->
@@ -335,7 +331,7 @@
                                                       <h3 class="tp-product-details-review-form-title">დააფიქსირე შენი აზრი</h3>
                                                       <p>თქვენი ელ.ფოსტა გამოქვეყნებული არ იქნება. აუცილებელი ველები მონიშნულია <span class="text-danger">*</span></p>
                                                       <Form v-slot="{ handleSubmit }" as="div">
-                                                         <form @submit="handleSubmit($event, submitForm)">
+                                                         <form @submit="handleSubmit($event, submit_customer_review_form)">
                                                             <div class="tp-product-details-review-form-rating d-flex flex-wrap align-items-center">
                                                                <p>შენი რეიტინგი:</p>
                                                                <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
@@ -377,7 +373,7 @@
                                                                   </div>
                                                                </div>
                                                             </div>
-                                                            <div class="tp-product-details-review-suggetions mb-20">
+                                                            <div class="tp-product-details-review-suggetions mb-20 d-none">
                                                                <div class="tp-product-details-review-remeber">
                                                                   <input id="remeber" type="checkbox">
                                                                   <label for="remeber">ჩემი სახელის და ელ.ფოსტის შენახვა საიტზე შემდეგი გამოყენება/შეფასებისთვის.</label>
@@ -506,7 +502,7 @@
                         <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
                         <span class="tp-product-details-price new-price">{{ product_data_by_id.price + price }} ₾</span>
                      </div>
-                     <button data-v-f2a7cdc8="" class="tp-product-details-buy-now-btn">ყიდვა</button>
+                     <button class="tp-product-details-buy-now-btn">ყიდვა</button>
                   </div>
                </div>
                <!-- End Col -->
@@ -583,7 +579,7 @@ export default {
    methods: {
 
       // customers review request 
-      submitForm() {
+      submit_customer_review_form() {
          const newReview = { ...this.form };
          this.customers_review.unshift(newReview);
 
@@ -617,7 +613,7 @@ export default {
       },
 
       // Fill Cart from modal product view
-      fill_cart_from_modal(id, image, title, type, old_price, price, product_amount) {
+      fill_cart_from_inner_product(id, image, title, type, old_price, price, product_amount) {
 
          // this code adds/push once again in cart. e.g if product exist this code push once again product
          const productData = this.$store.state.cart_product; // Data From store State
@@ -668,12 +664,30 @@ export default {
       // Buy Product
       buy(id, image, title, type, old_price, price, product_amount) {
 
-         // when click happens second again on the buy button the router path should push checkout component page
+         // this code adds/push once again in cart. e.g if product exist this code push once again product
          const productData = this.$store.state.cart_product; // Data From store State
          if (productData.length != [] && productData.find(el => el.id == id)) {
-            this.$router.push({
-               path: '/Checkout'
+            productData.filter(item => item.id === id).forEach(el => {
+
+               el.price = el.price + price * product_amount;
+
+               if (el.id === id) {
+                  const data = {
+                     product_amount: Number(el.product_amount) + Number(product_amount),
+                     id: id
+                  }
+
+
+                  this.$store.commit('raplace_item_data', data);
+                  localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+               }
+               this.$router.push({
+                  path: '/Checkout'
+               })
             })
+            this.product_amount = 1;
+            this.price = 0;
+            this.old_price = 0;
             return
          }
 

@@ -79,19 +79,20 @@
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="tp-checkout-input">
-                                                    <label>ქუჩის მისამართი</label>
-                                                    <input v-model="form.street" type="text" placeholder="ქუჩის მისამართი">
+                                                    <label>ქუჩის მისამართი <span>*</span></label>
+                                                    <Field type="text" :rules="isRequired" name="street" v-model="form.street" placeholder="ქუჩის მისამართი" />
+                                                    <ErrorMessage class="text-danger font-size-14px" name="street" />
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="tp-checkout-input">
                                                     <label>ტელეფონის ნომერი <span>*</span></label>
-                                                    <Field type="text" :rules="isRequired" name="mobile" v-model="form.mobile" placeholder="ტელეფონის ნომერი" />
+                                                    <Field type="number" :rules="isRequired" name="mobile" v-model="form.mobile" placeholder="ტელეფონის ნომერი" />
                                                     <ErrorMessage class="text-danger font-size-14px" name="mobile" />
                                                 </div> 
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="tp-checkout-input">
-                                                    <label>ელ.ფოსტა</label>
+                                                    <label>ელ.ფოსტა </label>
                                                     <input v-model="form.email" type="email" placeholder="ელ.ფოსტა">
                                                 </div>
                                             </div>
@@ -212,7 +213,7 @@
                             </div>
                         </div>
                         <div class="tp-checkout-btn-wrapper">
-                            <button v-if="form.name && form.lastname && form.city && form.mobile && form.rules && getCartData.length != 0" class="tp-checkout-btn w-100">შეკვეთის გაფორმება</button>
+                            <button v-if="form.name && form.lastname && form.city && form.street && form.mobile && form.rules && getCartData.length != 0" class="tp-checkout-btn w-100">შეკვეთის გაფორმება</button>
                             <button v-else disabled class="tp-checkout-btn w-100">შეკვეთის გაფორმება</button>
                         </div>
                     </div>

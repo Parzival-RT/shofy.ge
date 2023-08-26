@@ -110,7 +110,6 @@
                      <div class="row align-items-end">
                         <div class="col-12">
                            <div class="tp-cart-update">
-                              <button type="button" class="tp-cart-update-btn me-3" @click="go_to_cart()">კალათაში გადასვლა</button>
                               <button type="button" class="tp-cart-update-btn" @click="clear_wishlist()"><i class="tio-delete-outlined"></i> გასუფთავება</button>
                            </div>
                         </div>
@@ -201,15 +200,6 @@ export default {
          this.$store.commit('cart_menu');
          localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
 
-      },
-
-      go_to_cart() {
-         const data = this.wishlist_products
-         this.$store.commit('replace_items', data);
-         localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-         this.$router.push({
-            path: '/Cart'
-         })
       },
 
       // Plus Function adds quantity of the product in the cart

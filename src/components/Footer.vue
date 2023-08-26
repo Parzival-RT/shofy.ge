@@ -11,9 +11,9 @@
                             <div class="tp-footer-widget footer-col-1 mb-50">
                                 <div class="tp-footer-widget-content">
                                     <div class="tp-footer-logo">
-                                        <a href="index.html">
+                                        <router-link to="/" @click="reload_main_page()">
                                             <img src="../assets/img/logo/logo.svg" alt="logo">
-                                        </a>
+                                        </router-link>
                                     </div>
                                     <p class="tp-footer-desc">ჩვენ ვართ გუნდი რომელიც გთავაზობთ მაღალი ხარისხის პროდუქტს</p>
                                     <div class="tp-footer-social d-flex gap-1 align-items-center">
@@ -33,9 +33,9 @@
                                 <h4 class="tp-footer-widget-title">მენიუ</h4>
                                 <div class="tp-footer-widget-content">
                                     <ul>
-                                        <li><a href="#">მთავარი</a></li>
-                                        <li><a href="#">პროდუქტები</a></li>
-                                        <li><a href="#">კონტაქტი</a></li>
+                                        <li><router-link to="/" @click="reload_main_page()">მთავარი</router-link></li>
+                                        <li><router-link to="/Products">პროდუქტები</router-link></li>
+                                        <li><router-link to="/Contact">კონტაქტი</router-link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -49,6 +49,7 @@
                                 <div class="tp-footer-widget-content">
                                     <div class="tp-footer-talk mb-20">
                                         <span>გაქვს შეკითხვები? დაგვიკავშირდი</span>
+                                        <h4><a href="tel:670-413-90-762">+995 558 18 70 81</a></h4>
                                         <h4><a href="tel:670-413-90-762">+995 558 18 70 81</a></h4>
                                     </div>
                                     <div class="tp-footer-contact">
@@ -64,7 +65,7 @@
                                             </span>
                                         </div>
                                         <div class="tp-footer-contact-content">
-                                            <p><a href="mailto:shofy@support.com">shofy@gmail.com</a></p>
+                                            <p><a href="mailto:shofy@support.com">contact@shofy.ge</a></p>
                                         </div>
                                         </div>
                                     </div>
@@ -113,6 +114,17 @@
 <script>
 export default {
     name: "Footer",
+    methods: {
+        // Reaload Main Page
+        reload_main_page() {
+            if (this.$route.path == '/') {
+                this.$store.state.loading = true;
+                setTimeout(() => {
+                    this.$store.state.loading = false;
+                }, 100);
+            }
+        }
+    },
     mounted() {
         setImmediate(() => {
             if (this.$route.name == "Inner") {

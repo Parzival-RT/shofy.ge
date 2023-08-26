@@ -21,7 +21,7 @@
                         </div>
                         <div class="tp-feature-content-2">
                             <h3 class="tp-feature-title">უფასო მიწოდება</h3>
-                            <p>50₾ ზე მეტი გადახდის შემთხვევაში</p>
+                            <p>100₾ ზე მეტი გადახდის შემთხვევაში</p>
                         </div>
                     </div>
                 </div>
