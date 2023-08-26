@@ -16,7 +16,7 @@ export default createStore({
     // For Loader Variable
     loading: true,
 
-
+    // clientHeight for product_inner's .scroll-product
     footer: 0
   },
   getters: {
@@ -30,7 +30,6 @@ export default createStore({
     wishlist_products: (state) => {
       return state.wishlist;
     }
-    
   },
   mutations: {
 
@@ -80,6 +79,7 @@ export default createStore({
       state.menu = true;
     },
 
+    // clientHeight for product_inner's .scroll-product
     footer_element(state, value) {
       state.footer = value;
     }

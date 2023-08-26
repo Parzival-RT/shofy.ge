@@ -114,13 +114,12 @@
 export default {
     name: "Footer",
     mounted() {
-
-        // this code gives the footer clientHeight of the scroll-product
-        if(this.$route.name == "Inner") {
-            const footer = document.querySelector("footer");
-            footer.style.marginBottom = this.$store.state.footer+"px";
-        }
-        
+        setImmediate(() => {
+            if (this.$route.name == "Inner") {
+                let footer = document.querySelector("footer");
+                footer.style.marginBottom = this.$store.state.footer + "px";
+            }
+        }, 1000)
     }
 }
 </script>
