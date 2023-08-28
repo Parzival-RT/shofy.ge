@@ -2,7 +2,7 @@
     <main>
 
         <!-- breadcrumb area start -->
-        <section class="breadcrumb__area include-bg pt-95 pb-50" data-bg-color="#EFF1F5" style="background-color: rgb(239, 241, 245);">
+        <section class="breadcrumb__area include-bg pt-80 pb-50" data-bg-color="#EFF1F5" style="background-color: rgb(239, 241, 245);">
         <div class="container">
             <div class="row">
                 <div class="col-xxl-12">
@@ -248,7 +248,8 @@ export default {
                 shipping: 10,
                 total: 0,
                 sum_total: 0,
-                rules: false
+                rules: false,
+                items: JSON.parse(localStorage.getItem('cart_items'))
             },
             loading: false,
             coupon_quantity: 0,

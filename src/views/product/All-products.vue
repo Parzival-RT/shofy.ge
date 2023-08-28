@@ -26,6 +26,10 @@
         <!-- Header -->
         <Header v-if="!this.$store.state.loading" />
         <!-- End Header -->
+
+        <!-- Mobile Header -->
+        <MobileHeader />
+        <!-- End Mobile Header -->
     
         <!-- Product Content -->
         <main>
@@ -45,6 +49,9 @@
 // Header Component
 import Header from '@/components/Header.vue'
 
+// Mobile Header Component
+import MobileHeader from '@/components/Mobile-header.vue'
+
 // Footer Component
 import Footer from '@/components/Footer.vue'
 
@@ -55,6 +62,7 @@ export default {
     name: "All-products",
     components: {
         Header,
+        MobileHeader,
         Footer,
         Products
     },

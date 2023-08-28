@@ -1,5 +1,5 @@
 <template>
-    <section class="tp-product-area pt-60 pb-55">
+    <section class="tp-product-area pt-80 pb-50">
         <!-- Product Container -->
         <div class="container">
             <!-- Row -->
@@ -149,8 +149,8 @@
 
                                                         <!-- Product Images -->
                                                         <div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
-                                                            <nav>
-                                                                <div class="nav nav-tabs flex-sm-column " id="productDetailsNavThumb_main" role="tablist">
+                                                            <nav class="product-images">
+                                                                <div class="nav nav-tabs d-inline-flex d-md-flex flex-nowrap flex-md-wrap flex-sm-column " id="productDetailsNavThumb_main" role="tablist">
                                                                     <button class="nav-link active" :id="'nav-1-tab_'+item.id" data-bs-toggle="tab" :data-bs-target="'#nav-1'+item.id" type="button" role="tab" :aria-controls="'nav-1'+item.id" aria-selected="true">
                                                                         <img :src="item.image" alt="">
                                                                     </button>
@@ -191,16 +191,17 @@
                                     
                                                             <!-- inventory details -->
                                                             <div class="tp-product-details-inventory d-flex align-items-center mb-10">
-                                                                <div class="tp-product-details-stock mb-10">
+                                                                <div class="tp-product-details-stock">
                                                                     <span>{{ item.status }}</span>
                                                                 </div>
                                                             </div>
-                                                            <div class="tp-product-badge position-relative top-0" style="right: 0;">
-                                                                <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
-                                                            </div>
+
                                                             <p>{{ item.description }}</p>
                                     
-                                                            <!-- price -->
+                                                            <!-- price and discount -->
+                                                            <div class="tp-product-badge position-static">
+                                                                <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
+                                                            </div>
                                                             <div class="tp-product-details-price-wrapper mb-20">
                                                                 <span class="tp-product-details-price old-price me-1">{{  item.old_price + old_price }} ₾</span>
                                                                 <span class="tp-product-details-price new-price">{{ item.price + price }} ₾</span>
@@ -228,7 +229,7 @@
                                                                         </div>
                                                                     </div>
                                                                     <div class="tp-product-details-add-to-cart mb-15 w-100">
-                                                                        <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_modal(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)">
+                                                                        <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_modal(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal_'+item.id">
                                                                             <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                                 <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -278,6 +279,8 @@
                                     <div class="row">
                                         <div class="col-xl-12">
                                             <div class="tp-product-list-item d-md-flex" v-for="(item, index) in product" :key="index">
+                                               
+                                                <!-- Product static content -->
                                                 <div class="tp-product-list-thumb p-relative fix">
                                                 <router-link :to="'/inner/'+item.id">
                                                     <img class="bg-light w-100pre w-sm-250px" :src="item.image" alt="">
@@ -336,6 +339,8 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!-- End Product static content -->
+
                                                 <!-- Product Modal -->
                                                 <div class="modal fade tp-product-modal" :id="'producQuickViewModal1_'+item.id" tabindex="-1" :aria-labelledby="'producQuickViewModal1_'+item.id" aria-hidden="true">
                                                     <div class="modal-dialog modal-dialog-centered">
@@ -349,8 +354,8 @@
 
                                                                 <!-- Product Images -->
                                                                 <div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
-                                                                    <nav>
-                                                                        <div class="nav nav-tabs flex-sm-column " id="productDetailsNavThumb_main" role="tablist">
+                                                                    <nav class="product-images">
+                                                                        <div class="nav nav-tabs d-inline-flex d-md-flex flex-nowrap flex-md-wrap flex-sm-column " id="productDetailsNavThumb_main" role="tablist">
                                                                             <button class="nav-link active" :id="'nav-1-tab_'+item.id" data-bs-toggle="tab" :data-bs-target="'#nav-1'+item.id" type="button" role="tab" :aria-controls="'nav-1'+item.id" aria-selected="true">
                                                                                 <img :src="item.image" alt="">
                                                                             </button>
@@ -391,16 +396,17 @@
                                             
                                                                     <!-- inventory details -->
                                                                     <div class="tp-product-details-inventory d-flex align-items-center mb-10">
-                                                                        <div class="tp-product-details-stock mb-10">
+                                                                        <div class="tp-product-details-stock">
                                                                             <span>{{ item.status }}</span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="tp-product-badge">
-                                                                        <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
-                                                                    </div>
+                                                                    
                                                                     <p>{{ item.description }}</p>
                                             
-                                                                    <!-- price -->
+                                                                    <!-- price and discount -->
+                                                                    <div class="tp-product-badge position-static">
+                                                                        <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
+                                                                    </div>
                                                                     <div class="tp-product-details-price-wrapper mb-20">
                                                                         <span class="tp-product-details-price old-price me-1">{{  item.old_price + old_price }} ₾</span>
                                                                         <span class="tp-product-details-price new-price">{{ item.price + price }} ₾</span>
@@ -428,7 +434,7 @@
                                                                                 </div>
                                                                             </div>
                                                                             <div class="tp-product-details-add-to-cart mb-15 w-100">
-                                                                                <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_modal(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)">
+                                                                                <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_modal(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal1_'+item.id">
                                                                                     <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                                         <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

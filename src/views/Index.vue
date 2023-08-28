@@ -27,6 +27,10 @@
       <!-- Header -->
       <Header v-if="!this.$store.state.loading" />
       <!-- End Header -->
+
+      <!-- Mobile Header -->
+      <MobileHeader />
+      <!-- End Mobile Header -->
       
       <!-- Main -->
       <main v-if="!this.$store.state.loading">
@@ -55,6 +59,9 @@
 // Header Component
 import Header from '@/components/Header.vue'
 
+// Header Component
+import MobileHeader from '@/components/Mobile-header.vue'
+
 // Slider Component
 import Slider from '@/components/Slider.vue'
 
@@ -76,6 +83,7 @@ export default {
   },
   components: {
    Header,
+   MobileHeader,
    Slider,
    Products,
    Rules,

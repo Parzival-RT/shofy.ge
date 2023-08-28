@@ -127,7 +127,7 @@ export default {
     },
     mounted() {
         setImmediate(() => {
-            if (this.$route.name == "Inner") {
+            if (this.$route.name == "HomeView" || this.$route.name == "Wishlist" || this.$route.name == "Inner") {
                 let footer = document.querySelector("footer");
                 footer.style.marginBottom = this.$store.state.footer + "px";
             }

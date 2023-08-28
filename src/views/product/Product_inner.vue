@@ -1,37 +1,41 @@
 <template>
-    <div>
-        <!-- Pre Loader -->
-        <div id="loading" v-if="this.$store.state.loading">
-            <div id="loading-center">
-                <div id="loading-center-absolute">
-                    <!-- loading content here -->
-                    <div class="tp-preloader-content">
-                        <div class="tp-preloader-logo">
-                            <div class="tp-preloader-circle">
-                            <svg width="190" height="190" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <circle stroke="#D9D9D9" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
-                                <circle stroke="red" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
-                            </svg>
-                            </div>
-                            <img src="../../assets/img/logo/preloader/preloader-icon.svg" alt="">
-                        </div>
-                        <h3 class="tp-preloader-title">Shofy.ge</h3>
-                        <p class="tp-preloader-subtitle mt-3">იტვირთება</p>
-                    </div>
-                </div>
-            </div>  
-        </div>
-        <!-- End Pre Loader -->
+   <div>
+      <!-- Pre Loader -->
+      <div id="loading" v-if="this.$store.state.loading">
+         <div id="loading-center">
+               <div id="loading-center-absolute">
+                  <!-- loading content here -->
+                  <div class="tp-preloader-content">
+                     <div class="tp-preloader-logo">
+                           <div class="tp-preloader-circle">
+                           <svg width="190" height="190" viewBox="0 0 380 380" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <circle stroke="#D9D9D9" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
+                              <circle stroke="red" cx="190" cy="190" r="180" stroke-width="6" stroke-linecap="round"></circle> 
+                           </svg>
+                           </div>
+                           <img src="../../assets/img/logo/preloader/preloader-icon.svg" alt="">
+                     </div>
+                     <h3 class="tp-preloader-title">Shofy.ge</h3>
+                     <p class="tp-preloader-subtitle mt-3">იტვირთება</p>
+                  </div>
+               </div>
+         </div>  
+      </div>
+      <!-- End Pre Loader -->
             
-        <!-- Header -->
-        <Header v-if="!this.$store.state.loading" />
-        <!-- End Header -->
+      <!-- Header -->
+      <Header v-if="!this.$store.state.loading" />
+      <!-- End Header -->
+
+      <!-- Mobile Header -->
+      <MobileHeader />
+      <!-- End Mobile Header -->
     
-        <!-- Product Content -->
-        <main>
+      <!-- Product Content -->
+      <main>
 
          <!-- breadcrumb area start -->
-         <section class="breadcrumb__area breadcrumb__style-2 include-bg pt-50 pb-20">
+         <section class="breadcrumb__area breadcrumb__style-2 include-bg pt-80 pb-20">
             <div class="container">
                <div class="row">
                   <div class="col-xxl-9">
@@ -68,6 +72,16 @@
                                  <button class="nav-link active" id="nav-1-tab" data-bs-toggle="tab" data-bs-target="#nav-1" type="button" role="tab" aria-controls="nav-1" aria-selected="true">
                                     <img :src="product_data_by_id.image" alt="">
                                  </button>
+                                 <button class="nav-link" id="nav-video-1-tab" data-bs-toggle="tab" data-bs-target="#nav-video-1" type="button" role="tab" aria-controls="nav-video-1" aria-selected="true">
+                                    <img :src="product_data_by_id.video" alt="">
+                                    <span class="nav-video-btn">
+                                       <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                          <path d="M8.36851 12.784H3.946C1.73475 12.784 1 11.3145 1 9.83801V3.946C1 1.73475 1.73475 1 3.946 1H8.36851C10.5798 1 11.3145 1.73475 11.3145 3.946V9.83801C11.3145 12.0493 10.5728 12.784 8.36851 12.784Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          <path d="M13.2598 10.4609L11.3145 9.09634V4.68083L13.2598 3.31629C14.2115 2.65152 14.9952 3.05738 14.9952 4.22599V9.55818C14.9952 10.7268 14.2115 11.1327 13.2598 10.4609Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                          <path d="M7.64779 6.19231C8.22749 6.19231 8.69743 5.72237 8.69743 5.14266C8.69743 4.56296 8.22749 4.09302 7.64779 4.09302C7.06809 4.09302 6.59814 4.56296 6.59814 5.14266C6.59814 5.72237 7.06809 6.19231 7.64779 6.19231Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                       </svg>
+                                    </span>
+                                 </button>
                                  <button v-for="(item, index) in product_data_by_id.images" :key="index" class="nav-link" :id="index" data-bs-toggle="tab" :data-bs-target="'#nav-2_'+index" type="button" role="tab" aria-controls="nav-2" aria-selected="false">
                                     <img :src="item.img" alt="">
                                  </button>
@@ -79,12 +93,20 @@
                                     <img :src="product_data_by_id.image" alt="">
                                  </div>
                               </div>
+                              <div class="tab-pane fade" id="nav-video-1" role="tabpanel" aria-labelledby="nav-video-1-tab" tabindex="0">
+                                 <div class="tp-product-details-nav-main-thumb">
+                                    <img :src="product_data_by_id.video" alt="">
+                                    <div class="tp-product-details-thumb-video">
+                                       <button  data-bs-target="#video_product" data-bs-toggle="modal" class="tp-product-details-thumb-video-btn popup-video"><i class="tio-play fs-5"></i></button>
+                                    </div>
+                                 </div>
+                              </div>
                               <div v-for="(item, index) in product_data_by_id.images" :key="index" class="tab-pane fade" :id="'nav-2_'+index" role="tabpanel" :aria-labelledby="index" tabindex="0">
                                  <div class="tp-product-details-nav-main-thumb">
                                     <img :src="item.img" alt="">
                                  </div>
                               </div>
-                            </div>
+                              </div>
                         </div>
                      </div> <!-- col end -->
                      <div class="col-xl-5 col-lg-6">
@@ -93,21 +115,24 @@
                               <span>{{ product_data_by_id.type }}</span>
                            </div>
                            <h3 class="tp-product-details-title">{{ product_data_by_id.title }}</h3>
-   
+
                            <!-- inventory details -->
                            <div class="tp-product-details-inventory d-flex align-items-center mb-10">
-                              <div class="tp-product-details-stock mb-10">
-                                 <span>გაყიდვაში</span>
+                              <div class="tp-product-details-stock">
+                                 <span>{{ product_data_by_id.status }}</span>
                               </div>
                            </div>
                            <p>{{ product_data_by_id.short_description }}</p>
-   
-                           <!-- price -->
+
+                           <!-- price and discount -->
+                           <div class="tp-product-badge position-static">
+                              <span class="product-offer">-{{ Math.round(((product_data_by_id.old_price - product_data_by_id.price) / product_data_by_id.old_price) * 100) }}%</span>
+                           </div>
                            <div class="tp-product-details-price-wrapper mb-20">
                               <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
                               <span class="tp-product-details-price new-price">{{ product_data_by_id.price + price }} ₾</span>
                            </div>
-   
+
                            <!-- Product Amount Actions -->
                            <div class="tp-product-details-action-wrapper">
                               <h3 class="tp-product-details-action-title">რაოდენობა</h3>
@@ -167,16 +192,22 @@
                               </div>
                               <div class="tp-product-details-query-item mt-3">
                                  <span>სრული აღწერა:  </span>
-                                 <p>{{ product_data_by_id.description }}</p>
+                                 <div>
+                                    <p class="text-content position-relative">
+                                       <span class="d-block">{{ product_data_by_id.description }}</span>
+                                       <div class="position-absolute w-100" style="height: 30px; background-color: #ffffff81;bottom: 0;left: 0;"></div>
+                                    </p>
+                                    <button @click="read_more()" class="read-more-button btn btn-outline-dark mt-2">მეტი</button>
+                                 </div>
                               </div>
                            </div>
 
                            <!-- Guarantee -->
                            <div v-if="product_data_by_id.guarantee != ''" class="d-flex align-items-center flex-wrap gap-2">
-                             <div class="p-2 rounded border bg-white">
+                              <div class="p-2 rounded border bg-white">
                               <img src="../../assets/img/icon/shield.svg" alt="გარანტია">
-                             </div>
-                             <p class="m-0 fw-semibold">{{ product_data_by_id.guarantee }}</p>
+                              </div>
+                              <p class="m-0 fw-semibold">{{ product_data_by_id.guarantee }}</p>
                            </div>
                            <!-- End Guarantee -->
 
@@ -196,6 +227,24 @@
                </div>
             </div>
          </section>
+
+         <!-- Product Video -->
+         <div class="modal fade" id="video_product" aria-hidden="true" aria-labelledby="video_productLabel" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+               <div class="modal-content">
+                  <div class="modal-header">
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                     <video controls class="w-100" height="300">
+                        <source src="../../assets/img/slider/video-product.mp4">
+                     </video>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- End Product Video -->
+
          <!-- product details area end -->
 
 
@@ -474,6 +523,7 @@
             </div>
          </div>
          <!-- End Tab Review & FAQ -->
+         
 
       </main>
       
@@ -484,11 +534,12 @@
             <div class="row align-items-center">
                <!-- Col -->
                <div class="col-6">
-                  <div class="d-flex align-items-center gap-3">
+                  <div class="d-flex align-items-center gap-2">
                      <img class="scroll-image" :src="product_data_by_id.image" alt="product-image">
-                     <div class="d-flex flex-column">
-                        <h3 class="tp-product-details-action-title mb-0"> {{ product_data_by_id.title }} </h3>
-                        <p class="mb-0">უფასო მიწოდება</p>
+                     <!-- price -->
+                     <div class="tp-product-details-price-wrapper d-flex flex-column">
+                        <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
+                        <span class="tp-product-details-price new-price">{{ product_data_by_id.price + price }} ₾</span>
                      </div>
                   </div>
                </div>
@@ -496,13 +547,16 @@
 
                <!-- Col -->
                <div class="col-6">
-                  <div class="d-flex justify-content-end align-items-center gap-3">
-                     <!-- price -->
-                     <div class="tp-product-details-price-wrapper">
-                        <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
-                        <span class="tp-product-details-price new-price">{{ product_data_by_id.price + price }} ₾</span>
-                     </div>
-                     <button class="tp-product-details-buy-now-btn">ყიდვა</button>
+                  <div class="d-flex justify-content-end align-items-center gap-1">
+                     <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
+                     <button class="tp-btn px-3 py-2" @click="fill_cart_from_inner_product(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
+                        <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                              <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                          </svg>
+                     </button>
                   </div>
                </div>
                <!-- End Col -->
@@ -515,15 +569,19 @@
 
       <!-- End Product Content -->
 
-    <!-- Footer -->
-    <Footer v-if="!this.$store.state.loading" />
-    <!-- End Footer -->
-    </div>
+      <!-- Footer -->
+      <Footer v-if="!this.$store.state.loading" />
+      <!-- End Footer -->
+
+   </div>
 </template>
 
 <script>
 // Header Component
 import Header from '@/components/Header.vue'
+
+// Mobile Header Component
+import MobileHeader from '@/components/Mobile-header.vue'
 
 // Footer Component
 import Footer from '@/components/Footer.vue'
@@ -565,11 +623,14 @@ export default {
          // customers comments, reviews and ratings
          customers_review: [],
          // for stars hover effect
-         star_hover: 0
+         star_hover: 0,
+
+         text: true
       }
    },
    components: {
       Header,
+      MobileHeader,
       Footer,
       // Validation For Fields
       Form,
@@ -577,30 +638,6 @@ export default {
       ErrorMessage
    },
    methods: {
-
-      // customers review request 
-      submit_customer_review_form() {
-         const newReview = { ...this.form };
-         this.customers_review.unshift(newReview);
-
-         // this code fill this.form.total_star_rating variable with total customer average rating
-         const totalRating = this.customers_review.reduce((sum, review) => sum + review.customer_star_rating, 0);
-         this.form.total_star_rating = totalRating / this.customers_review.length;
-
-
-         // here will be axios request
-         console.log(this.form);
-
-         // Reset the form fields for the next review
-         this.form = {
-            name: '',
-            email: '',
-            customer_review: '',
-            total_star_rating: 0,
-            customer_star_rating: 0
-         };
-
-      },
 
       // filter product by id
       get_product_data_by_id() {
@@ -754,6 +791,92 @@ export default {
          });
       },
 
+       // this function fills the wishlist with product
+      wish_list(id, image, title, type, old_price, price, product_amount) {
+
+         // this code unpush element from wish list 
+         const check_exist_wishlist_product = this.$store.state.wishlist;
+         if (check_exist_wishlist_product.find(item => item.id == id)) {
+            this.product.filter(el => el.id == id).forEach(item => {
+               item.wish_list_status = false;
+            })
+
+            const index = check_exist_wishlist_product.findIndex(item => item.id === id);
+            this.$store.commit("deleteProduct_from_wishlist", index);
+            localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
+            return
+         }
+
+
+         // this code push in wishlist new item
+         const wishlist_status = this.product.filter(item => item.id == id);
+         wishlist_status.forEach(item => {
+            item.wish_list_status = true;
+         })
+         this.wishlist = {
+            id: id,
+            image: image,
+            title: title,
+            type, type,
+            old_price,
+            price: price,
+            product_amount: product_amount,
+            initial_price: price,
+            initial_old_price: old_price
+         };
+         this.$store.commit('wish_list', this.wishlist);
+         localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
+      },
+
+      // read function more for full description
+      read_more() {
+         const content = document.querySelector('.text-content'); // main text-content container
+         
+         const absolute_element = document.querySelector('.text-content .position-absolute'); // absolute element with blur effect for read-less description
+
+         
+         const isActive = content.classList.contains('active'); // Check if the element has the 'active' class
+         const height = document.querySelector('.text-content span').clientHeight;
+
+         const read_more_btn = document.querySelector('.read-more-button'); // switch to read more text-content
+
+         content.classList.toggle('active'); // add and remove the active class
+         
+         if (isActive) {
+            content.style.height = '100px'; // Set height to 50px when the 'active' class is not present
+            read_more_btn.textContent = 'მეტი'
+            absolute_element.classList.remove('d-none');
+         } else {
+            content.style.height = height + 'px'; // Set height to the original value when the 'active' class is present
+            read_more_btn.textContent = 'ნაკლები'
+            absolute_element.classList.add('d-none');
+         }
+      },
+
+      
+      // submit customers review request 
+      submit_customer_review_form() {
+         const newReview = { ...this.form };
+         this.customers_review.unshift(newReview);
+
+         // this code fill this.form.total_star_rating variable with total customer average rating
+         const totalRating = this.customers_review.reduce((sum, review) => sum + review.customer_star_rating, 0);
+         this.form.total_star_rating = totalRating / this.customers_review.length;
+
+
+         // here will be axios request
+         console.log(this.form);
+
+         // Reset the form fields for the next review
+         this.form = {
+            name: '',
+            email: '',
+            customer_review: '',
+            total_star_rating: 0,
+            customer_star_rating: 0
+         };
+
+      },
       // Calculate the percentage of a specific star rating
       starPercentage(star) {
          if (this.customers_review.length === 0) {
@@ -790,43 +913,6 @@ export default {
             return true;
          }
          return 'აუცილებელი ველი';
-      },
-
-      // this function fills the wishlist with product
-      wish_list(id, image, title, type, old_price, price, product_amount) {
-
-         // this code unpush element from wish list 
-         const check_exist_wishlist_product = this.$store.state.wishlist;
-         if (check_exist_wishlist_product.find(item => item.id == id)) {
-            this.product.filter(el => el.id == id).forEach(item => {
-               item.wish_list_status = false;
-            })
-
-            const index = check_exist_wishlist_product.findIndex(item => item.id === id);
-            this.$store.commit("deleteProduct_from_wishlist", index);
-            localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
-            return
-         }
-
-
-         // this code push in wishlist new item
-         const wishlist_status = this.product.filter(item => item.id == id);
-         wishlist_status.forEach(item => {
-            item.wish_list_status = true;
-         })
-         this.wishlist = {
-            id: id,
-            image: image,
-            title: title,
-            type, type,
-            old_price,
-            price: price,
-            product_amount: product_amount,
-            initial_price: price,
-            initial_old_price: old_price
-         };
-         this.$store.commit('wish_list', this.wishlist);
-         localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
       }
 
    },
@@ -842,7 +928,6 @@ export default {
    },
    mounted() {
 
-
       this.get_product_data_by_id();
 
       // For Loading
@@ -857,7 +942,8 @@ export default {
 
    },
    updated() {
-      // this code gives the footer clientHeight of the scroll-product
+
+      // this code gives the element clientHeight of the .scroll-product which is absolute position
       if (this.$route.name == "Inner") {
          const client = document.querySelector(".scroll-product");
          const height = client.clientHeight;
@@ -868,33 +954,41 @@ export default {
 </script>
 
 <style scoped>
+
+/* For Product - which is absolute position */
 .scroll-product {
    position: fixed;
    bottom: 0;
    width: 100vw;
    padding: 10px 0;
    background-color: #fff;
-   z-index: 999;
+   z-index: 998;
 
    transition: transform 0.7s ease 0s;
    transform: translateY(100%);
+}
+@media screen and (max-width: 576px) {
+   .scroll-product {
+      padding-bottom: 80px;
+   }
 }
 .scroll-product.active {
    transform: translateY(0%)
 }
 .scroll-image {
-   width: 60px;
+   width: 50px;
    object-fit: cover;
 }
-/* Add hover effect for stars */
+
+/* unhover effects for stars*/
 .cursor-pointer:has(.tio-star):hover ~ .cursor-pointer:has(.tio-star) .tio-star::before {
    content: "\e966";
 }
 
-@media screen and (max-width: 576px) {
-   .product-images { 
-      overflow: auto;
-   }
+/* raed more */
+.text-content {
+   overflow: hidden;
+   height: 100px;
 }
 
 </style>
