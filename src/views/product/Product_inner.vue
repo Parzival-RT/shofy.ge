@@ -35,7 +35,7 @@
       <main>
 
          <!-- breadcrumb area start -->
-         <section class="breadcrumb__area breadcrumb__style-2 include-bg pt-80 pb-20">
+         <section class="breadcrumb__area breadcrumb__style-2 include-bg pt-80 pb-20 d-none d-md-block">
             <div class="container">
                <div class="row">
                   <div class="col-xxl-9">
@@ -61,7 +61,7 @@
          <!-- breadcrumb area end -->
 
          <!-- product details area start -->
-         <section class="tp-product-details-area">
+         <section class="tp-product-details-area pt-20 pt-sm-0">
             <div class="tp-product-details-top pb-115">
                <div class="container">
                   <div class="row">
@@ -154,7 +154,7 @@
                                     </div>
                                  </div>
                                  <div class="tp-product-details-add-to-cart mb-15 w-100">
-                                    <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_inner_product(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
+                                    <button class="tp-product-details-add-to-cart-btn add_cart d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_inner_product($event, product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
                                        <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                           <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                           <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -162,6 +162,10 @@
                                           <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                        </svg>   
                                        დაამატე კალათაში
+                                    </button>
+                                    <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100 d-none">
+                                       <i class="tio-checkmark-circle-outlined fs-4"></i> 
+                                       წარმატებით დემატა 
                                     </button>
                                  </div>
                               </div>
@@ -533,11 +537,13 @@
             <!-- Row -->
             <div class="row align-items-center">
                <!-- Col -->
-               <div class="col-6">
+               <div class="col-6 col-md-8">
                   <div class="d-flex align-items-center gap-2">
                      <img class="scroll-image" :src="product_data_by_id.image" alt="product-image">
+                  
                      <!-- price -->
                      <div class="tp-product-details-price-wrapper d-flex flex-column">
+                        <h5 class="text-danger h5 mb-0 d-none d-md-block">{{ product_data_by_id.title }}</h5>
                         <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
                         <span class="tp-product-details-price new-price">{{ product_data_by_id.price + price }} ₾</span>
                      </div>
@@ -546,16 +552,19 @@
                <!-- End Col -->
 
                <!-- Col -->
-               <div class="col-6">
+               <div class="col-6 col-md-4">
                   <div class="d-flex justify-content-end align-items-center gap-1">
                      <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
-                     <button class="tp-btn px-3 py-2" @click="fill_cart_from_inner_product(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
+                     <button class="tp-btn px-3 py-2 add_cart" @click="fill_cart_from_inner_product($event, product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                              <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                              <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                              <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                          </svg>
+                           <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                           <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                     </button>
+                     <button class="tp-btn px-3 py-2 d-none">
+                        <i class="tio-checkmark-circle-outlined fs-4"></i>  
                      </button>
                   </div>
                </div>
@@ -650,7 +659,19 @@ export default {
       },
 
       // Fill Cart from modal product view
-      fill_cart_from_inner_product(id, image, title, type, old_price, price, product_amount) {
+      fill_cart_from_inner_product(event, id, image, title, type, old_price, price, product_amount) {
+
+         // this code do animation for add product button
+         const element = event.target;
+         element.classList.add('d-none');
+         element.nextElementSibling.classList.remove('d-none');
+         element.nextElementSibling.classList.add('d-block');
+         setTimeout(() => {
+            element.classList.remove('d-none');
+            element.nextElementSibling.classList.remove('d-block');
+            element.classList.add('d-block');
+            element.nextElementSibling.classList.add('d-none');
+         }, 1000);
 
          // this code adds/push once again in cart. e.g if product exist this code push once again product
          const productData = this.$store.state.cart_product; // Data From store State
@@ -667,7 +688,15 @@ export default {
 
 
                   this.$store.commit('raplace_item_data', data);
-                  this.$store.commit('cart_menu');
+
+                  // Media Query Validation
+                  const mediaQuery = window.matchMedia("(min-width: 576px)");
+                  const isMaxWidth = mediaQuery.matches;
+
+                  if (isMaxWidth) {
+                     this.$store.commit('cart_menu');
+                  }
+
                   localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                }
             })
@@ -692,7 +721,15 @@ export default {
             initial_old_price: old_price
          };
          this.$store.commit('cart_items', this.addItems);
-         this.$store.commit('cart_menu');
+
+         // Media Query Validation
+         const mediaQuery = window.matchMedia("(min-width: 576px)");
+         const isMaxWidth = mediaQuery.matches;
+
+         if (isMaxWidth) {
+            this.$store.commit('cart_menu');
+         }
+
          localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
          this.product_amount = 1;
          this.price = 0;
@@ -989,6 +1026,19 @@ export default {
 .text-content {
    overflow: hidden;
    height: 100px;
+}
+
+.add_cart {
+   position: relative;
+}
+.add_cart::after {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 100%;
+   background-color: transparent;
 }
 
 </style>

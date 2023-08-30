@@ -281,6 +281,16 @@
               </router-link>
           </div>
         </div>
+        <div class="offcanvas__bottom">
+            <div class="offcanvas__footer d-flex align-items-center justify-content-between">
+              <div class="tp-footer-social d-flex gap-1 align-items-start w-100">
+                  <a class="border shadow-none" href="#"><i class="tio-facebook"></i></a>
+                  <a class="border shadow-none" href="#"><i class="tio-tik-tok"></i></a>
+                  <a class="border shadow-none" href="#"><i class="tio-instagram"></i></a>
+                  <a class="border shadow-none" href="#"><i class="tio-linkedin"></i></a>
+              </div>
+            </div>
+        </div>
       </div>
   </div>
   <!-- offcanvas area end -->
@@ -446,5 +456,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

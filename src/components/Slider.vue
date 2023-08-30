@@ -29,7 +29,7 @@
                      </div>
                      <div class="container">
                         <div class="row align-items-center">
-                           <div class="col-xl-5 col-lg-6 col-md-6">
+                           <div class="col-xl-5 col-lg-6 col-md-6 mt-3 mt-sm-0">
                               <div class="tp-slider-content p-relative z-index-1">
                                  <span><b>₾274.00</b></span>
                                  <h3 class="tp-slider-title">ორთქლით ფარების გამწმდენდი გასაპრიალებელი ნაკრები</h3>
@@ -51,7 +51,7 @@
                               </div>
                            </div>
                            <div class="col-xl-7 col-lg-6 col-md-6">
-                              <div class="tp-slider-thumb text-end">
+                              <div class="tp-slider-thumb text-start text-sm-end">
                                  <img src="../assets/img/slider/test-product.png" alt="slider-img">
                               </div>
                            </div>
@@ -72,7 +72,7 @@
                      </div>
                      <div class="container">
                         <div class="row align-items-center">
-                           <div class="col-xl-5 col-lg-6 col-md-6">
+                           <div class="col-xl-5 col-lg-6 col-md-6 mt-3 mt-sm-0">
                               <div class="tp-slider-content p-relative z-index-1">
                                  <span><b>₾274.00</b></span>
                                  <h3 class="tp-slider-title">ორთქლით ფარების გამწმდენდი გასაპრიალებელი ნაკრები</h3>
@@ -94,7 +94,7 @@
                               </div>
                            </div>
                            <div class="col-xl-7 col-lg-6 col-md-6">
-                              <div class="tp-slider-thumb text-end">
+                              <div class="tp-slider-thumb text-start text-sm-end">
                                  <img src="../assets/img/slider/test-product.png" alt="slider-img">
                               </div>
                            </div>

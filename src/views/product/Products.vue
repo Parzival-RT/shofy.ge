@@ -71,7 +71,7 @@
                                 <!-- Row -->
                                 <div class="row infinite-container">
                                     <!-- Col -->
-                                    <div class="col-lg-3 col-md-6 col-sm-6 infinite-item" v-for="(item, index) in product" :key="index">
+                                    <div class="col-6 col-lg-3 col-md-6 col-sm-6 infinite-item" v-for="(item, index) in product" :key="index">
 
                                         <!-- Product View -->
                                         <div class="tp-product-item-2 mb-40">
@@ -85,7 +85,9 @@
                                                 <!-- product action -->
                                                 <div class="tp-product-action-2 tp-product-action-blackStyle">
                                                     <div class="tp-product-action-item-2 d-flex flex-column">
-                                                        <button type="button" class="tp-product-action-btn-2 tp-product-add-cart-btn" @click="fill_cart(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
+
+                                                        <!-- Add Product Once -->
+                                                        <button type="button" class="tp-product-action-btn-2 tp-product-add-cart-btn" @click="fill_cart($event, item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
                                                             <svg width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M3.34706 4.53799L3.85961 10.6239C3.89701 11.0923 4.28036 11.4436 4.74871 11.4436H4.75212H14.0265H14.0282C14.4711 11.4436 14.8493 11.1144 14.9122 10.6774L15.7197 5.11162C15.7384 4.97924 15.7053 4.84687 15.6245 4.73995C15.5446 4.63218 15.4273 4.5626 15.2947 4.54393C15.1171 4.55072 7.74498 4.54054 3.34706 4.53799ZM4.74722 12.7162C3.62777 12.7162 2.68001 11.8438 2.58906 10.728L1.81046 1.4837L0.529505 1.26308C0.181854 1.20198 -0.0501969 0.873587 0.00930333 0.526523C0.0705036 0.17946 0.406255 -0.0462578 0.746256 0.00805037L2.51426 0.313534C2.79901 0.363599 3.01576 0.5995 3.04042 0.888012L3.24017 3.26484C15.3748 3.26993 15.4139 3.27587 15.4726 3.28266C15.946 3.3514 16.3625 3.59833 16.6464 3.97849C16.9303 4.35779 17.0493 4.82535 16.9813 5.29376L16.1747 10.8586C16.0225 11.9177 15.1011 12.7162 14.0301 12.7162H14.0259H4.75402H4.74722Z" fill="currentColor"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12.6629 7.67446H10.3067C9.95394 7.67446 9.66919 7.38934 9.66919 7.03804C9.66919 6.68673 9.95394 6.40161 10.3067 6.40161H12.6629C13.0148 6.40161 13.3004 6.68673 13.3004 7.03804C13.3004 7.38934 13.0148 7.67446 12.6629 7.67446Z" fill="currentColor"></path>
@@ -93,33 +95,44 @@
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M4.38082 15.3091C4.28477 15.3091 4.20657 15.3873 4.20657 15.4833C4.20657 15.6763 4.55592 15.6763 4.55592 15.4833C4.55592 15.3873 4.47687 15.3091 4.38082 15.3091ZM4.38067 16.5815C3.77376 16.5815 3.28076 16.0884 3.28076 15.4826C3.28076 14.8767 3.77376 14.3845 4.38067 14.3845C4.98757 14.3845 5.48142 14.8767 5.48142 15.4826C5.48142 16.0884 4.98757 16.5815 4.38067 16.5815Z" fill="currentColor"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9701 15.0212C14.2259 15.0212 14.4333 15.2278 14.4333 15.4836C14.4333 15.7395 14.2259 15.9469 13.9701 15.9469C13.7134 15.9469 13.5068 15.7395 13.5068 15.4836C13.5068 15.2278 13.7134 15.0212 13.9701 15.0212Z" fill="currentColor"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M13.9692 15.3092C13.874 15.3092 13.7958 15.3874 13.7958 15.4835C13.7966 15.6781 14.1451 15.6764 14.1443 15.4835C14.1443 15.3874 14.0652 15.3092 13.9692 15.3092ZM13.969 16.5815C13.3621 16.5815 12.8691 16.0884 12.8691 15.4826C12.8691 14.8767 13.3621 14.3845 13.969 14.3845C14.5768 14.3845 15.0706 14.8767 15.0706 15.4826C15.0706 16.0884 14.5768 16.5815 13.969 16.5815Z" fill="currentColor"></path>
-                                                            </svg>                                          
-                                                            <span class="tp-product-tooltip tp-product-tooltip-right">დაამატე კალათაში</span>
+                                                            </svg>                                      
+                                                            <span class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">დაამატე კალათაში</span>
                                                         </button>
+                                                        <button type="button" class="tp-product-action-btn-2 tp-product-add-cart-btn d-none"> 
+                                                            <span>+1</span>                                      
+                                                            <span class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">დაამატე კალათაში</span>
+                                                        </button>
+                                                        <!-- End Add Product Once -->
+
+                                                        <!-- Quick View -->
                                                         <button type="button" class="tp-product-action-btn-2 tp-product-quick-view-btn" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal_'+item.id">
                                                             <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99948 5.06828C7.80247 5.06828 6.82956 6.04044 6.82956 7.23542C6.82956 8.42951 7.80247 9.40077 8.99948 9.40077C10.1965 9.40077 11.1703 8.42951 11.1703 7.23542C11.1703 6.04044 10.1965 5.06828 8.99948 5.06828ZM8.99942 10.7482C7.0581 10.7482 5.47949 9.17221 5.47949 7.23508C5.47949 5.29705 7.0581 3.72021 8.99942 3.72021C10.9407 3.72021 12.5202 5.29705 12.5202 7.23508C12.5202 9.17221 10.9407 10.7482 8.99942 10.7482Z" fill="currentColor"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.41273 7.2346C3.08674 10.9265 5.90646 13.1215 8.99978 13.1224C12.0931 13.1215 14.9128 10.9265 16.5868 7.2346C14.9128 3.54363 12.0931 1.34863 8.99978 1.34773C5.90736 1.34863 3.08674 3.54363 1.41273 7.2346ZM9.00164 14.4703H8.99804H8.99714C5.27471 14.4676 1.93209 11.8629 0.0546754 7.50073C-0.0182251 7.33091 -0.0182251 7.13864 0.0546754 6.96883C1.93209 2.60759 5.27561 0.00288103 8.99714 0.000185582C8.99894 -0.000712902 8.99894 -0.000712902 8.99984 0.000185582C9.00164 -0.000712902 9.00164 -0.000712902 9.00254 0.000185582C12.725 0.00288103 16.0676 2.60759 17.945 6.96883C18.0188 7.13864 18.0188 7.33091 17.945 7.50073C16.0685 11.8629 12.725 14.4676 9.00254 14.4703H9.00164Z" fill="currentColor"></path>
                                                             </svg>                                                                       
-                                                            <span class="tp-product-tooltip tp-product-tooltip-right">ნახე სწრაფად</span>
+                                                            <span class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">ნახე სწრაფად</span>
                                                         </button>
+                                                        <!-- End Quick View -->
+
+                                                        <!-- WishList -->
                                                         <button type="button" :class="item.wish_list_status ? 'bg-danger text-white' : ''" class="tp-product-action-btn-2 tp-product-add-to-wishlist-btn" @click="wish_list(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
                                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M1.60355 7.98635C2.83622 11.8048 7.7062 14.8923 9.0004 15.6565C10.299 14.8844 15.2042 11.7628 16.3973 7.98985C17.1806 5.55102 16.4535 2.46177 13.5644 1.53473C12.1647 1.08741 10.532 1.35966 9.40484 2.22804C9.16921 2.40837 8.84214 2.41187 8.60476 2.23329C7.41078 1.33952 5.85105 1.07778 4.42936 1.53473C1.54465 2.4609 0.820172 5.55014 1.60355 7.98635ZM9.00138 17.0711C8.89236 17.0711 8.78421 17.0448 8.68574 16.9914C8.41055 16.8417 1.92808 13.2841 0.348132 8.3872C0.347252 8.3872 0.347252 8.38633 0.347252 8.38633C-0.644504 5.30321 0.459792 1.42874 4.02502 0.284605C5.69904 -0.254635 7.52342 -0.0174044 8.99874 0.909632C10.4283 0.00973263 12.3275 -0.238878 13.9681 0.284605C17.5368 1.43049 18.6446 5.30408 17.6538 8.38633C16.1248 13.2272 9.59485 16.8382 9.3179 16.9896C9.21943 17.0439 9.1104 17.0711 9.00138 17.0711Z" fill="currentColor"></path>
                                                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M14.203 6.67473C13.8627 6.67473 13.5743 6.41474 13.5462 6.07159C13.4882 5.35202 13.0046 4.7445 12.3162 4.52302C11.9689 4.41097 11.779 4.04068 11.8906 3.69666C12.0041 3.35175 12.3724 3.16442 12.7206 3.27297C13.919 3.65901 14.7586 4.71561 14.8615 5.96479C14.8905 6.32632 14.6206 6.64322 14.2575 6.6721C14.239 6.67385 14.2214 6.67473 14.203 6.67473Z" fill="currentColor"></path>
                                                             </svg>                                                                               
-                                                            <span v-if="item.wish_list_status" class="tp-product-tooltip tp-product-tooltip-right">ამოშალე სურვილების სიიდან</span>
-                                                            <span v-else class="tp-product-tooltip tp-product-tooltip-right">დაამატე სურვილების სიაში</span>
+                                                            <span v-if="item.wish_list_status" class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">ამოშალე სურვილების სიიდან</span>
+                                                            <span v-else class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">დაამატე სურვილების სიაში</span>
                                                         </button>
+                                                        <!-- End WishList -->
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="tp-product-content-2 pt-15">
-                                                <div class="tp-product-tag-2">
+                                                <div class="tp-product-tag-2 d-none d-sm-block">
                                                     <a href="#">{{ item.type }}</a>
                                                 </div>
                                                 <h3 class="tp-product-title-2">
-                                                    <a href="product-details.html">{{ item.title }}</a>
+                                                    <router-link :to="'/inner/'+item.id">{{ item.title }}</router-link>
                                                 </h3>
                                                 <!-- Display stars for average rating -->
                                                 <div class="tp-product-details-review-form-rating-icon">
@@ -196,10 +209,14 @@
                                                                 </div>
                                                             </div>
 
-                                                            <p>{{ item.description }}</p>
+                                                            <p class="text-content position-relative">
+                                                                <p>{{ item.description }}</p>
+                                                                <div class="position-absolute w-100" style="height: 30px; background-color: #ffffff81;bottom: 0;left: 0;"></div>
+                                                            </p>
+                                                            <button @click="read_more($event)" class="read-more-button btn btn-outline-dark mt-1">მეტი</button>
                                     
                                                             <!-- price and discount -->
-                                                            <div class="tp-product-badge position-static">
+                                                            <div class="tp-product-badge position-static mt-2">
                                                                 <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
                                                             </div>
                                                             <div class="tp-product-details-price-wrapper mb-20">
@@ -276,9 +293,9 @@
                             <!-- Second Tab Product View -->
                             <div :class="{'active show': product.length < 4}" class="tab-pane fade" id="list-tab-pane" role="tabpanel" aria-labelledby="list-tab" tabindex="0">
                                 <div class="tp-shop-list-wrapper tp-shop-item-primary mb-70">
-                                    <div class="row">
-                                        <div class="col-xl-12">
-                                            <div class="tp-product-list-item d-md-flex" v-for="(item, index) in product" :key="index">
+                                    <div class="row gy-3">
+                                        <div class="col-xl-12" v-for="(item, index) in product" :key="index">
+                                            <div class="tp-product-list-item d-md-flex">
                                                
                                                 <!-- Product static content -->
                                                 <div class="tp-product-list-thumb p-relative fix">
@@ -291,22 +308,26 @@
                                                 <!-- product action -->
                                                 <div class="tp-product-action-2 tp-product-action-blackStyle">
                                                     <div class="tp-product-action-item-2 d-flex flex-column">
+                                                        <!-- Quick View -->
                                                         <button type="button" class="tp-product-action-btn-2 tp-product-quick-view-btn" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal1_'+item.id">
                                                             <svg width="18" height="15" viewBox="0 0 18 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99948 5.06828C7.80247 5.06828 6.82956 6.04044 6.82956 7.23542C6.82956 8.42951 7.80247 9.40077 8.99948 9.40077C10.1965 9.40077 11.1703 8.42951 11.1703 7.23542C11.1703 6.04044 10.1965 5.06828 8.99948 5.06828ZM8.99942 10.7482C7.0581 10.7482 5.47949 9.17221 5.47949 7.23508C5.47949 5.29705 7.0581 3.72021 8.99942 3.72021C10.9407 3.72021 12.5202 5.29705 12.5202 7.23508C12.5202 9.17221 10.9407 10.7482 8.99942 10.7482Z" fill="currentColor"></path>
-                                                            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.41273 7.2346C3.08674 10.9265 5.90646 13.1215 8.99978 13.1224C12.0931 13.1215 14.9128 10.9265 16.5868 7.2346C14.9128 3.54363 12.0931 1.34863 8.99978 1.34773C5.90736 1.34863 3.08674 3.54363 1.41273 7.2346ZM9.00164 14.4703H8.99804H8.99714C5.27471 14.4676 1.93209 11.8629 0.0546754 7.50073C-0.0182251 7.33091 -0.0182251 7.13864 0.0546754 6.96883C1.93209 2.60759 5.27561 0.00288103 8.99714 0.000185582C8.99894 -0.000712902 8.99894 -0.000712902 8.99984 0.000185582C9.00164 -0.000712902 9.00164 -0.000712902 9.00254 0.000185582C12.725 0.00288103 16.0676 2.60759 17.945 6.96883C18.0188 7.13864 18.0188 7.33091 17.945 7.50073C16.0685 11.8629 12.725 14.4676 9.00254 14.4703H9.00164Z" fill="currentColor"></path>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M8.99948 5.06828C7.80247 5.06828 6.82956 6.04044 6.82956 7.23542C6.82956 8.42951 7.80247 9.40077 8.99948 9.40077C10.1965 9.40077 11.1703 8.42951 11.1703 7.23542C11.1703 6.04044 10.1965 5.06828 8.99948 5.06828ZM8.99942 10.7482C7.0581 10.7482 5.47949 9.17221 5.47949 7.23508C5.47949 5.29705 7.0581 3.72021 8.99942 3.72021C10.9407 3.72021 12.5202 5.29705 12.5202 7.23508C12.5202 9.17221 10.9407 10.7482 8.99942 10.7482Z" fill="currentColor"></path>
+                                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.41273 7.2346C3.08674 10.9265 5.90646 13.1215 8.99978 13.1224C12.0931 13.1215 14.9128 10.9265 16.5868 7.2346C14.9128 3.54363 12.0931 1.34863 8.99978 1.34773C5.90736 1.34863 3.08674 3.54363 1.41273 7.2346ZM9.00164 14.4703H8.99804H8.99714C5.27471 14.4676 1.93209 11.8629 0.0546754 7.50073C-0.0182251 7.33091 -0.0182251 7.13864 0.0546754 6.96883C1.93209 2.60759 5.27561 0.00288103 8.99714 0.000185582C8.99894 -0.000712902 8.99894 -0.000712902 8.99984 0.000185582C9.00164 -0.000712902 9.00164 -0.000712902 9.00254 0.000185582C12.725 0.00288103 16.0676 2.60759 17.945 6.96883C18.0188 7.13864 18.0188 7.33091 17.945 7.50073C16.0685 11.8629 12.725 14.4676 9.00254 14.4703H9.00164Z" fill="currentColor"></path>
                                                             </svg>                                                                       
-                                                            <span class="tp-product-tooltip tp-product-tooltip-right">ნახე სწრაფად</span>
+                                                            <span class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">ნახე სწრაფად</span>
                                                         </button>
+                                                        <!-- End Quick View -->
 
+                                                        <!-- WishList -->
                                                         <button type="button" :class="item.wish_list_status ? 'bg-danger text-white' : ''" class="tp-product-action-btn-2 tp-product-add-to-wishlist-btn" @click="wish_list(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
                                                             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M1.60355 7.98635C2.83622 11.8048 7.7062 14.8923 9.0004 15.6565C10.299 14.8844 15.2042 11.7628 16.3973 7.98985C17.1806 5.55102 16.4535 2.46177 13.5644 1.53473C12.1647 1.08741 10.532 1.35966 9.40484 2.22804C9.16921 2.40837 8.84214 2.41187 8.60476 2.23329C7.41078 1.33952 5.85105 1.07778 4.42936 1.53473C1.54465 2.4609 0.820172 5.55014 1.60355 7.98635ZM9.00138 17.0711C8.89236 17.0711 8.78421 17.0448 8.68574 16.9914C8.41055 16.8417 1.92808 13.2841 0.348132 8.3872C0.347252 8.3872 0.347252 8.38633 0.347252 8.38633C-0.644504 5.30321 0.459792 1.42874 4.02502 0.284605C5.69904 -0.254635 7.52342 -0.0174044 8.99874 0.909632C10.4283 0.00973263 12.3275 -0.238878 13.9681 0.284605C17.5368 1.43049 18.6446 5.30408 17.6538 8.38633C16.1248 13.2272 9.59485 16.8382 9.3179 16.9896C9.21943 17.0439 9.1104 17.0711 9.00138 17.0711Z" fill="currentColor"></path>
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M14.203 6.67473C13.8627 6.67473 13.5743 6.41474 13.5462 6.07159C13.4882 5.35202 13.0046 4.7445 12.3162 4.52302C11.9689 4.41097 11.779 4.04068 11.8906 3.69666C12.0041 3.35175 12.3724 3.16442 12.7206 3.27297C13.919 3.65901 14.7586 4.71561 14.8615 5.96479C14.8905 6.32632 14.6206 6.64322 14.2575 6.6721C14.239 6.67385 14.2214 6.67473 14.203 6.67473Z" fill="currentColor"></path>
                                                             </svg>                                                                               
-                                                            <span v-if="item.wish_list_status" class="tp-product-tooltip tp-product-tooltip-right">ამოშალე სურვილების სიიდან</span>
-                                                            <span v-else class="tp-product-tooltip tp-product-tooltip-right">დაამატე სურვილების სიაში</span>
+                                                            <span v-if="item.wish_list_status" class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">ამოშალე სურვილების სიიდან</span>
+                                                            <span v-else class="tp-product-tooltip tp-product-tooltip-right d-none d-sm-block">დაამატე სურვილების სიაში</span>
                                                         </button>
+                                                        <!-- End WishList -->
                                                     </div>
                                                 </div>
                                                 </div>
@@ -324,18 +345,22 @@
                                                         </div>
                                                         <p>{{ item.description }}</p>
                                                         <div class="d-flex align-items-center gap-1 flex-wrap">
-                                                            <div class="tp-product-list-add-to-cart" @click="fill_cart(item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
-                                                            <button class="tp-product-list-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 px-3 py-2">
-                                                                <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                    <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                    <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                    <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                                                </svg> 
-                                                                დაამატე კალათაში
-                                                            </button>
-                                                        </div>
-                                                        <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)">ყიდვა</button>
+                                                            <div class="tp-product-list-add-to-cart" @click="fill_cart($event, item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
+                                                                <button data-cart="add" class="tp-product-list-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 px-3 py-2">
+                                                                    <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                        <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                        <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                        <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                                    </svg> 
+                                                                    დაამატე კალათაში
+                                                                </button>
+                                                                <button class="tp-product-list-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 px-3 py-2 d-none">
+                                                                    <i class="tio-checkmark-circle-outlined fs-4"></i> 
+                                                                    წარმატებით დემატა  
+                                                                </button>
+                                                            </div>
+                                                            <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)">ყიდვა</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -401,10 +426,14 @@
                                                                         </div>
                                                                     </div>
                                                                     
-                                                                    <p>{{ item.description }}</p>
+                                                                    <p class="text-content position-relative">
+                                                                        <p>{{ item.description }}</p>
+                                                                        <div class="position-absolute w-100" style="height: 30px; background-color: #ffffff81;bottom: 0;left: 0;"></div>
+                                                                    </p>
+                                                                    <button @click="read_more($event)" class="read-more-button btn btn-outline-dark mt-1">მეტი</button>
                                             
                                                                     <!-- price and discount -->
-                                                                    <div class="tp-product-badge position-static">
+                                                                    <div class="tp-product-badge position-static mt-2">
                                                                         <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
                                                                     </div>
                                                                     <div class="tp-product-details-price-wrapper mb-20">
@@ -559,10 +588,25 @@ export default {
         },
 
         // Fill Cart from product View
-        fill_cart(id, image, title, type, old_price, price, product_amount) {
-          
+        fill_cart(event, id, image, title, type, old_price, price, product_amount) {
+
+
+            // this code do animation for add product button
+            const element = event.target;
+            element.classList.add('d-none');
+            element.nextElementSibling.classList.remove('d-none');
+            element.nextElementSibling.classList.add('d-block');
+            setTimeout(() => {
+                element.classList.remove('d-none');
+                element.nextElementSibling.classList.remove('d-block');
+                element.classList.add('d-block');
+                element.nextElementSibling.classList.add('d-none');
+            }, 1000);
+
             // this code adds/push once again in cart. e.g if product exist this code push once again product
             const productData = this.$store.state.cart_product; // Data From store State
+
+            
             if (productData.length != [] && productData.find(el => el.id == id)) {
                 productData.filter(item => item.id === id).forEach(el => {
                     if (!el.initial_price) {
@@ -578,7 +622,17 @@ export default {
                             id: id
                         }
                         this.$store.commit('raplace_item_data', data);
-                        this.$store.commit('cart_menu');
+                        
+         
+
+                        // Media Query Validation
+                        const mediaQuery = window.matchMedia("(min-width: 576px)");
+                        const isMaxWidth = mediaQuery.matches;
+
+                        if (isMaxWidth) {
+                            this.$store.commit('cart_menu');
+                        }
+
                         localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                     }
                 })
@@ -601,7 +655,15 @@ export default {
                 initial_old_price: old_price
             };
             this.$store.commit('cart_items', this.addItems);
-            this.$store.commit('cart_menu');
+
+            // Media Query Validation
+            const mediaQuery = window.matchMedia("(min-width: 576px)");
+            const isMaxWidth = mediaQuery.matches;
+
+            if (isMaxWidth) {
+                this.$store.commit('cart_menu');
+            }
+
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
             this.product_amount = 1;
             this.price = 0;
@@ -625,7 +687,16 @@ export default {
 
                        
                         this.$store.commit('raplace_item_data', data);
-                        this.$store.commit('cart_menu');
+
+
+                        // Media Query Validation
+                        const mediaQuery = window.matchMedia("(min-width: 576px)");
+                        const isMaxWidth = mediaQuery.matches;
+
+                        if (isMaxWidth) {
+                            this.$store.commit('cart_menu');
+                        }
+
                         localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                     }
                 })
@@ -650,7 +721,15 @@ export default {
                 initial_old_price: old_price
             };
             this.$store.commit('cart_items', this.addItems);
-            this.$store.commit('cart_menu');
+
+            // Media Query Validation
+            const mediaQuery = window.matchMedia("(min-width: 576px)");
+            const isMaxWidth = mediaQuery.matches;
+
+            if (isMaxWidth) {
+                this.$store.commit('cart_menu');
+            }
+
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
             this.product_amount = 1;
             this.price = 0;
@@ -798,6 +877,31 @@ export default {
             }
 
             
+        },
+
+        // read function more for full description
+        read_more() {
+            const content = event.target.previousElementSibling; // main text-content container
+
+            const absolute_element = content.querySelector('.text-content .position-absolute'); // absolute element with blur effect for read-less description
+
+
+            const isActive = content.classList.contains('active'); // Check if the element has the 'active' class
+            const height = content.querySelector('.text-content p').clientHeight;
+
+            const read_more_btn = content.nextElementSibling; // switch to read more text-content
+
+            content.classList.toggle('active'); // add and remove the active class
+
+            if (isActive) {
+                content.style.height = '100px'; // Set height to 50px when the 'active' class is not present
+                read_more_btn.textContent = 'მეტი'
+                absolute_element.classList.remove('d-none');
+            } else {
+                content.style.height = height + 'px'; // Set height to the original value when the 'active' class is present
+                read_more_btn.textContent = 'ნაკლები'
+                absolute_element.classList.add('d-none');
+            }
         }
 
     },
@@ -831,6 +935,18 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped>
+.text-content {
+   overflow: hidden;
+   height: 100px;
+}
+.tp-product-action-btn-2::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
 </style>
