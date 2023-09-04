@@ -8,7 +8,7 @@ import Inner from '../views/product/Product_inner.vue'
 import Products from '../views/product/All-products.vue'
 
 // Wishlist Page
-import Wishlist from '../views/wishlist/Wishlist.vue'
+import Wishlist from '../views/wishlist/Index.vue'
 
 // Checkout Page
 import Checkout from '../views/checkout/Index.vue'

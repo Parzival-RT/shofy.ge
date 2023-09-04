@@ -1,9 +1,9 @@
 <template>
-    <section class="tp-product-area pt-80 pb-50">
+    <section class="tp-product-area pt-50 pb-50">
         <!-- Product Container -->
         <div class="container">
             <!-- Row -->
-            <div class="row align-items-end mb-40">
+            <div class="row align-items-end mb-40 d-none d-sm-flex">
                 <!-- Breadcrumb for main page -->
                 <!-- <div class="col-7">
                     <div class="tp-section-title-wrapper">
@@ -14,7 +14,7 @@
 
                 <!-- breadcrumb area -->
                 <div class="col-md-9">
-                    <div class="breadcrumb__content p-relative z-index-1">
+                    <div class="breadcrumb__content p-relative z-index-1 text-center text-sm-start">
                         <h3 class="breadcrumb__title">პროდუქტები</h3>
                         <div class="breadcrumb__list" v-if="this.$route.path == '/Products'">
                             <span><router-link to="/">მთავარი</router-link></span>
@@ -25,8 +25,8 @@
                 <!-- End breadcrumb area -->
 
                 <!-- col -->
-                <div class="col-md-3">
-                    <div class="tp-shop-top-left d-flex align-items-center justify-content-md-end">
+                <div class="col-md-3 mt-3 mt-sm-0">
+                    <div class="tp-shop-top-left d-flex align-items-center justify-content-center justify-content-sm-end">
                         <div class="tp-shop-top-tab tp-tab me-0">
                             <ul class="nav nav-tabs" id="productTab" role="tablist">
                                 <li class="nav-item" role="presentation">
@@ -161,6 +161,7 @@
                                                         <!-- End Close Modal -->
 
                                                         <!-- Product Images -->
+                                                        
                                                         <div class="tp-product-details-thumb-wrapper tp-tab d-sm-flex">
                                                             <nav class="product-images">
                                                                 <div class="nav nav-tabs d-inline-flex d-md-flex flex-nowrap flex-md-wrap flex-sm-column " id="productDetailsNavThumb_main" role="tablist">
@@ -173,6 +174,12 @@
                                                                     <button class="nav-link" :id="'nav-3-tab_'+item.id" data-bs-toggle="tab" :data-bs-target="'#nav-3'+item.id" type="button" role="tab" :aria-controls="'nav-3'+item.id" aria-selected="true">
                                                                         <img :src="item.images[1].img" alt="">
                                                                     </button>
+                                                                    <button class="nav-link" :id="'nav-4-tab_'+item.id" data-bs-toggle="tab" :data-bs-target="'#nav-4'+item.id" type="button" role="tab" :aria-controls="'nav-4'+item.id" aria-selected="true">
+                                                                        <img :src="item.images[2].img" alt="">
+                                                                    </button>
+                                                                    <!-- <button v-for="(item_image, index) in item.images" :key="index" class="nav-link" :id="'nav-3-tab_'+index" data-bs-toggle="tab" :data-bs-target="'#nav-3'+index" type="button" role="tab" :aria-controls="'nav-3'+index" aria-selected="false">
+                                                                        <img :src="item_image.img" alt="">
+                                                                    </button> -->
                                                                 </div>
                                                             </nav>
                                                             <div class="tab-content m-img" id="productDetailsNavContent_main">
@@ -191,6 +198,16 @@
                                                                         <img :src="item.images[1].img" alt="">
                                                                     </div>
                                                                 </div>
+                                                                <div class="tab-pane fade" :id="'nav-4'+item.id" role="tabpanel" :aria-labelledby="'nav-4-tab_'+item.id" tabindex="0">
+                                                                    <div class="tp-product-details-nav-main-thumb">
+                                                                        <img :src="item.images[2].img" alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <!-- <div class="tab-pane fade" v-for="(item_image, index) in item.images" :key="index" :id="'nav-3'+index" role="tabpanel" :aria-labelledby="'nav-3-tab_'+index" tabindex="0">
+                                                                    <div class="tp-product-details-nav-main-thumb">
+                                                                        <img :src="item_image.img" alt="">
+                                                                    </div>
+                                                                </div> -->
                                                             </div>
                                                         </div>
                                                         <!-- End Product Images -->
@@ -231,11 +248,11 @@
                                                                 <div class="tp-product-details-action-item-wrapper d-sm-flex align-items-center">
                                                                     <div class="tp-product-details-quantity">
                                                                         <div class="tp-product-quantity mb-15 mr-15">
-                                                                            <span class="tp-cart-minus" @click="minus(item.id)">
+                                                                            <button :disabled="product_amount == 1" class="tp-cart-minus" @click="minus(item.id)">
                                                                                 <svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                     <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                                 </svg>                                                            
-                                                                            </span>
+                                                                            </button>
                                                                             <input class="tp-cart-input" type="text" v-model="product_amount" disabled/>
                                                                             <span class="tp-cart-plus" @click="plus(item.id)">
                                                                                 <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -345,8 +362,8 @@
                                                         </div>
                                                         <p>{{ item.description }}</p>
                                                         <div class="d-flex align-items-center gap-1 flex-wrap">
-                                                            <div class="tp-product-list-add-to-cart" @click="fill_cart($event, item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
-                                                                <button data-cart="add" class="tp-product-list-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 px-3 py-2">
+                                                            <div class="tp-product-list-add-to-cart">
+                                                                <button class="tp-product-list-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 px-3 py-2" @click="fill_cart($event, item.id, item.image, item.title, item.type, item.old_price, item.price, 1)">
                                                                     <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                         <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -448,11 +465,11 @@
                                                                         <div class="tp-product-details-action-item-wrapper d-sm-flex align-items-center">
                                                                             <div class="tp-product-details-quantity">
                                                                                 <div class="tp-product-quantity mb-15 mr-15">
-                                                                                    <span class="tp-cart-minus" @click="minus(item.id)">
+                                                                                    <button :disabled="product_amount == 1" class="tp-cart-minus" @click="minus(item.id)">
                                                                                         <svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                             <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                                         </svg>                                                            
-                                                                                    </span>
+                                                                                    </button>
                                                                                     <input class="tp-cart-input" type="text" v-model="product_amount" disabled/>
                                                                                     <span class="tp-cart-plus" @click="plus(item.id)">
                                                                                         <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -507,17 +524,31 @@
                             <!-- End Second Tab Product View -->
 
                         </div>                     
-                        <!-- End Product Tab Content-->                       
+                        <!-- End Product Tab Content-->  
+                        
+                        <!-- More Products -->
+                        <div class="text-center mt-20 mb-20">
+                            <router-link to="/Products" v-if="this.$route.path != '/Products'" class="tp-btn">
+                                <svg width="20" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg> 
+                                პროდუქტები
+                            </router-link>
+                        </div>
+                        <!-- End More Products -->
                     </div>
                 </div>
             </div>
             <!-- End col -->
 
             <!-- Col For Pagination ////// - (this col this will appear in All_products Component) -->
-            <div class="tp-shop-pagination mt-20" v-if="this.$route.path == '/Products'">
+            <div class="tp-shop-pagination mt-20 " v-if="this.$route.path == '/Products'">
                 <div class="tp-pagination">
                     <nav>
-                        <ul>
+                        <ul class="justify-content-center justify-content-sm-start">
                         <li>
                             <a href="shop.html" class="tp-pagination-prev prev page-numbers">
                                 <svg width="15" height="13" viewBox="0 0 15 13" fill="none" xmlns="http://www.w3.org/2000/svg">

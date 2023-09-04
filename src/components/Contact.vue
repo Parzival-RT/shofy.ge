@@ -211,7 +211,7 @@
       <!-- End Contact Content -->
 
       <!-- Footer -->
-      <Footer v-if="!this.$store.state.loading" />
+      <Footer class="d-none d-sm-block" v-if="!this.$store.state.loading" />
       <!-- End Footer -->
    </div>
 </template>

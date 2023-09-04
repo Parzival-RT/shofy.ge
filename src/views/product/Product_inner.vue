@@ -106,7 +106,7 @@
                                     <img :src="item.img" alt="">
                                  </div>
                               </div>
-                              </div>
+                           </div>
                         </div>
                      </div> <!-- col end -->
                      <div class="col-xl-5 col-lg-6">
@@ -139,11 +139,11 @@
                               <div class="tp-product-details-action-item-wrapper d-sm-flex align-items-center">
                                  <div class="tp-product-details-quantity">
                                     <div class="tp-product-quantity mb-15 mr-15">
-                                          <span class="tp-cart-minus" @click="minus(product_data_by_id.id)">
+                                          <button :disabled="product_amount == 1" class="tp-cart-minus" @click="minus(product_data_by_id.id)">
                                              <svg width="11" height="2" viewBox="0 0 11 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                              </svg>                                                            
-                                          </span>
+                                          </button>
                                           <input class="tp-cart-input" type="text" v-model="product_amount" disabled/>
                                           <span class="tp-cart-plus" @click="plus(product_data_by_id.id)">
                                              <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -543,9 +543,9 @@
                   
                      <!-- price -->
                      <div class="tp-product-details-price-wrapper d-flex flex-column">
-                        <h5 class="text-danger h5 mb-0 d-none d-md-block">{{ product_data_by_id.title }}</h5>
+                        <h5 class="h5 mb-0 d-none d-md-block">{{ product_data_by_id.title }}</h5>
                         <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
-                        <span class="tp-product-details-price new-price">{{ product_data_by_id.price + price }} ₾</span>
+                        <span class="new-price tp-product-price">{{ product_data_by_id.price + price }} ₾</span>
                      </div>
                   </div>
                </div>
@@ -554,6 +554,10 @@
                <!-- Col -->
                <div class="col-6 col-md-4">
                   <div class="d-flex justify-content-end align-items-center gap-1">
+                     <!-- price and discount -->
+                     <div class="tp-product-badge position-static me-1 me-sm-3 d-flex">
+                        <span class="product-offer">-{{ Math.round(((product_data_by_id.old_price - product_data_by_id.price) / product_data_by_id.old_price) * 100) }}%</span>
+                     </div>
                      <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
                      <button class="tp-btn px-3 py-2 add_cart" @click="fill_cart_from_inner_product($event, product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -564,7 +568,8 @@
                         </svg>
                      </button>
                      <button class="tp-btn px-3 py-2 d-none">
-                        <i class="tio-checkmark-circle-outlined fs-4"></i>  
+                        <!-- <i class="tio-checkmark-circle-outlined fs-4"></i>   -->
+                        +1
                      </button>
                   </div>
                </div>
@@ -579,7 +584,7 @@
       <!-- End Product Content -->
 
       <!-- Footer -->
-      <Footer v-if="!this.$store.state.loading" />
+      <Footer class="d-none d-sm-block" v-if="!this.$store.state.loading" />
       <!-- End Footer -->
 
    </div>

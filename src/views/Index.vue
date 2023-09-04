@@ -35,7 +35,7 @@
       <!-- Main -->
       <main v-if="!this.$store.state.loading">
          <!-- Slider --> 
-         <Slider />
+         <Slider class="d-none d-sm-block" />
          <!-- End Slider --> 
          
          <!-- Products -->
@@ -49,7 +49,7 @@
       <!-- End Main -->
       
       <!-- Footer -->
-      <Footer v-if="!this.$store.state.loading" />
+      <Footer class="d-none d-sm-block" v-if="!this.$store.state.loading" />
       <!-- End Footer -->
 
    </div>

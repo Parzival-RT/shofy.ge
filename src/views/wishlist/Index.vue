@@ -1,5 +1,6 @@
 <template>
     <div>
+
         <!-- Pre Loader -->
         <div id="loading" v-if="this.$store.state.loading">
             <div id="loading-center">
@@ -30,21 +31,18 @@
         <!-- Mobile Header -->
         <MobileHeader />
         <!-- End Mobile Header -->
-    
-        <!-- Product Content -->
-        <main class="pb-50">
+        
+        <!-- Wishlist Content -->
+        <Wishlist />
+        <!-- End Wishlist Contnt -->
 
-            <Products />
+        <!-- Footer -->
+        <Footer class="d-none d-sm-block" v-if="!this.$store.state.loading" />
+        <!-- End Footer -->
 
-        </main>
-        <!-- End Product Content -->
-
-    <!-- Footer -->
-    <Footer class="d-none d-sm-block" v-if="!this.$store.state.loading" />
-    <!-- End Footer -->
     </div>
 </template>
-
+  
 <script>
 // Header Component
 import Header from '@/components/Header.vue'
@@ -55,16 +53,16 @@ import MobileHeader from '@/components/Mobile-header.vue'
 // Footer Component
 import Footer from '@/components/Footer.vue'
 
-// Products
-import Products from './Products.vue'
+// Cart Content
+import Wishlist from './Wishlist.vue'
 
 export default {
-    name: "All-products",
+    name: "Index",
     components: {
         Header,
         MobileHeader,
         Footer,
-        Products
+        Wishlist
     },
     mounted() {
 
@@ -73,12 +71,9 @@ export default {
             this.$store.state.loading = false;
         }, 1000)
 
-        window.scrollTo(0, 0)
-
     }
 }
 </script>
-
-<style scoped>
-    
+  
+<style>
 </style>

@@ -36,7 +36,7 @@
     <!-- End Checkout Content -->
 
     <!-- Footer -->
-    <Footer v-if="!this.$store.state.loading" />
+    <Footer class="d-none d-sm-block" v-if="!this.$store.state.loading" />
     <!-- End Footer -->
 </div>
 </template>
@@ -45,7 +45,7 @@
 // Header Component
 import Header from '@/components/Header.vue'
 
-// Header Component
+// Mobile Header Component
 import MobileHeader from '@/components/Mobile-header.vue'
 
 // Footer Component

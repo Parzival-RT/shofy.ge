@@ -320,10 +320,12 @@
                       <h5 class="cartmini__title"><router-link :to="'/Inner/'+item.id">{{ item.title }}</router-link></h5>
                       <div class="cartmini__price-wrapper">
                         <span class="cartmini__price me-1">{{ item.price }}₾</span>
-                        <span class="cartmini__quantity">x{{ item.product_amount }}</span>
+                        <div class="d-flex justify-content-between">
+                          <span class="cartmini__quantity">x{{ item.product_amount }}</span>
+                          <button @click="deleteItem(index)"><i class="tio-delete-outlined fs-6"></i></button>
+                        </div>
                       </div>
                     </div>
-                    <button @click="deleteItem(index)" class="cartmini__del"><i class="tio-clear"></i></button>
                 </div>
             </div>
             <!-- End Product List -->
@@ -369,91 +371,94 @@ import router from '@/router';
 
 
 export default {
-    name: 'Header',
-    data() {
-        return {
-            // Tracks the scroll position
-            isScrolled: 0
-        };
-    },
-    mounted() {
-        // Tracks the scroll position
-        window.addEventListener('scroll', this.handleScroll);
-        
-        // this function send data of the replace_items which return of the existing data from the localstorage 
-        if (localStorage.getItem("cart_items")) {
-            this.$store.commit("replace_items", JSON.parse(localStorage.getItem("cart_items")));
-        }
+  name: 'Header',
+  data() {
+    return {
+      // Tracks the scroll position
+      isScrolled: 0
+    };
+  },
+  mounted() {
+    // Tracks the scroll position
+    window.addEventListener('scroll', this.handleScroll);
 
-        // this function send data of the fill_wish_list_from_localstorage which return of the existing wishlist data from the localstorage 
-        if (localStorage.getItem("wish_list")) {
-            this.$store.commit("fill_wish_list_from_localstorage", JSON.parse(localStorage.getItem("wish_list")));
-        }
-    },
-    computed: {
-        // this function return total product quantity
-        getProductsLength() {
-            let total_cart_quantity = 0;
-            for (let item of this.getCartData) {
-                let each_product_quantity = item.product_amount;
-                total_cart_quantity += each_product_quantity;
-            }
-            return total_cart_quantity;
-        },
-        // this function return all products what exists in the local storage
-        getCartData() {
-            return this.$store.getters.getProducts;
-        },
-        // this function return total balance of the existing data in the local storage
-        getFullBalance() {
-            let totalBalance = 0; // Initialize the total balance variable outside the loop
-            for (let item of this.getCartData) {
-                let balance = item.price;
-                totalBalance += balance; // Update the total balance with each item's balance
-            }
-            return totalBalance; // Return the total balance after the loop
-        },
+    // this function send data of the replace_items which return of the existing data from the localstorage 
+    if (localStorage.getItem("cart_items")) {
+      this.$store.commit("replace_items", JSON.parse(localStorage.getItem("cart_items")));
+    }
 
-        // for wishlist 
-        get_wishlist_length() {
-          return this.$store.state.wishlist.length
-        }
-    },
-    methods: {
-        // Reaload Main Page
-        reload_main_page() {
-            if (this.$route.path == '/') {
-                this.$store.state.loading = true;
-                setTimeout(() => {
-                    this.$store.state.loading = false;
-                }, 100);
-            }
-        },
-        // Tracks the scroll position
-        handleScroll() {
-            this.isScrolled = window.pageYOffset;
-        },
-        // this Funtion delete product from cart
-        deleteItem(id) {
-            this.$store.commit("deleteProduct", id);
-            localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-        },
+    // this function send data of the fill_wish_list_from_localstorage which return of the existing wishlist data from the localstorage 
+    if (localStorage.getItem("wish_list")) {
+      this.$store.commit("fill_wish_list_from_localstorage", JSON.parse(localStorage.getItem("wish_list")));
+    }
 
-        // mobile menu animation
-        menu() {
-          setTimeout(() => {this.$store.state.menu = false}, 1)
-          window.scrollTo(0, 0);
-        },
-
-        // cart animation
-        cart() {
-          setTimeout(() => {this.$store.state.cart = false}, 1)
-        },
-    
+    if (this.$route.name == "HomeView" || this.$route.name == "Wishlist" || this.$route.name == "Inner" || this.$route.name == "Products" || this.$route.name == "Contact" || this.$route.name == "Cart" || this.$route.name == "Checkout") {
+      this.$store.state.footer = 0;
+    }
+  },
+  computed: {
+    // this function return total product quantity
+    getProductsLength() {
+      let total_cart_quantity = 0;
+      for (let item of this.getCartData) {
+        let each_product_quantity = item.product_amount;
+        total_cart_quantity += each_product_quantity;
+      }
+      return total_cart_quantity;
     },
-    components: { router }
+    // this function return all products what exists in the local storage
+    getCartData() {
+      return this.$store.getters.getProducts;
+    },
+    // this function return total balance of the existing data in the local storage
+    getFullBalance() {
+      let totalBalance = 0; // Initialize the total balance variable outside the loop
+      for (let item of this.getCartData) {
+        let balance = item.price;
+        totalBalance += balance; // Update the total balance with each item's balance
+      }
+      return totalBalance; // Return the total balance after the loop
+    },
+
+    // for wishlist 
+    get_wishlist_length() {
+      return this.$store.state.wishlist.length
+    }
+  },
+  methods: {
+    // Reaload Main Page
+    reload_main_page() {
+      if (this.$route.path == '/') {
+        this.$store.state.loading = true;
+        setTimeout(() => {
+          this.$store.state.loading = false;
+        }, 100);
+      }
+    },
+    // Tracks the scroll position
+    handleScroll() {
+      this.isScrolled = window.pageYOffset;
+    },
+    // this Funtion delete product from cart
+    deleteItem(id) {
+      this.$store.commit("deleteProduct", id);
+      localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+    },
+
+    // mobile menu animation
+    menu() {
+      setTimeout(() => { this.$store.state.menu = false }, 1)
+      window.scrollTo(0, 0);
+    },
+
+    // cart animation
+    cart() {
+      setTimeout(() => { this.$store.state.cart = false }, 1)
+    },
+
+  },
+  components: { router }
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

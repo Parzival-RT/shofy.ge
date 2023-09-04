@@ -5,10 +5,10 @@
         <section class="breadcrumb__area include-bg pt-80 pb-50" data-bg-color="#EFF1F5" style="background-color: rgb(239, 241, 245);">
         <div class="container">
             <div class="row">
-                <div class="col-xxl-12">
+                <div class="col-xxl-12 text-center text-sm-start">
                     <div class="breadcrumb__content p-relative z-index-1">
                     <h3 class="breadcrumb__title">შეკვეთის გაფორმება</h3>
-                    <div class="breadcrumb__list">
+                    <div class="breadcrumb__list d-none d-sm-block">
                         <span><a href="/">მთავარი გვერდი</a></span>
                         <span>შეკვეთის გაფორმება</span>
                     </div>
@@ -50,7 +50,7 @@
                             </div>
                             <!-- End Pre Loader -->
 
-                            <h3 class="tp-checkout-bill-title">გადახდის დეტალები</h3>
+                            <h3 class="tp-checkout-bill-title fs-4">გადახდის დეტალები</h3>
             
                             <div class="tp-checkout-bill-form">
                                 <div>
@@ -135,7 +135,7 @@
                             </div>
                             <!-- End Pre Loader -->
 
-                        <h3 class="tp-checkout-place-title">თქვენი შეკვეთა</h3>
+                        <h3 class="tp-checkout-place-title fs-4">თქვენი შეკვეთა</h3>
             
                         <div class="tp-order-info-list mt-35">
                             <ul>
@@ -159,12 +159,16 @@
                                             </h5>
                                             <div class="cartmini__price-wrapper">
                                                 <span class="cartmini__price me-1">₾{{ item.price }}</span>
-                                                <span class="cartmini__quantity">x{{ item.product_amount }}</span>
+                                                <div class="d-flex justify-content-between">
+                                                    <span class="cartmini__quantity">x{{ item.product_amount }}</span>
+                                                    <button type="button" @click="deleteItem(index)">
+                                                        <i class="tio-delete-outlined fs-6"></i>
+                                                    </button>
+                                                </div>
                                             </div>
                                         </div>
-                                        <button type="button" @click="deleteItem(index)" class="cartmini__del">
-                                            <i class="tio-clear"></i>
-                                        </button>
+
+
                                     </div>
                                     <div v-if="getCartData.length == 0" class="cartmini__empty mt-0 text-center">
                                         <p>შენი კალათა ცარიელია</p>
@@ -175,7 +179,7 @@
                                 <!-- subtotal -->
                                 <li class="tp-order-info-list-subtotal">
                                     <span>ჯამი</span>
-                                    <span>₾ {{ getFullBalance - coupon }}</span>
+                                    <span>₾ {{ getFullBalance }}</span>
                                 </li>
             
                                 <!-- shipping -->
@@ -196,11 +200,16 @@
                                 <li>
                                     <div class="alert alert-secondary w-100 my-1" role="alert"><i class="tio-credit-card-outlined"></i> კურიერთან ქეშით გადახდა</div>
                                 </li>
+
+                                <li class="tp-order-info-list-total">
+                                    <span>ფასდაკლება</span>
+                                    <span class="text-danger">₾ -{{ coupon }}</span>
+                                </li>
             
                                 <!-- total -->
                                 <li class="tp-order-info-list-total">
-                                <span>მთლიანი ჯამი</span>
-                                <span>₾ {{ getFullBalance + Number.parseInt(this.form.shipping) - coupon }}</span>
+                                    <span>მთლიანი ჯამი</span>
+                                    <span>₾ {{ getFullBalance + Number.parseInt(this.form.shipping) - coupon }}</span>
                                 </li>
                             </ul>
                         </div>
@@ -249,7 +258,8 @@ export default {
                 total: 0,
                 sum_total: 0,
                 rules: false,
-                items: JSON.parse(localStorage.getItem('cart_items'))
+                items: JSON.parse(localStorage.getItem('cart_items')),
+                discount: 0
             },
             loading: false,
             coupon_quantity: 0,
@@ -372,7 +382,7 @@ export default {
             }
 
             // these two from variable i feel with product total balance: this.form.total and  this.form.sum_total
-            this.form.total = totalBalance - this.coupon_quantity;
+            this.form.total = totalBalance;
             this.form.sum_total = totalBalance + Number.parseInt(this.form.shipping) - this.coupon_quantity;
             
 
@@ -382,6 +392,7 @@ export default {
         // if vaucher exists
         coupon() {
             if(localStorage.getItem('coupon')) {
+                this.form.discount = this.coupon_quantity;
                 return this.coupon_quantity;
             }
             return this.coupon_quantity;

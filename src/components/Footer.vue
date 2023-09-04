@@ -1,7 +1,7 @@
 <template>
-    <footer>
+    <footer :style="`margin-bottom: ${this.$store.state.footer}px`">
         <div class="tp-footer-area fooooter" data-bg-color="footer-bg-grey">
-            <div class="tp-footer-top pt-95 pb-40">
+            <div class="tp-footer-top py-5">
                 <!-- Container -->
                 <div class="container">
                     <!-- Row -->
@@ -43,8 +43,8 @@
                         <!-- End Col -->
 
                         <!-- Col -->
-                        <div class="col-xl-5 col-lg-3 col-md-4 col-sm-6 text-end">
-                            <div class="tp-footer-widget footer-col-4 mb-50">
+                        <div class="col-xl-5 col-lg-3 col-md-4 col-sm-6 text-sm-end">
+                            <div class="tp-footer-widget footer-col-4 mb-20">
                                 <h4 class="tp-footer-widget-title">დაგვიკავშირდი</h4>
                                 <div class="tp-footer-widget-content">
                                     <div class="tp-footer-talk mb-20">
@@ -53,7 +53,7 @@
                                         <h4><a href="tel:670-413-90-762">+995 558 18 70 81</a></h4>
                                     </div>
                                     <div class="tp-footer-contact">
-                                        <div class="tp-footer-contact-item d-flex align-items-start justify-content-end">
+                                        <div class="tp-footer-contact-item d-flex align-items-start justify-content-sm-end">
                                         <div class="tp-footer-contact-icon">
                                             <span>
                                                 <svg width="18" height="16" viewBox="0 0 18 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -126,12 +126,12 @@ export default {
         }
     },
     mounted() {
-        setImmediate(() => {
-            if (this.$route.name == "HomeView" || this.$route.name == "Wishlist" || this.$route.name == "Inner") {
-                let footer = document.querySelector("footer");
-                footer.style.marginBottom = this.$store.state.footer + "px";
-            }
-        }, 1000)
+        // setImmediate(() => {
+        //     if (this.$route.name == "HomeView" || this.$route.name == "Wishlist" || this.$route.name == "Inner" || this.$route.name == "Products" || this.$route.name == "Contact" || this.$route.name == "Cart" || this.$route.name == "Checkout") {
+        //         let footer = document.querySelector("footer");
+        //         footer.style.marginBottom = this.$store.state.footer + "px";
+        //     }
+        // }, 1000)
     }
 }
 </script>
