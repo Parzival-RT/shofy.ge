@@ -79,7 +79,7 @@
                                                 <router-link :to="'/inner/'+item.id">
                                                     <img :src="item.image" alt="">
                                                 </router-link>
-                                                <div class="tp-product-badge">
+                                                <div class="tp-product-badge" v-if="item.old_price != 0 || item.old_price != ''">
                                                     <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
                                                 </div>
                                                 <!-- product action -->
@@ -142,7 +142,7 @@
                                                 </div>
                 
                                                 <div class="tp-product-price-wrapper">
-                                                    <span class="tp-product-price old-price me-1">{{ item.old_price }} ₾</span>
+                                                    <span class="tp-product-price old-price me-1" v-if="item.old_price != 0 || item.old_price != ''">{{ item.old_price }} ₾</span>
                                                     <span class="tp-product-price new-price">{{ item.price }} ₾</span>
                                                 </div>
                                             </div>
@@ -319,7 +319,7 @@
                                                 <router-link :to="'/inner/'+item.id">
                                                     <img class="bg-light w-100pre w-sm-250px" :src="item.image" alt="">
                                                 </router-link>
-                                                <div class="tp-product-badge">
+                                                <div class="tp-product-badge" v-if="item.old_price != 0 || item.old_price != ''">
                                                     <span class="product-offer">-{{ Math.round(((item.old_price - item.price) / item.old_price) * 100) }}%</span>
                                                 </div>
                                                 <!-- product action -->
@@ -357,7 +357,7 @@
                                                             <router-link :to="'/inner/'+item.id">{{ item.title }}</router-link>
                                                         </h3>
                                                         <div class="tp-product-price-wrapper-2">
-                                                            <span class="tp-product-price old-price me-1">{{ item.old_price }} ₾</span>
+                                                            <span class="tp-product-price old-price me-1" v-if="item.old_price != 0 || item.old_price != ''">{{ item.old_price }} ₾</span>
                                                             <span class="tp-product-price new-price">{{ item.price }} ₾</span>
                                                         </div>
                                                         <p>{{ item.description }}</p>
@@ -664,6 +664,9 @@ export default {
                             this.$store.commit('cart_menu');
                         }
 
+                        // cookies
+                        // const serializedArray = JSON.stringify(this.$store.state.cart_product);
+                        // document.cookie = "cart_items=" + serializedArray;
                         localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                     }
                 })
@@ -694,6 +697,10 @@ export default {
             if (isMaxWidth) {
                 this.$store.commit('cart_menu');
             }
+
+            // cookies
+            // const serializedArray = JSON.stringify(this.$store.state.cart_product);
+            // document.cookie = "cart_items=" + serializedArray;
 
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
             this.product_amount = 1;

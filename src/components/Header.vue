@@ -387,11 +387,18 @@ export default {
       this.$store.commit("replace_items", JSON.parse(localStorage.getItem("cart_items")));
     }
 
+    // cookies
+    // if(this.getCookieValue("cart_items")) {
+    //   this.$store.commit("replace_items", this.getCookieValue("cart_items"));
+    // }
+
     // this function send data of the fill_wish_list_from_localstorage which return of the existing wishlist data from the localstorage 
     if (localStorage.getItem("wish_list")) {
       this.$store.commit("fill_wish_list_from_localstorage", JSON.parse(localStorage.getItem("wish_list")));
     }
 
+
+    // each commponents which are existing in the if statement this.$store.state.footer variable should be equal = 0
     if (this.$route.name == "HomeView" || this.$route.name == "Wishlist" || this.$route.name == "Inner" || this.$route.name == "Products" || this.$route.name == "Contact" || this.$route.name == "Cart" || this.$route.name == "Checkout") {
       this.$store.state.footer = 0;
     }
@@ -442,7 +449,10 @@ export default {
     // this Funtion delete product from cart
     deleteItem(id) {
       this.$store.commit("deleteProduct", id);
-      localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+      // localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+
+      const serializedArray = JSON.stringify(this.$store.state.cart_product);
+      document.cookie = "cart_items=" + serializedArray;
     },
 
     // mobile menu animation
@@ -455,6 +465,21 @@ export default {
     cart() {
       setTimeout(() => { this.$store.state.cart = false }, 1)
     },
+
+    // cookies
+    // getCookieValue(cookieName) {
+    //   let cookies = document.cookie.split('; ');
+    
+    //   for (let i = 0; i < cookies.length; i++) {
+    //     let cookie = cookies[i].split('=');
+
+    //     if (cookie[0] === cookieName) {
+    //       // Deserialize the stored JSON string back into an array
+    //       return JSON.parse(cookie[1]);
+    //     }
+    //   }
+    //   return null; // Return null if the cookie is not found
+    // }
 
   },
   components: { router }

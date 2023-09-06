@@ -125,11 +125,11 @@
                            <p>{{ product_data_by_id.short_description }}</p>
 
                            <!-- price and discount -->
-                           <div class="tp-product-badge position-static">
+                           <div class="tp-product-badge position-static" v-if="product_data_by_id.old_price != 0 || product_data_by_id.old_price != ''">
                               <span class="product-offer">-{{ Math.round(((product_data_by_id.old_price - product_data_by_id.price) / product_data_by_id.old_price) * 100) }}%</span>
                            </div>
                            <div class="tp-product-details-price-wrapper mb-20">
-                              <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
+                              <span class="tp-product-details-price old-price me-1" v-if="product_data_by_id.old_price != 0 || product_data_by_id.old_price != ''">{{  product_data_by_id.old_price + old_price }} ₾</span>
                               <span class="tp-product-details-price new-price">{{ product_data_by_id.price + price }} ₾</span>
                            </div>
 
@@ -544,7 +544,7 @@
                      <!-- price -->
                      <div class="tp-product-details-price-wrapper d-flex flex-column">
                         <h5 class="h5 mb-0 d-none d-md-block">{{ product_data_by_id.title }}</h5>
-                        <span class="tp-product-details-price old-price me-1">{{  product_data_by_id.old_price + old_price }} ₾</span>
+                        <span class="tp-product-details-price old-price me-1" v-if="product_data_by_id.old_price != 0 || product_data_by_id.old_price != ''">{{  product_data_by_id.old_price + old_price }} ₾</span>
                         <span class="new-price tp-product-price">{{ product_data_by_id.price + price }} ₾</span>
                      </div>
                   </div>
@@ -555,7 +555,7 @@
                <div class="col-6 col-md-4">
                   <div class="d-flex justify-content-end align-items-center gap-1">
                      <!-- price and discount -->
-                     <div class="tp-product-badge position-static me-1 me-sm-3 d-flex">
+                     <div class="tp-product-badge position-static me-1 me-sm-3 d-flex" v-if="product_data_by_id.old_price != 0 || product_data_by_id.old_price != ''">
                         <span class="product-offer">-{{ Math.round(((product_data_by_id.old_price - product_data_by_id.price) / product_data_by_id.old_price) * 100) }}%</span>
                      </div>
                      <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
