@@ -909,24 +909,24 @@ export default {
             })
 
             // change wish_list_status
-            // const wishlist_localstorage_status = JSON.parse(localStorage.getItem('wish_list'));
-            // if (wishlist_localstorage_status) {
+            const wishlist_localstorage_status = JSON.parse(localStorage.getItem('wish_list'));
+            if (wishlist_localstorage_status) {
 
-            //     // this code change all product wish_list_status. if in localstorage doesn't exist 'wish_list'
-            //     if (wishlist_localstorage_status.length == 0) {
-            //         this.product.forEach(item => {
-            //             item.wish_list_status = false;
-            //         })
-            //     }
+                // this code change all product wish_list_status. if in localstorage doesn't exist 'wish_list'
+                if (wishlist_localstorage_status.length == 0) {
+                    this.product.forEach(item => {
+                        item.wish_list_status = false;
+                    })
+                }
 
-            //     // Check if the item's ID is not present in the wishlist_status array
-            //     this.product.forEach(item => {
-            //         if (!wishlist_status.some(wishlistItem => wishlistItem.id === item.id)) {
-            //             item.wish_list_status = false;
-            //         }
-            //     });
+                // Check if the item's ID is not present in the wishlist_status array
+                // this.product.forEach(item => {
+                //     if (!wishlist_status.some(wishlistItem => wishlistItem.id === item.id)) {
+                //         item.wish_list_status = false;
+                //     }
+                // });
 
-            // }
+            }
 
             
         },
