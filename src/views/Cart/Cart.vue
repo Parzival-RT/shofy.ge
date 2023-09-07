@@ -172,6 +172,9 @@ export default {
         // this Funtion delete product from cart
         deleteItem(id) {
             this.$store.commit("deleteProduct", id)
+
+            // set item in cookies
+            // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
         },
         // When user click check coupon button this function check its status code
@@ -185,6 +188,9 @@ export default {
                 return
             } else {
                 this.coupon_quantity = this.getFullBalance * this.discount / 100;
+
+                // cookies
+                // document.cookie = "coupon=" + JSON.stringify(this.coupon_quantity);
                 localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
             }
             this.check_coupon = '';
@@ -204,12 +210,19 @@ export default {
                 item.price = item.price + item.initial_price;
             });
 
+            // const coupon = this.getCookieValue("coupon");
             if (localStorage.getItem('coupon')) {
                 this.coupon_quantity = this.getFullBalance * this.discount / 100;
+
+                // cookies
+                // document.cookie = "coupon=" + JSON.stringify(this.coupon_quantity);
                 localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
             }
             
             this.$store.commit('raplace_item_data', data);
+   
+            // set item in cookies
+            // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
         },
         // Minus Function reduces quantity of the product in the cart
@@ -229,12 +242,19 @@ export default {
                 item.price = item.price - item.initial_price;
             });
 
+            // const coupon = this.getCookieValue("coupon");
             if (localStorage.getItem('coupon')) {
                 this.coupon_quantity = this.getFullBalance * this.discount / 100;
+
+                // cookies
+                // document.cookie = "coupon=" + JSON.stringify(this.coupon_quantity);
                 localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
             }
 
             this.$store.commit('raplace_item_data', data);
+
+            // set item in cookies
+            // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
         }
     },

@@ -277,10 +277,16 @@ export default {
         // this Funtion delete product from cart
         deleteItem(id) {
             this.$store.commit("deleteProduct", id)
+            // cookies
+            // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
 
+            // const coupon = this.getCookieValue("coupon");
             if (localStorage.getItem('coupon')) {
                 this.coupon_quantity = this.getFullBalance * this.discount / 100;
+
+                // cookies
+                // document.cookie = "coupon=" + JSON.stringify(this.coupon_quantity);
                 localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
             }
 
@@ -291,6 +297,25 @@ export default {
             }
             
         },
+        // Cookies
+        // getCookieValue(cookieName) {
+        //     // Split cookies
+        //     const cookies = document.cookie.split(';');
+
+        //     // For each cookie
+        //     for (let i = 0; i < cookies.length; i++) {
+        //         const cookie = cookies[i].trim().split('=');
+
+        //         if (cookie[0] === cookieName) {
+        //             try {
+        //                 return JSON.parse(cookie[1]);
+        //             } catch (error) {
+        //                 return null;
+        //             }
+        //         }
+        //     }
+        //     return null; // Return null if the cookie is not found
+        // },
         // buy
         submitForm() {
             console.log(this.form);
@@ -346,12 +371,17 @@ export default {
 
         // when price amount changes
         getFullBalance() {
+            // const coupon = this.getCookieValue("coupon");
+            // if(coupon) {
+            //     this.coupon_quantity = this.getCookieValue("coupon");
+            // } 
             if(JSON.parse(localStorage.getItem('coupon'))) {
                 this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
             } 
         }
     },
     mounted() {
+        // this.coupon_quantity = this.getCookieValue('coupon');
         this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
 
         window.scroll(0, 0);

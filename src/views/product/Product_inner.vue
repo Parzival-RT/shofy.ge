@@ -665,77 +665,52 @@ export default {
 
       // Fill Cart from modal product view
       fill_cart_from_inner_product(event, id, image, title, type, old_price, price, product_amount) {
-
-         // this code do animation for add product button
          const element = event.target;
+         const nextElement = element.nextElementSibling;
+
+         // Add/remove CSS classes for animation with a timeout
+         const toggleAnimationClasses = () => {
+            element.classList.toggle('d-none');
+            nextElement.classList.toggle('d-none');
+            element.classList.toggle('d-block');
+            nextElement.classList.toggle('d-block');
+         };
          element.classList.add('d-none');
-         element.nextElementSibling.classList.remove('d-none');
-         element.nextElementSibling.classList.add('d-block');
-         setTimeout(() => {
-            element.classList.remove('d-none');
-            element.nextElementSibling.classList.remove('d-block');
-            element.classList.add('d-block');
-            element.nextElementSibling.classList.add('d-none');
-         }, 1000);
+         nextElement.classList.remove('d-none');
+         setTimeout(toggleAnimationClasses, 1000);
 
-         // this code adds/push once again in cart. e.g if product exist this code push once again product
-         const productData = this.$store.state.cart_product; // Data From store State
-         if (productData.length != [] && productData.find(el => el.id == id)) {
-            productData.filter(item => item.id === id).forEach(el => {
+         const productData = this.$store.state.cart_product;
 
-               el.price = el.price + price * product_amount;
+         const existingProduct = productData.find(el => el.id === id);
 
-               if (el.id === id) {
-                  const data = {
-                     product_amount: Number(el.product_amount) + Number(product_amount),
-                     id: id
-                  }
-
-
-                  this.$store.commit('raplace_item_data', data);
-
-                  // Media Query Validation
-                  const mediaQuery = window.matchMedia("(min-width: 576px)");
-                  const isMaxWidth = mediaQuery.matches;
-
-                  if (isMaxWidth) {
-                     this.$store.commit('cart_menu');
-                  }
-
-                  localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-               }
-            })
-            this.product_amount = 1;
-            this.price = 0;
-            this.old_price = 0;
-            return
+         if (existingProduct) {
+            existingProduct.price += price * product_amount;
+            this.$store.commit('raplace_item_data', {
+               product_amount: existingProduct.product_amount + product_amount,
+               id: id
+            });
+         } else {
+            this.$store.commit('cart_items', {
+               id,
+               image,
+               title,
+               type,
+               old_price,
+               price: price * product_amount,
+               product_amount,
+               initial_price: price,
+               initial_old_price: old_price
+            });
          }
 
-
-
-         // this code below does a new product add/push in cart. e.g if product doesn't exist by this code new product add/push in cart
-         this.addItems = {
-            id: id,
-            image: image,
-            title: title,
-            type, type,
-            old_price,
-            price: price * product_amount,
-            product_amount: product_amount,
-            initial_price: price,
-            initial_old_price: old_price
-         };
-         this.$store.commit('cart_items', this.addItems);
-
-         // Media Query Validation
-         const mediaQuery = window.matchMedia("(min-width: 576px)");
-         const isMaxWidth = mediaQuery.matches;
-
-         if (isMaxWidth) {
+         if (window.matchMedia("(min-width: 576px)").matches) {
             this.$store.commit('cart_menu');
          }
 
+         // set item in cookies
+         // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
          localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+
          this.product_amount = 1;
          this.price = 0;
          this.old_price = 0;
@@ -758,6 +733,9 @@ export default {
 
 
                   this.$store.commit('raplace_item_data', data);
+
+                  // set item in cookies
+                  // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
                   localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                }
                this.$router.push({
@@ -783,6 +761,9 @@ export default {
             initial_old_price: old_price
          };
          this.$store.commit('cart_items', this.addItems);
+
+         // set item in cookies
+         // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
          localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
          this.$router.push({
             path: '/Checkout'
@@ -845,6 +826,9 @@ export default {
 
             const index = check_exist_wishlist_product.findIndex(item => item.id === id);
             this.$store.commit("deleteProduct_from_wishlist", index);
+
+            // cookies
+            // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
             localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
             return
          }
@@ -867,6 +851,9 @@ export default {
             initial_old_price: old_price
          };
          this.$store.commit('wish_list', this.wishlist);
+
+         // cookies
+         // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
          localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
       },
 

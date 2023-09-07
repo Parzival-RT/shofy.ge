@@ -665,8 +665,7 @@ export default {
                         }
 
                         // cookies
-                        // const serializedArray = JSON.stringify(this.$store.state.cart_product);
-                        // document.cookie = "cart_items=" + serializedArray;
+                        // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
                         localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                     }
                 })
@@ -699,10 +698,9 @@ export default {
             }
 
             // cookies
-            // const serializedArray = JSON.stringify(this.$store.state.cart_product);
-            // document.cookie = "cart_items=" + serializedArray;
-
+            // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+
             this.product_amount = 1;
             this.price = 0;
             this.old_price = 0;
@@ -735,6 +733,8 @@ export default {
                             this.$store.commit('cart_menu');
                         }
 
+                        // set data in cookies
+                        // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
                         localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                     }
                 })
@@ -768,7 +768,10 @@ export default {
                 this.$store.commit('cart_menu');
             }
 
+            // set data in cookies
+            // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+            
             this.product_amount = 1;
             this.price = 0;
             this.old_price = 0;
@@ -797,8 +800,13 @@ export default {
                 initial_price: price,
                 initial_old_price: old_price
             };
+
             this.$store.commit('cart_items', this.addItems);
+
+            // set item in cookies
+            // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+
             this.$router.push({
                 path: '/Checkout'
             })
@@ -859,6 +867,9 @@ export default {
 
                 const index = check_exist_wishlist_product.findIndex(item => item.id === id);
                 this.$store.commit("deleteProduct_from_wishlist", index);
+
+                // cookies
+                // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
                 localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
                 return
             }
@@ -881,6 +892,9 @@ export default {
                 initial_old_price: old_price
             };
             this.$store.commit('wish_list', this.wishlist);
+
+            // cookies
+            // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
             localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
         },
         // this function get data from localstorage and fills the wishlist with product
@@ -895,24 +909,24 @@ export default {
             })
 
             // change wish_list_status
-            const wishlist_localstorage_status = JSON.parse(localStorage.getItem('wish_list'));
-            if (wishlist_localstorage_status) {
+            // const wishlist_localstorage_status = JSON.parse(localStorage.getItem('wish_list'));
+            // if (wishlist_localstorage_status) {
 
-                // this code change all product wish_list_status. if in localstorage doesn't exist 'wish_list'
-                if (wishlist_localstorage_status.length == 0) {
-                    this.product.forEach(item => {
-                        item.wish_list_status = false;
-                    })
-                }
+            //     // this code change all product wish_list_status. if in localstorage doesn't exist 'wish_list'
+            //     if (wishlist_localstorage_status.length == 0) {
+            //         this.product.forEach(item => {
+            //             item.wish_list_status = false;
+            //         })
+            //     }
 
-                // Check if the item's ID is not present in the wishlist_status array
-                this.product.forEach(item => {
-                    if (!wishlist_status.some(wishlistItem => wishlistItem.id === item.id)) {
-                        item.wish_list_status = false;
-                    }
-                });
+            //     // Check if the item's ID is not present in the wishlist_status array
+            //     this.product.forEach(item => {
+            //         if (!wishlist_status.some(wishlistItem => wishlistItem.id === item.id)) {
+            //             item.wish_list_status = false;
+            //         }
+            //     });
 
-            }
+            // }
 
             
         },

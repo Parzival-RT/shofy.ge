@@ -207,6 +207,8 @@ export default {
                      this.$store.commit('cart_menu');
                   }
 
+                  // cookies
+                  // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
                   localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
                }
             })
@@ -243,6 +245,8 @@ export default {
             this.$store.commit('cart_menu');
          }
 
+         // cookies
+         // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
          localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
 
       },
@@ -259,6 +263,9 @@ export default {
          });
 
          this.$store.commit('raplace_wishlist_item_data', data);
+
+         // cookies
+         // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
          localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
       },
       // Minus Function reduces quantity of the product in the cart
@@ -275,18 +282,27 @@ export default {
          });
 
          this.$store.commit('raplace_wishlist_item_data', data);
+
+         // cookies
+         // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
          localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
       },
 
       // this Funtion delete product from cart
       detele_wishlist_item(id) {
          this.$store.commit("deleteProduct_from_wishlist", id);
+
+         // cookies
+         // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
          localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
          window.scroll(0, 0);
       },
 
       clear_wishlist() {
          this.$store.commit("fill_wish_list_from_localstorage", []);
+
+         // cookies
+         // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
          localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
       }
    },
