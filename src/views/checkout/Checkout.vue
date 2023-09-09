@@ -201,7 +201,7 @@
                                     <div class="alert alert-secondary w-100 my-1" role="alert"><i class="tio-credit-card-outlined"></i> კურიერთან ქეშით გადახდა</div>
                                 </li>
 
-                                <li class="tp-order-info-list-total">
+                                <li v-if="coupon" class="tp-order-info-list-total">
                                     <span>ფასდაკლება</span>
                                     <span class="text-danger">₾ -{{ coupon }}</span>
                                 </li>
@@ -242,10 +242,16 @@
 import router from '@/router';
 import { Form, Field, ErrorMessage } from 'vee-validate';
 
+// JSON data of the Simulated Product 
+import Products from '../product/products.json'
+
 export default {
     name: "Checkout",
     data() {
         return {
+            // Products
+            product: Products,
+
             form: {
                 name: '',
                 lastname: '',
@@ -264,6 +270,7 @@ export default {
             loading: false,
             coupon_quantity: 0,
             discount: 20
+
         }
     },
     components: {
@@ -274,6 +281,71 @@ export default {
     router
 },
     methods: {
+
+        // buy
+        submitForm() {
+            console.log(this.form);
+          
+            // this.form = {
+            //     name: '',
+            //     lastname: '',
+            //     city: '',
+            //     street: '',
+            //     mobile: '',
+            //     email: '',
+            //     description: '',
+            //     shipping: 10,
+            //     total: 0,
+            //     sum_total: 0,
+            //     rules: false
+            // }
+
+            // this.loading = true;
+            // setTimeout(() => {
+            //     this.loading = false;
+            // }, 5000)
+
+
+            // if(localStorage.getItem('coupon')) {
+            //     localStorage.removeItem('coupon')
+            // }
+
+
+            // if (localStorage.getItem("cart_items")) {
+            //     this.$store.commit("replace_items", '')
+            //     localStorage.removeItem('cart_items')
+            // }
+        },
+
+        // clear localstorage if not matched product id of main data
+        checkSimilarity(firstdata, seconddata) {
+            if (seconddata && seconddata.length !== 0) {
+                for (let index = 0; index < seconddata.length; index++) {
+                    const secondItem = seconddata[index];
+                    const isMatch = firstdata.some(firstItem =>
+                        firstItem.id === secondItem.id &&
+                        firstItem.image === secondItem.image &&
+                        firstItem.title === secondItem.title &&
+                        firstItem.type === secondItem.type &&
+                        secondItem.price === firstItem.price * secondItem.product_amount &&
+                        secondItem.product_amount === secondItem.price / secondItem.initial_price && 
+                        firstItem.old_price === secondItem.initial_old_price
+                    );
+
+                    if (isMatch) {
+                        console.log('Matched:', index);
+                    } else {
+                        localStorage.removeItem('cart_items');
+                        window.location.reload();
+                    }
+                }
+            }
+        },
+
+
+
+
+
         // this Funtion delete product from cart
         deleteItem(id) {
             this.$store.commit("deleteProduct", id)
@@ -316,40 +388,7 @@ export default {
         //     }
         //     return null; // Return null if the cookie is not found
         // },
-        // buy
-        submitForm() {
-            console.log(this.form);
-          
-            // this.form = {
-            //     name: '',
-            //     lastname: '',
-            //     city: '',
-            //     street: '',
-            //     mobile: '',
-            //     email: '',
-            //     description: '',
-            //     shipping: 10,
-            //     total: 0,
-            //     sum_total: 0,
-            //     rules: false
-            // }
 
-            // this.loading = true;
-            // setTimeout(() => {
-            //     this.loading = false;
-            // }, 5000)
-
-
-            // if(localStorage.getItem('coupon')) {
-            //     localStorage.removeItem('coupon')
-            // }
-
-
-            // if (localStorage.getItem("cart_items")) {
-            //     this.$store.commit("replace_items", '')
-            //     localStorage.removeItem('cart_items')
-            // }
-        },
         // Validation For Fields
         isRequired(value) {
             if (value) {
@@ -383,6 +422,11 @@ export default {
     mounted() {
         // this.coupon_quantity = this.getCookieValue('coupon');
         this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
+
+        // clear localstorage if not matched product id of main data
+        const firstdata = this.product;
+        const seconddata = JSON.parse(localStorage.getItem('cart_items'));
+        this.checkSimilarity(firstdata, seconddata);
 
         window.scroll(0, 0);
     },

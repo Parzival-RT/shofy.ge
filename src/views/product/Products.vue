@@ -779,12 +779,33 @@ export default {
         // Buy Product
         buy(id, image, title, type, old_price, price, product_amount) {
 
-            // when click happens second again on the buy button the router path should push checkout component page
+            // this code adds/push once again in cart. e.g if product exist this code push once again product
             const productData = this.$store.state.cart_product; // Data From store State
             if (productData.length != [] && productData.find(el => el.id == id)) {
-                this.$router.push({
-                    path: '/Checkout'
+                productData.filter(item => item.id === id).forEach(el => {
+
+                    el.price = el.price + price * product_amount;
+
+                    if (el.id === id) {
+                        const data = {
+                            product_amount: Number(el.product_amount) + Number(product_amount),
+                            id: id
+                        }
+
+
+                        this.$store.commit('raplace_item_data', data);
+
+                        // set item in cookies
+                        // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
+                        localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+                    }
+                    this.$router.push({
+                        path: '/Checkout'
+                    })
                 })
+                this.product_amount = 1;
+                this.price = 0;
+                this.old_price = 0;
                 return
             }
 
@@ -800,13 +821,11 @@ export default {
                 initial_price: price,
                 initial_old_price: old_price
             };
-
             this.$store.commit('cart_items', this.addItems);
 
             // set item in cookies
             // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
-
             this.$router.push({
                 path: '/Checkout'
             })
