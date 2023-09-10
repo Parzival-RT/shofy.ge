@@ -17238,7 +17238,7 @@ product all slider
 }
 @media screen and (max-width: 575px) {
   .tp-product-details-title {
-    font-size: 28px;
+    font-size: 24px;
   }
 }
 .tp-product-details-stock {
@@ -18422,7 +18422,7 @@ product all slider
 }
 @media (max-width: 575px) {
   .tp-product-modal .tp-product-details-title {
-    font-size: 27px;
+    font-size: 24px;
   }
 }
 .tp-product-modal .tp-product-details-action-sm {
