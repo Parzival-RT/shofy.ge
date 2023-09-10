@@ -39,7 +39,7 @@
                             </span>
                         </div>
                         <div class="tp-feature-content-2">
-                            <h3 class="tp-feature-title-2">თანხის დაბრუნება</h3>
+                            <h3 class="tp-feature-title">თანხის დაბრუნება</h3>
                             <p>ფულის დაბრუნების გარანტია</p>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             </span>
                         </div>
                         <div class="tp-feature-content-2">
-                            <h3 class="tp-feature-title-2">მხარდაჭერა 24/7</h3>
+                            <h3 class="tp-feature-title">მხარდაჭერა 24/7</h3>
                             <p>დაგვიკავშირდი 24 საათის განმავლობაში</p>
                         </div>
                     </div>

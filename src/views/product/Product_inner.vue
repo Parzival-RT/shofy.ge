@@ -280,10 +280,10 @@
                                     <div class="row">
                                        <!-- Col -->
                                        <div class="col-12">
-                                          <div class="col-12">
+                                          <!-- <div class="col-12">
                                              <h3 class="tp-product-details-title">მიმოხილვა</h3>
-                                          </div>
-                                          <div class="tp-product-details-review-wrapper pt-30">
+                                          </div> -->
+                                          <div class="tp-product-details-review-wrapper">
                                              <div class="row">
                                                 <div class="col-lg-6">
 
@@ -386,7 +386,7 @@
                                                       <Form v-slot="{ handleSubmit }" as="div">
                                                          <form @submit="handleSubmit($event, submit_customer_review_form)">
                                                             <div class="tp-product-details-review-form-rating d-flex flex-wrap align-items-center">
-                                                               <p>შენი რეიტინგი:</p>
+                                                               <p>მონიშნე შენი რეიტინგი:</p>
                                                                <div class="tp-product-details-review-form-rating-icon d-flex align-items-center">
                                                                   <span class="cursor-pointer" v-for="star in 5">
                                                                      <i class="fs-5" :class="star <= form.customer_star_rating || star <= star_hover ? 'tio-star' : 'tio-star-outlined'" @mouseenter="star_hover_enter(star)" @mouseleave="star_hover_leave()" @click="form.customer_star_rating = star"></i>                      

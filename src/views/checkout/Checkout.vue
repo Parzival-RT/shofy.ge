@@ -342,10 +342,6 @@ export default {
             }
         },
 
-
-
-
-
         // this Funtion delete product from cart
         deleteItem(id) {
             this.$store.commit("deleteProduct", id)
