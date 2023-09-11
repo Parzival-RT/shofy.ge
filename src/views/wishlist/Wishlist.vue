@@ -164,11 +164,16 @@ import MobileHeader from '@/components/Mobile-header.vue'
 // Footer Component
 import Footer from '@/components/Footer.vue'
 
+// JSON data of the Simulated Product 
+import Products from '../product/products.json'
 
 export default {
    name: "Wishlist",
    data() {
       return {
+         // Products
+         product: Products,
+
          // when click add product button - the product add to cart
          addItems: {}
       }
@@ -304,6 +309,33 @@ export default {
          // cookies
          // document.cookie = "wish_list=" + JSON.stringify(this.$store.state.wishlist);
          localStorage.setItem('wish_list', JSON.stringify(this.$store.state.wishlist));
+      },
+
+
+      // clear localstorage if not matched product id of main data
+      checkSimilarity(firstdata, seconddata) {
+         if (seconddata && seconddata.length !== 0) {
+            for (let index = 0; index < seconddata.length; index++) {
+               const secondItem = seconddata[index];
+               const isMatch = firstdata.some(firstItem =>
+                  firstItem.id === secondItem.id &&
+                  firstItem.image === secondItem.image &&
+                  firstItem.title === secondItem.title &&
+                  firstItem.type === secondItem.type &&
+                  secondItem.price === firstItem.price * secondItem.product_amount &&
+                  secondItem.product_amount === secondItem.price / secondItem.initial_price &&
+                  firstItem.old_price === secondItem.initial_old_price
+               );
+
+               if (isMatch) {
+                  // console.log('Matched:', index);
+                  return
+               } else {
+                  localStorage.removeItem('wish_list');
+                  window.location.reload();
+               }
+            }
+         }
       }
    },
    computed: {
@@ -322,6 +354,12 @@ export default {
       }
    },
    mounted() {
+
+
+      // clear localstorage if not matched product id of main data
+      const firstdata = this.product;
+      const seconddata = JSON.parse(localStorage.getItem('wish_list'));
+      this.checkSimilarity(firstdata, seconddata);
 
       // For Loading
       setTimeout(() => {

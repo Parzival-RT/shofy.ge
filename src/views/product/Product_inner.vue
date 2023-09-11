@@ -398,7 +398,7 @@
                                                             <div class="tp-product-details-review-input-wrapper">
                                                                <div class="tp-product-details-review-input-box">
                                                                   <div class="tp-product-details-review-input">
-                                                                     <Field v-slot="{field}" :rules="isRequired" name="customer_review">
+                                                                     <Field v-slot="{field}" :rules="isRequired" v-model="form.customer_review" name="customer_review">
                                                                         <textarea v-bind="field" id="msg" name="customer_review" v-model="form.customer_review" placeholder="დაწერეთ თქვენი აზრი აქ..."></textarea>
                                                                         <ErrorMessage class="text-danger font-size-14px" name="customer_review" />
                                                                      </Field>
@@ -454,7 +454,7 @@
                            <!-- Tab FAQ Content -->
                            <div class="tab-pane fade" id="nav-addInfo" role="tabpanel" aria-labelledby="nav-addInfo-tab" tabindex="0">
                               <!-- Row -->
-                              <div class="row">
+                              <div class="row pb-100">
                                  <!-- Col -->
                                  <div class="col-12">
                                     <h3 class="tp-product-details-title">ხშირად დასმული კითხვები</h3>
@@ -639,7 +639,7 @@ export default {
          // for stars hover effect
          star_hover: 0,
 
-         text: true
+         text: null
       }
    },
    components: {
@@ -865,18 +865,20 @@ export default {
 
          
          const isActive = content.classList.contains('active'); // Check if the element has the 'active' class
-         const height = document.querySelector('.text-content span').clientHeight;
+         const height = document.querySelector('.text-content span');
 
          const read_more_btn = document.querySelector('.read-more-button'); // switch to read more text-content
 
          content.classList.toggle('active'); // add and remove the active class
          
          if (isActive) {
-            content.style.height = '100px'; // Set height to 50px when the 'active' class is not present
+            height.style.webkitLineClamp = 4;
+            content.style.height = height.clientHeight + 'px';
             read_more_btn.textContent = 'მეტი'
             absolute_element.classList.remove('d-none');
          } else {
-            content.style.height = height + 'px'; // Set height to the original value when the 'active' class is present
+            height.style.webkitLineClamp = 'inherit';
+            content.style.height = height.clientHeight + 'px'; // Set height to the original value when the 'active' class is present
             read_more_btn.textContent = 'ნაკლები'
             absolute_element.classList.add('d-none');
          }
@@ -892,9 +894,8 @@ export default {
          const totalRating = this.customers_review.reduce((sum, review) => sum + review.customer_star_rating, 0);
          this.form.total_star_rating = totalRating / this.customers_review.length;
 
+         // here will be axio's request
 
-         // here will be axios request
-         console.log(this.form);
 
          // Reset the form fields for the next review
          this.form = {
@@ -969,8 +970,13 @@ export default {
 
       window.scrollTo(0, 0)
 
+
    },
    updated() {
+
+      const content = document.querySelector('.text-content')
+      const height = document.querySelector('.text-content span');
+      content.style.height = height.clientHeight + 'px';
 
       // this code gives the element clientHeight of the .scroll-product which is absolute position
       if (this.$route.name == "Inner") {
@@ -1017,7 +1023,14 @@ export default {
 /* raed more */
 .text-content {
    overflow: hidden;
-   height: 100px;
+   /* height: 100px; */
+}
+.text-content span {
+   overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box!important;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;
 }
 
 .add_cart {

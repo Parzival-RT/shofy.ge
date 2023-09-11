@@ -187,11 +187,11 @@
                                 <span>მიწოდება</span>
                                 <div class="tp-order-info-list-shipping-item d-flex flex-column align-items-end">
                                     <span>
-                                        <input id="local_pickup" v-model="form.shipping" value="10" type="radio" name="shipping">
+                                        <input :checked="getFullBalance <= 100" id="local_pickup" v-model="form.shipping" value="10" type="radio" name="shipping">
                                         <label class="text-end" for="local_pickup"> 100₾ ნაკლები: <span>+ ₾10.00</span></label>
                                     </span>
                                     <span>
-                                        <input id="free_shipping" :disabled="getFullBalance <= 100" type="radio" v-model="form.shipping" value="0" name="shipping">
+                                        <input :checked="getFullBalance >= 101" id="free_shipping" :disabled="getFullBalance <= 100" type="radio" v-model="form.shipping" value="0" name="shipping">
                                         <label for="free_shipping">უფასო მიწოდება</label>
                                     </span>
                                 </div>
@@ -260,11 +260,11 @@ export default {
                 mobile: '',
                 email: '',
                 description: '',
-                shipping: 10,
+                shipping: this.getFullBalance <= 100 ? 10 : 0,
                 total: 0,
                 sum_total: 0,
                 rules: false,
-                items: JSON.parse(localStorage.getItem('cart_items')),
+                items: [],
                 discount: 0
             },
             loading: false,
@@ -333,7 +333,8 @@ export default {
                     );
 
                     if (isMatch) {
-                        console.log('Matched:', index);
+                        // console.log('Matched:', index);
+                        return
                     } else {
                         localStorage.removeItem('cart_items');
                         window.location.reload();
@@ -363,6 +364,8 @@ export default {
                 localStorage.removeItem('coupon');
                 // this.coupon_quantity = 0;
             }
+
+            this.form.shipping = this.getFullBalance <= 100 ? 10 : 0;
             
         },
         // Cookies
@@ -415,6 +418,9 @@ export default {
             } 
         }
     },
+    beforeUnmount() {
+        localStorage.removeItem('coupon');
+    },
     mounted() {
         // this.coupon_quantity = this.getCookieValue('coupon');
         this.coupon_quantity = JSON.parse(localStorage.getItem('coupon'));
@@ -439,6 +445,7 @@ export default {
 
         // this function return all products what exists in the local storage
         getCartData() {
+            this.form.items = this.$store.getters.getProducts;
             return this.$store.getters.getProducts;
         },
         
