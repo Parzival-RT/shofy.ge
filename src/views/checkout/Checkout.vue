@@ -172,7 +172,7 @@
                                     </div>
                                     <div v-if="getCartData.length == 0" class="cartmini__empty mt-0 text-center">
                                         <p>შენი კალათა ცარიელია</p>
-                                        <router-link to="/Products" class="tp-btn">პროდუქტებში გადასვლა</router-link>
+                                        <router-link to="/Products" class="tp-btn placeholder-wave">პროდუქტებში გადასვლა</router-link>
                                     </div>
                                 </li>
             
@@ -222,8 +222,8 @@
                             </div>
                         </div>
                         <div class="tp-checkout-btn-wrapper">
-                            <button v-if="form.name && form.lastname && form.city && form.street && form.mobile && form.rules && getCartData.length != 0" class="tp-checkout-btn w-100">შეკვეთის გაფორმება</button>
-                            <button v-else disabled class="tp-checkout-btn w-100">შეკვეთის გაფორმება</button>
+                            <button v-if="form.name && form.lastname && form.city && form.street && form.mobile && form.rules && getCartData.length != 0" class="tp-checkout-btn placeholder-wave w-100">შეკვეთის გაფორმება</button>
+                            <button v-else disabled class="tp-checkout-btn placeholder-wave w-100">შეკვეთის გაფორმება</button>
                         </div>
                     </div>
                     </div>
@@ -337,6 +337,7 @@ export default {
                         return
                     } else {
                         localStorage.removeItem('cart_items');
+                        localStorage.removeItem('coupon');
                         window.location.reload();
                     }
                 }

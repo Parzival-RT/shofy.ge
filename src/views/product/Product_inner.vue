@@ -169,7 +169,7 @@
                                     </button>
                                  </div>
                               </div>
-                              <button class="tp-product-details-buy-now-btn w-100" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
+                              <button class="tp-product-details-buy-now-btn placeholder-wave w-100" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
                            </div>
                            <!-- Product Amount Actions -->
                            <div class="tp-product-details-action-sm">
@@ -283,7 +283,7 @@
                                           <!-- <div class="col-12">
                                              <h3 class="tp-product-details-title">მიმოხილვა</h3>
                                           </div> -->
-                                          <div class="tp-product-details-review-wrapper">
+                                          <div id="user_reviews" class="tp-product-details-review-wrapper">
                                              <div class="row">
                                                 <div class="col-lg-6">
 
@@ -558,7 +558,7 @@
                      <div class="tp-product-badge position-static me-1 me-sm-3 d-flex" v-if="product_data_by_id.old_price != 0 || product_data_by_id.old_price != ''">
                         <span class="product-offer">-{{ Math.round(((product_data_by_id.old_price - product_data_by_id.price) / product_data_by_id.old_price) * 100) }}%</span>
                      </div>
-                     <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
+                     <button class="tp-product-details-buy-now-btn placeholder-wave px-3 py-2" @click="buy(product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">ყიდვა</button>
                      <button class="tp-btn px-3 py-2 add_cart" @click="fill_cart_from_inner_product($event, product_data_by_id.id, product_data_by_id.image, product_data_by_id.title, product_data_by_id.type, product_data_by_id.old_price, product_data_by_id.price, product_amount)">
                         <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -895,7 +895,7 @@ export default {
          this.form.total_star_rating = totalRating / this.customers_review.length;
 
          // here will be axio's request
-
+         //* axio...
 
          // Reset the form fields for the next review
          this.form = {
@@ -905,6 +905,17 @@ export default {
             total_star_rating: 0,
             customer_star_rating: 0
          };
+
+         // Find the element by its id
+         const targetElement = document.getElementById("user_reviews");
+         // Check if the element exists
+         if (targetElement) {
+            // Auto-click the element
+            targetElement.click();
+
+            // Scroll to the element
+            targetElement.scrollIntoView({ behavior: 'smooth' });
+         }
 
       },
       // Calculate the percentage of a specific star rating

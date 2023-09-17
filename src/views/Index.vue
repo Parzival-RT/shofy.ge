@@ -35,12 +35,16 @@
       <!-- Main -->
       <main v-if="!this.$store.state.loading">
          <!-- Slider --> 
-         <Slider class="d-none d-sm-block" />
+         <Slider />
          <!-- End Slider --> 
          
          <!-- Products -->
          <Products />   
          <!-- End Products -->
+
+         <!-- Gallery -->
+         <Gallery />
+         <!-- End Gallery -->
 
          <!-- Rules -->
          <Rules />
@@ -71,6 +75,9 @@ import Products from './product/Products.vue'
 // Rules Component
 import Rules from '@/components/Rules.vue'
 
+// Rules Component
+import Gallery from '@/components/Gallery.vue'
+
 // Footer Component
 import Footer from '@/components/Footer.vue'
 
@@ -87,6 +94,7 @@ export default {
    Slider,
    Products,
    Rules,
+   Gallery,
    Footer
   },
   mounted() {

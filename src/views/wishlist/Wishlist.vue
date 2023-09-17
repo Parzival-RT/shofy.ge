@@ -140,7 +140,7 @@
                               </svg>
                            </span>
                            ნიშანს პროდუქტზე, რომელიც მოგწონს სურვილების შესაგროვებლად.</p>
-                        <router-link to="/Products" class="tp-btn">პროდუქტებში გადასვლა</router-link>
+                        <router-link to="/Products" class="tp-btn placeholder-wave">პროდუქტებში გადასვლა</router-link>
                      </div>
                      <!-- End When is Empty Wishlist -->
                </div>

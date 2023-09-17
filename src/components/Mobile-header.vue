@@ -29,7 +29,9 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M7.26062 5.05302C6.19531 5.39332 5.43839 6.34973 5.3438 7.47501" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg> 
-                        <span :class="{active: isWishlistActive}" class="tp-header-action-badge">{{ getWishlistProductsLength }}</span>   
+                        <span :class="{active: isWishlistActive}" class="tp-header-action-badge placeholder-wave">
+                            {{ get_wishlist_length }}
+                        </span>   
                     </span> 
                     <span class="title">სურვილები</span>                       
                 </router-link>
@@ -46,7 +48,7 @@
                             <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                             <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>    
-                        <span :class="{active: isCartActive}" class="tp-header-action-badge">
+                        <span :class="{active: isCartActive}" class="tp-header-action-badge placeholder-wave">
                             {{ getProductsLength }}
                         </span>                                                                         
                     </button>
@@ -100,7 +102,7 @@ export default {
                 this.isCartActive = false;
             }, 500);
         },
-        getWishlistProductsLength() {
+        get_wishlist_length() {
             this.isWishlistActive = true;
             setTimeout(() => {
                 this.isWishlistActive = false;
@@ -123,17 +125,19 @@ export default {
         },
 
         // this function return all products what exists in the local storage
-        wishlist_products() {
-            return this.$store.getters.wishlist_products;
-        },
+        // wishlist_products() {
+        //     return this.$store.getters.wishlist_products;
+        // },
         // this function return total Wishlist product quantity
-        getWishlistProductsLength() {
-            let total_cart_quantity = 0;
-            for (let item of this.wishlist_products) {
-                let each_product_quantity = item.product_amount;
-                total_cart_quantity += each_product_quantity;
-            }
-            return total_cart_quantity;
+        get_wishlist_length() {
+            // let total_cart_quantity = 0;
+            // for (let item of this.wishlist_products) {
+            //     let each_product_quantity = item.product_amount;
+            //     total_cart_quantity += each_product_quantity;
+            // }
+            // return total_cart_quantity;
+
+            return this.$store.state.wishlist.length
         }
     }
 }

@@ -101,9 +101,9 @@
                                 <span class="tp-cart-checkout-top-title">ჯამი</span>
                                 <span class="tp-cart-checkout-top-price">₾ {{ getFullBalance }}</span>
                             </div>
-                            <div class="tp-cart-coupon-input d-flex my-3">
+                            <div class="tp-cart-coupon-input d-flex my-3 w-100">
                                 <input :class="coupon_name == check_coupon ? 'border-success' : '' || check_coupon.length >= 1 ? 'border-danger' : ''" type="text" v-model="check_coupon" placeholder="გამოიყენე ვაუჩერი">
-                                <button class="w-25" @click="check_coupon_status"><i class="tio tio-labels"></i></button>
+                                <button :disabled="!check_coupon" class="w-25" @click="check_coupon_status"><i class="tio tio-labels"></i></button>
                             </div>
                             <div v-if="coupon_quantity" class="d-flex align-items-center justify-content-between mb-2">
                                 <span>ფასდაკლება</span>
@@ -114,7 +114,7 @@
                                 <span>₾ {{ getFullBalance - coupon_quantity }}</span>
                             </div>
                             <div class="tp-cart-checkout-proceed">
-                                <router-link to="/Checkout" class="tp-cart-checkout-btn w-100">ყიდვა</router-link>
+                                <router-link to="/Checkout" class="tp-cart-checkout-btn placeholder-wave w-100">ყიდვა</router-link>
                             </div>
                         </div>
                     </div>
@@ -139,7 +139,7 @@
                                         </svg> 
                                     </span>
                                     <p class="mt-2">შენი კალათა ცარიელია</p>
-                                    <router-link to="/Products" class="tp-btn">პროდუქტებში გადასვლა</router-link>
+                                    <router-link to="/Products" class="tp-btn placeholder-wave">პროდუქტებში გადასვლა</router-link>
                                 </div>
                                 <!-- End if no item in cart -->
                             </div>
@@ -171,11 +171,21 @@ export default {
     methods: {
         // this Funtion delete product from cart
         deleteItem(id) {
+
             this.$store.commit("deleteProduct", id)
 
             // set item in cookies
             // document.cookie = "cart_items=" + JSON.stringify(this.$store.state.cart_product);
             localStorage.setItem('cart_items', JSON.stringify(this.$store.state.cart_product));
+
+            // const coupon = this.getCookieValue("coupon");
+            if (localStorage.getItem('coupon')) {
+                this.coupon_quantity = this.getFullBalance * this.discount / 100;
+
+                // cookies
+                // document.cookie = "coupon=" + JSON.stringify(this.coupon_quantity);
+                localStorage.setItem('coupon', JSON.stringify(this.coupon_quantity));
+            }
         },
         // When user click check coupon button this function check its status code
         check_coupon_status() {

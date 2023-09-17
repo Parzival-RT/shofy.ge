@@ -274,7 +274,7 @@
                                                                         </button>
                                                                     </div>
                                                                 </div>
-                                                            <button class="tp-product-details-buy-now-btn w-100" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal_'+item.id">ყიდვა</button>
+                                                            <button class="tp-product-details-buy-now-btn placeholder-wave w-100" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal_'+item.id">ყიდვა</button>
                                                             </div>
                                                             <!-- Product Amount Actions -->
 
@@ -377,7 +377,7 @@
                                                                     წარმატებით დემატა  
                                                                 </button>
                                                             </div>
-                                                            <button class="tp-product-details-buy-now-btn px-3 py-2" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)">ყიდვა</button>
+                                                            <button class="tp-product-details-buy-now-btn placeholder-wave px-3 py-2" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)">ყიდვა</button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -496,7 +496,7 @@
                                                                                     </span>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="tp-product-details-add-to-cart mb-15 w-100">
+                                                                            <div class="tp-product-details-add-to-cart placeholder-wave mb-15 w-100">
                                                                                 <button class="tp-product-details-add-to-cart-btn d-flex align-items-center justify-content-center gap-2 w-100" @click="fill_cart_from_modal(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal1_'+item.id">
                                                                                     <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                         <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -508,7 +508,7 @@
                                                                                 </button>
                                                                             </div>
                                                                         </div>
-                                                                    <button class="tp-product-details-buy-now-btn w-100" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal1_'+item.id">ყიდვა</button>
+                                                                    <button class="tp-product-details-buy-now-btn placeholder-wave w-100" @click="buy(item.id, item.image, item.title, item.type, item.old_price, item.price, product_amount)" data-bs-toggle="modal" :data-bs-target="'#producQuickViewModal1_'+item.id">ყიდვა</button>
                                                                     </div>
                                                                     <!-- Product Amount Actions -->
 
@@ -545,7 +545,7 @@
                         
                         <!-- More Products -->
                         <div class="text-center mt-20 mb-20">
-                            <router-link to="/Products" v-if="this.$route.path != '/Products'" class="tp-btn">
+                            <router-link to="/Products" v-if="this.$route.path != '/Products'" class="tp-btn placeholder-wave">
                                 <svg width="20" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd" d="M6.48626 20.5H14.8341C17.9004 20.5 20.2528 19.3924 19.5847 14.9348L18.8066 8.89359C18.3947 6.66934 16.976 5.81808 15.7311 5.81808H5.55262C4.28946 5.81808 2.95308 6.73341 2.4771 8.89359L1.69907 14.9348C1.13157 18.889 3.4199 20.5 6.48626 20.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                     <path d="M6.34902 5.5984C6.34902 3.21232 8.28331 1.27803 10.6694 1.27803V1.27803C11.8184 1.27316 12.922 1.72619 13.7362 2.53695C14.5504 3.3477 15.0081 4.44939 15.0081 5.5984V5.5984" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
@@ -973,6 +973,7 @@ export default {
 
             const absolute_element = content.querySelector('.text-content .position-absolute'); // absolute element with blur effect for read-less description
 
+            console.log(absolute_element)
 
             const isActive = content.classList.contains('active'); // Check if the element has the 'active' class
             const height = content.querySelector('.text-content p').clientHeight;
@@ -982,7 +983,7 @@ export default {
             content.classList.toggle('active'); // add and remove the active class
 
             if (isActive) {
-                content.style.height = '100px'; // Set height to 50px when the 'active' class is not present
+                content.style.height = '50px'; // Set height to 50px when the 'active' class is not present
                 read_more_btn.textContent = 'მეტი'
                 absolute_element.classList.remove('d-none');
             } else {
@@ -1026,7 +1027,7 @@ export default {
 <style scoped>
 .text-content {
    overflow: hidden;
-   height: 100px;
+   height: 50px;
 }
 .tp-product-action-btn-2::after {
     content: "";

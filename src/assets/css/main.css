@@ -2345,6 +2345,9 @@ div.demo img {
 .main-slider-bg {
   background-color: var(--main-slider-bg);
 }
+.dark-common-bg {
+  background-color: var(--tp-common-black);
+}
 
 .theme-bg {
   background-color: var(--tp-theme-primary);
@@ -10166,12 +10169,16 @@ div.tp-blog-thumb img {
 }
 .tp-slider-title {
   font-weight: 900;
-  font-size: 56px;
+  font-size: 45px;
   line-height: 1.07;
   color: var(--tp-common-white);
   margin-bottom: 12px;
   animation-delay: 0.5s;
   animation-duration: 1s;
+
+  font-feature-settings: "case" on;
+  text-transform: uppercase;
+  font-family: var(--Main-Font);
 }
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .tp-slider-title {
@@ -10194,7 +10201,7 @@ div.tp-blog-thumb img {
   color: var(--tp-common-white);
   font-family: var(--tp-ff-oregano);
   font-weight: 400;
-  font-size: 28px;
+  font-size: 22px;
   margin-bottom: 40px;
   animation-delay: 0.7s;
   animation-duration: 1s;
@@ -16338,8 +16345,8 @@ product all slider
 }
 @media screen and (max-width: 576px) {
   .tp-product-action-btn-2 {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     line-height: 30px;
   }
 }
@@ -19259,7 +19266,8 @@ product all slider
   height: 46px;
   line-height: 46px;
   margin-right: 4px;
-  max-width: 282px;
+  width: 100%;
+  /* max-width: 282px; */
 }
 .tp-cart-coupon-input input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #818487;

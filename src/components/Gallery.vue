@@ -1,90 +1,35 @@
 <template>
-   <section class="tp-banner-area pb-60">
+   <section class="tp-banner-area pt-80 pb-80 dark-common-bg">
       <!-- Container -->
       <div class="container">
          <!-- Row -->
-         <div class="row">
-            <!-- Col -->
-            <div class="col-xl-6 col-lg-7">
-               <!-- Row -->
-               <div class="row">
-                  <!-- Col -->
-                  <div class="col-xl-12">
-                     <div class="tp-banner-item-4 tp-banner-height-4 fix p-relative z-index-1 mb-25" data-bg-color="#F3F7FF" style="background-color: rgb(243, 247, 255);">
-                        <div class="tp-banner-thumb-4 include-bg black-bg transition-3" data-background="assets/img/banner/4/banner-1.jpg" style="background-image: url(&quot;assets/img/banner/4/banner-1.jpg&quot;);"></div>
-                        <div class="tp-banner-content-4">
-                           <span>Collection</span>
-                           <h3 class="tp-banner-title-4">
-                              <a href="shop.html">Ardeco pearl <br> Rings style 2023</a>
-                           </h3>
-                           <div class="tp-banner-btn-4">
-                              <a href="shop.html" class="tp-btn tp-btn-border">
-                                 Shop Now
-                                 <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 7.49988L1 7.49988" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M9.9502 1.47554L16.0002 7.49954L9.9502 13.5245" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                                 </svg>
-                              </a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- End Col -->
-                  
-                  <!-- Col -->
-                  <div class="col-md-6 col-sm-6">
-                     <div class="tp-banner-item-4 tp-banner-height-4 fix p-relative z-index-1 has-green sm-banner" data-bg-color="#F0F6EF" style="background-color: rgb(240, 246, 239);">
-                        <div class="tp-banner-thumb-4 include-bg black-bg transition-3" data-background="assets/img/banner/4/banner-2.jpg" style="background-image: url(&quot;assets/img/banner/4/banner-2.jpg&quot;);"></div>
-                        <div class="tp-banner-content-4">
-                           <span>Trending</span>
-                           <h3 class="tp-banner-title-4">
-                              <a href="shop.html">Tropical Set</a>
-                           </h3>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- End Col -->
+         <div class="row gy-5 gx-0 gx-sm-5 align-items-center">
 
-                  <!-- Col -->
-                  <div class="col-md-6 col-sm-6">
-                     <div class="tp-banner-item-4 tp-banner-height-4 fix p-relative z-index-1 has-brown sm-banner" data-bg-color="#F8F1E6" style="background-color: rgb(248, 241, 230);">
-                        <div class="tp-banner-thumb-4 include-bg black-bg transition-3" data-background="assets/img/banner/4/banner-3.jpg" style="background-image: url(&quot;assets/img/banner/4/banner-3.jpg&quot;);"></div>
-                        <div class="tp-banner-content-4">
-                           <span>New Arrival</span>
-                           <h3 class="tp-banner-title-4">
-                              <a href="shop.html">Gold Jewelry</a>
-                           </h3>
-                        </div>
-                     </div>
-                  </div>
-                  <!-- End Col -->
-               </div>
-               <!-- End Row -->
+            <!-- Col -->
+            <div class="col-xl-5">
+               <img class="bg-light w-100 shadow-sm" src="https://cdn.dsmcdn.com/mnresize/1200/1800/ty757/product/media/images/20230303/0/293884521/638140391/1/1_org_zoom.jpg" alt="main product">
             </div>
             <!-- End Col -->
 
             <!-- Col -->
-            <div class="col-xl-6 col-lg-5">
-               <div class="tp-banner-full tp-banner-full-height fix p-relative z-index-1">
-                  <div class="tp-banner-full-thumb include-bg black-bg transition-3" data-background="assets/img/banner/4/banner-4.jpg" style="background-image: url(&quot;assets/img/banner/4/banner-4.jpg&quot;);"></div>
-                  <div class="tp-banner-full-content">
-                     <span>Collection</span>
-                     <h3 class="tp-banner-full-title">
-                        <a href="shop.html">Ring gold with <br> diamonds</a>
-                     </h3>
-                     <div class="tp-banner-full-btn">
-                        <a href="shop.html" class="tp-btn tp-btn-border">
-                           Shop Now
-                           <svg width="17" height="15" viewBox="0 0 17 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                              <path d="M16 7.49988L1 7.49988" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                              <path d="M9.9502 1.47554L16.0002 7.49954L9.9502 13.5245" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                           </svg>
-                        </a>
-                     </div>
-                  </div>
+            <div class="col-xl-7">
+               <div class="tp-product-price-wrapper mb-20">
+                  <span class="tp-product-price fs-6 text-white bg-primary px-2 py-1 rounded">უმაღლესი ხარისხის მასალა</span>
+               </div>
+               <h3 class="tp-section-title text-white">ორთქლით ფარების გამწმდენდი გასაპრიალებელი ნაკრები</h3>
+               <p class="tp-section-description text-white">საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>
+               <div class="tp-product-banner-btn mt-50">
+                  <router-link to="/inner/4" class="tp-product-details-buy-now-btn placeholder-wave">
+                     შეუკვეთე ახლავე
+                     <svg class="ms-1" width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 6.99976L1 6.99976" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M9.9502 0.975414L16.0002 6.99941L9.9502 13.0244" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                     </svg>
+                  </router-link>
                </div>
             </div>
             <!-- End Col -->
+
          </div>
          <!-- End Row -->
       </div>
@@ -98,6 +43,19 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.tp-product-details-buy-now-btn {
+   background-color: var(--main-slider-bg);
+   border: 1px solid transparent;
+}
+.tp-product-details-buy-now-btn:hover {
+   background-color: var(--main-slider-bg);
+   border: 1px solid #fff;
+}
 
+.tp-product-price {
+   font-feature-settings: "case" on;
+   text-transform: uppercase;
+   font-family: var(--Main-Font);
+}
 </style>

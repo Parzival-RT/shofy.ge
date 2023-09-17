@@ -1,6 +1,6 @@
 <template>
   <!-- Rules -->
-  <section class="tp-feature-area tp-feature-border-2 pb-80">
+  <section class="tp-feature-area tp-feature-border-2 pt-80 pb-80">
     <!-- Container -->
     <div class="container">
         <div class="tp-feature-inner-2">

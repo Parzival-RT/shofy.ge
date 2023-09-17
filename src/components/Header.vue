@@ -43,7 +43,7 @@
                               <path fill-rule="evenodd" clip-rule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                               <path d="M7.26062 5.05302C6.19531 5.39332 5.43839 6.34973 5.3438 7.47501" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg> 
-                          <span class="tp-header-action-badge">{{ get_wishlist_length }}</span>                          
+                          <span class="tp-header-action-badge placeholder-wave">{{ get_wishlist_length }}</span>                          
                         </router-link>
                     </div>
                     <!-- End Wishlist -->
@@ -57,7 +57,7 @@
                               <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                               <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                           </svg>    
-                          <span class="tp-header-action-badge">
+                          <span class="tp-header-action-badge placeholder-wave">
                             {{ getProductsLength }}
                           </span>                                                    
                         </button>
@@ -144,7 +144,9 @@
                           <path fill-rule="evenodd" clip-rule="evenodd" d="M11.239 18.8538C13.4096 17.5179 15.4289 15.9456 17.2607 14.1652C18.5486 12.8829 19.529 11.3198 20.1269 9.59539C21.2029 6.25031 19.9461 2.42083 16.4289 1.28752C14.5804 0.692435 12.5616 1.03255 11.0039 2.20148C9.44567 1.03398 7.42754 0.693978 5.57894 1.28752C2.06175 2.42083 0.795919 6.25031 1.87187 9.59539C2.46978 11.3198 3.45021 12.8829 4.73806 14.1652C6.56988 15.9456 8.58917 17.5179 10.7598 18.8538L10.9949 19L11.239 18.8538Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M7.26062 5.05302C6.19531 5.39332 5.43839 6.34973 5.3438 7.47501" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg> 
-                        <span class="tp-header-action-badge">{{ get_wishlist_length }}</span>                          
+                        <span class="tp-header-action-badge placeholder-wave">
+                          {{ get_wishlist_length }}
+                        </span>                          
                     </router-link>
                   </div>
                   <!-- End Wishlist Button -->
@@ -158,7 +160,7 @@
                           <path d="M7.70365 10.1018H7.74942" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                           <path d="M13.5343 10.1018H13.5801" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                         </svg>    
-                        <span class="tp-header-action-badge">
+                        <span class="tp-header-action-badge placeholder-wave">
                           {{ getProductsLength }}
                         </span>                                                                         
                     </button>
@@ -269,7 +271,7 @@
             </nav>
           </div>
           <div class="offcanvas__btn">
-              <router-link @click="menu()" to="/Contact" class="tp-btn-2 tp-btn-border-2">
+              <router-link @click="menu()" to="/Contact" class="tp-btn-2 tp-btn-border-2 placeholder-wave">
                 <span class="me-1">
                   <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path fill-rule="evenodd" clip-rule="evenodd" d="M1.96977 3.24859C2.26945 2.75144 3.92158 0.946726 5.09889 1.00121C5.45111 1.03137 5.76246 1.24346 6.01544 1.49057H6.01641C6.59631 2.05874 8.26011 4.203 8.35352 4.65442C8.58411 5.76158 7.26378 6.39979 7.66756 7.5157C8.69698 10.0345 10.4707 11.8081 12.9908 12.8365C14.1058 13.2412 14.7441 11.9219 15.8513 12.1515C16.3028 12.2459 18.4482 13.9086 19.0155 14.4894V14.4894C19.2616 14.7414 19.4757 15.0537 19.5049 15.4059C19.5487 16.6463 17.6319 18.3207 17.2583 18.5347C16.3767 19.1661 15.2267 19.1544 13.8246 18.5026C9.91224 16.8749 3.65985 10.7408 2.00188 6.68096C1.3675 5.2868 1.32469 4.12906 1.96977 3.24859Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -341,7 +343,7 @@
                   </svg> 
                 </span>
                 <p class="mt-2">შენი კალათა ცარიელია</p>
-                <router-link to="/Products" class="tp-btn" @click="cart()">პროდუქტებში გადასვლა</router-link>
+                <router-link to="/Products" class="tp-btn placeholder-wave" @click="cart()">პროდუქტებში გადასვლა</router-link>
             </div>
             <!-- End if no item in cart -->
         </div>
@@ -355,8 +357,8 @@
                 <span>₾ {{ getFullBalance }}</span>
             </div>
             <div class="cartmini__checkout-btn">
-                <router-link to="/Cart" class="tp-btn mb-10 w-100" @click="cart()"> ნახე კალათა</router-link>
-                <router-link  @click="cart()" to="/Checkout" class="tp-btn tp-btn-border w-100"> ყიდვა</router-link>
+                <router-link to="/Cart" class="tp-btn placeholder-wave mb-10 w-100" @click="cart()"> ნახე კალათა</router-link>
+                <router-link  @click="cart()" to="/Checkout" class="tp-btn tp-btn-border placeholder-wave w-100"> ყიდვა</router-link>
             </div>
         </div>
     </div>
