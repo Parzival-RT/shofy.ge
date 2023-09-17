@@ -144,7 +144,7 @@
                                                 <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                              </svg>                                                            
                                           </button>
-                                          <input class="tp-cart-input" type="text" v-model="product_amount" disabled/>
+                                          <input class="tp-cart-input" type="text" v-model="product_amount" :id="product_data_by_id.id" disabled/>
                                           <span class="tp-cart-plus" @click="plus(product_data_by_id.id)">
                                              <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1 6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -418,7 +418,7 @@
                                                                </div>
                                                                <div class="tp-product-details-review-input-box">
                                                                   <div class="tp-product-details-review-input">
-                                                                     <Field type="email" id="email" :rules="isRequired" name="email" v-model="form.email" placeholder="ელ.ფოსტა" />
+                                                                     <Field type="email" id="email" :rules="isRequired" name="email" v-model="form.email" placeholder="ელ.ფოსტა"/>
                                                                      <ErrorMessage class="text-danger font-size-14px" name="email" />
                                                                   </div>
                                                                   <div class="tp-product-details-review-input-title">

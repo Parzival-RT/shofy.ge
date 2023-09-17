@@ -253,7 +253,7 @@
                                                                                     <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                                 </svg>                                                            
                                                                             </button>
-                                                                            <input class="tp-cart-input" type="text" v-model="product_amount" disabled/>
+                                                                            <input class="tp-cart-input" type="text" v-model="product_amount" :id="'first'+item.id" disabled/>
                                                                             <span class="tp-cart-plus" @click="plus(item.id)">
                                                                                 <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                     <path d="M1 6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -487,7 +487,7 @@
                                                                                             <path d="M1 1H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                                                                         </svg>                                                            
                                                                                     </button>
-                                                                                    <input class="tp-cart-input" type="text" v-model="product_amount" disabled/>
+                                                                                    <input class="tp-cart-input" type="text" v-model="product_amount" :id="'second'+item.id" disabled/>
                                                                                     <span class="tp-cart-plus" @click="plus(item.id)">
                                                                                         <svg width="11" height="12" viewBox="0 0 11 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                                                             <path d="M1 6H10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
