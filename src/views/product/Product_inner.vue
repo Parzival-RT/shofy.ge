@@ -569,7 +569,7 @@
                      </button>
                      <button class="tp-btn px-3 py-2 d-none">
                         <!-- <i class="tio-checkmark-circle-outlined fs-4"></i>   -->
-                        +1
+                        <i class="tio-checkmark-circle-outlined fs-3"></i>
                      </button>
                   </div>
                </div>
