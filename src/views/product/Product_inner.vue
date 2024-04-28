@@ -1,5 +1,11 @@
 <template>
    <div>
+
+      <Head>
+         <title>{{ product_data_by_id.title }}</title>
+         <meta name="description" :content="product_data_by_id.description">
+      </Head>
+
       <!-- Pre Loader -->
       <div id="loading" v-if="this.$store.state.loading">
          <div id="loading-center">
@@ -590,7 +596,10 @@
    </div>
 </template>
 
+
 <script>
+import { Head } from '@unhead/vue/components'
+
 // Header Component
 import Header from '@/components/Header.vue'
 
@@ -649,7 +658,9 @@ export default {
       // Validation For Fields
       Form,
       Field,
-      ErrorMessage
+      ErrorMessage,
+
+      Head
    },
    methods: {
 
@@ -995,12 +1006,11 @@ export default {
          const height = client.clientHeight;
          this.$store.commit('footer_element', height);
       }
-   }
+   },
 }
 </script>
 
 <style scoped>
-
 /* For Product - which is absolute position */
 .scroll-product {
    position: fixed;
