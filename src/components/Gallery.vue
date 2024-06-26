@@ -7,7 +7,7 @@
 
             <!-- Col -->
             <div class="col-xl-5">
-               <img class="bg-light w-100 shadow-sm" src="https://cdn.dsmcdn.com/mnresize/1200/1800/ty757/product/media/images/20230303/0/293884521/638140391/1/1_org_zoom.jpg" alt="main product">
+               <img class="bg-light w-100 shadow-sm rounded" src="https://cdnvendoo.s3.eu-central-1.amazonaws.com/storage/products/2024-02/Untitled_-_2024-02-19T123947.847130546713612_45_13_900x900.jpg" alt="main product">
             </div>
             <!-- End Col -->
 
@@ -16,10 +16,10 @@
                <div class="tp-product-price-wrapper mb-20">
                   <span class="tp-product-price fs-6 text-white bg-primary px-2 py-1 rounded">უმაღლესი ხარისხის მასალა</span>
                </div>
-               <h3 class="tp-section-title text-white">ორთქლით ფარების გამწმდენდი გასაპრიალებელი ნაკრები</h3>
-               <p class="tp-section-description text-white">საბეჭდი და ტიპოგრაფიული ინდუსტრიის უშინაარსო ტექსტია. იგი სტანდარტად 1500-იანი წლებიდან იქცა, როდესაც უცნობმა მბეჭდავმა ამწყობ დაზგაზე წიგნის საცდელი ეგზემპლარი დაბეჭდა. მისი ტექსტი არამარტო 5 საუკუნის მანძილზე შემორჩა, არამედ მან დღემდე, ელექტრონული ტიპოგრაფიის დრომდეც უცვლელად მოაღწია. განსაკუთრებული პოპულარობა მას 1960-იან წლებში გამოსულმა Letraset-ის ცნობილმა ტრაფარეტებმა მოუტანა, უფრო მოგვიანებით კი — Aldus PageMaker-ის ტიპის საგამომცემლო პროგრამებმა, რომლებშიც Lorem Ipsum-ის სხვადასხვა ვერსიები იყო ჩაშენებული.</p>
+               <h3 class="tp-section-title text-white">Samsung S928B Galaxy S24 Ultra 12GB/512GB Black მობილური ტელეფონი</h3>
+               <p class="tp-section-description text-white">ოპერატიული მეხსიერება: 12 GB / შიდა მეხსიერება: 512 GB</p>
                <div class="tp-product-banner-btn mt-50">
-                  <router-link to="/inner/4" class="tp-product-details-buy-now-btn placeholder-wave">
+                  <router-link to="/inner/5" class="tp-product-details-buy-now-btn placeholder-wave">
                      შეუკვეთე ახლავე
                      <svg class="ms-1" width="17" height="14" viewBox="0 0 17 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M16 6.99976L1 6.99976" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>

@@ -78,7 +78,7 @@
                                  <button class="nav-link active" id="nav-1-tab" data-bs-toggle="tab" data-bs-target="#nav-1" type="button" role="tab" aria-controls="nav-1" aria-selected="true">
                                     <img :src="product_data_by_id.image" alt="">
                                  </button>
-                                 <button class="nav-link" id="nav-video-1-tab" data-bs-toggle="tab" data-bs-target="#nav-video-1" type="button" role="tab" aria-controls="nav-video-1" aria-selected="true">
+                                 <!-- <button class="nav-link" id="nav-video-1-tab" data-bs-toggle="tab" data-bs-target="#nav-video-1" type="button" role="tab" aria-controls="nav-video-1" aria-selected="true">
                                     <img :src="product_data_by_id.video" alt="">
                                     <span class="nav-video-btn">
                                        <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -87,7 +87,7 @@
                                           <path d="M7.64779 6.19231C8.22749 6.19231 8.69743 5.72237 8.69743 5.14266C8.69743 4.56296 8.22749 4.09302 7.64779 4.09302C7.06809 4.09302 6.59814 4.56296 6.59814 5.14266C6.59814 5.72237 7.06809 6.19231 7.64779 6.19231Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
                                        </svg>
                                     </span>
-                                 </button>
+                                 </button> -->
                                  <button v-for="(item, index) in product_data_by_id.images" :key="index" class="nav-link" :id="index" data-bs-toggle="tab" :data-bs-target="'#nav-2_'+index" type="button" role="tab" aria-controls="nav-2" aria-selected="false">
                                     <img :src="item.img" alt="">
                                  </button>
@@ -99,14 +99,14 @@
                                     <img :src="product_data_by_id.image" alt="">
                                  </div>
                               </div>
-                              <div class="tab-pane fade" id="nav-video-1" role="tabpanel" aria-labelledby="nav-video-1-tab" tabindex="0">
+                              <!-- <div class="tab-pane fade" id="nav-video-1" role="tabpanel" aria-labelledby="nav-video-1-tab" tabindex="0">
                                  <div class="tp-product-details-nav-main-thumb">
                                     <img :src="product_data_by_id.video" alt="">
                                     <div class="tp-product-details-thumb-video">
                                        <button  data-bs-target="#video_product" data-bs-toggle="modal" class="tp-product-details-thumb-video-btn popup-video"><i class="tio-play fs-5"></i></button>
                                     </div>
                                  </div>
-                              </div>
+                              </div> -->
                               <div v-for="(item, index) in product_data_by_id.images" :key="index" class="tab-pane fade" :id="'nav-2_'+index" role="tabpanel" :aria-labelledby="index" tabindex="0">
                                  <div class="tp-product-details-nav-main-thumb">
                                     <img :src="item.img" alt="">
@@ -246,9 +246,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                     <video controls class="w-100" height="300">
-                        <source src="../../assets/img/slider/video-product.mp4">
-                     </video>
+                     <iframe class="w-100" height="300" src="https://www.youtube.com/embed/TX9qSaGXFyg" title="Introducing Apple Vision Pro" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                   </div>
                </div>
             </div>
